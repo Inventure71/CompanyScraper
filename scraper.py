@@ -250,7 +250,9 @@ class CustomFolderSpider(CrawlSpider):
         'DOWNLOAD_DELAY': 1,
         'CONCURRENT_REQUESTS': 1,
         'TELNETCONSOLE_ENABLED': False,
-        'HTTPCACHE_ENABLED': False
+        'HTTPCACHE_ENABLED': False,
+        'ROBOTSTXT_OBEY': False,
+        'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     }
 
     def __init__(self, *args, start_urls=None, allowed_domains=None, max_pages=50, **kwargs):
@@ -261,6 +263,8 @@ class CustomFolderSpider(CrawlSpider):
             self.allowed_domains = allowed_domains
         self.custom_settings['CLOSESPIDER_PAGECOUNT'] = max_pages
         print(f"Spider initialized with {max_pages} pages limit")
+        print(f"Start URLs: {self.start_urls}")
+        print(f"Allowed domains: {self.allowed_domains}")
 
     def parse_item(self, response):
         try:
@@ -302,15 +306,13 @@ class Scraper:
             Scraper._process = CrawlerProcess(self.settings)
         
         try:
-            # Create a new spider instance
-            spider = CustomFolderSpider(
+            # Pass the spider class and its parameters to crawl
+            Scraper._process.crawl(
+                CustomFolderSpider,
                 start_urls=self.custom_start_urls,
                 allowed_domains=self.custom_allowed_domains,
                 max_pages=self.max_pages
             )
-            
-            # Add the spider to the process
-            Scraper._process.crawl(spider)
             
             # Start the process
             Scraper._process.start()
@@ -343,6 +345,9 @@ class Scraper:
 
         try:
             print(f"Starting spider for {self.website_name} with {self.max_pages} pages limit...")
+            print(f"Start URLs: {self.custom_start_urls}")
+            print(f"Allowed domains: {self.custom_allowed_domains}")
+            
             self.run_spider()
             
             if not os.path.exists('temporary_files') or not os.listdir('temporary_files'):
