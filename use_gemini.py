@@ -100,10 +100,20 @@ class GeminiHandler:
                             "PhoneNumber": types.Schema(type="STRING"),
                             "Email": types.Schema(type="STRING"),
                             "Role": types.Schema(type="STRING"),
+                            "RelevanceScore": types.Schema(type="INTEGER"),  # New field for contact relevance
                         },
                     ),
                 ),
                 "ExtraInfo": types.Schema(type="STRING"),
+                "MostRelevantContact": types.Schema(  # New field for most relevant contact
+                    type="OBJECT",
+                    properties={
+                        "FullName": types.Schema(type="STRING"),
+                        "Role": types.Schema(type="STRING"),
+                        "Email": types.Schema(type="STRING"),
+                        "Reason": types.Schema(type="STRING"),
+                    },
+                ),
             },
         )
 
@@ -122,6 +132,12 @@ class GeminiHandler:
                 "Description: Detailed description of the company including what they do and their main projects.\n"
                 "Keywords: A list of keywords that describe the company and their projects in robotics.\n"
                 "AllContacts: A list of ways to contact the company or specific employees (emails, phone numbers, LinkedIn, etc.).\n"
+                "For each contact in AllContacts, assign a RelevanceScore (1-10) based on their role and potential for robotics lab collaboration.\n"
+                "MostRelevantContact: Identify the single most relevant contact for robotics lab collaboration, considering:\n"
+                "- Their role (prefer lab leaders, research directors, technical leads)\n"
+                "- Their involvement in robotics/AI projects\n"
+                "- Their seniority level\n"
+                "- Their contact information availability\n"
                 "ExtraInfo: Any important information that can affect/influence the ability to contact the company."
             ),
         )

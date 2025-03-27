@@ -35,7 +35,9 @@ class Classifier:
             extra_info TEXT,
             company_website_text_united TEXT,
             success INTEGER,
-            parsing_success INTEGER
+            parsing_success INTEGER,
+            quick_scrape_used INTEGER DEFAULT 0,
+            most_relevant_contact TEXT
         );
         """
 
@@ -50,8 +52,8 @@ class Classifier:
         INSERT INTO companies (
             name, link, country, keywords, description, 
             all_contacts, extra_info, company_website_text_united, success,
-            parsing_success
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+            parsing_success, quick_scrape_used, most_relevant_contact
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         """
 
         for company in companies:
@@ -72,7 +74,9 @@ class Classifier:
                     company.get('extra_info', '').strip(),
                     company.get('company_website_text_united', '').strip(),
                     company.get('success', 0),
-                    company.get('parsing_success', 0)
+                    company.get('parsing_success', 0),
+                    company.get('quick_scrape_used', 0),
+                    company.get('most_relevant_contact', '').strip()
                 )
                 cursor.execute(insert_sql, data)
             except Error as e:
@@ -95,18 +99,28 @@ class Classifier:
     def parse_company(self, name, company="accelerationrobotics.com", max_pages=20):
         link = f'https://www.{company}/'
         company = company.lower()
-        #self.scraper.change_website([link], [company])
-        scraper = Scraper([link], [company], force_update=False, max_pages=max_pages)
+        
+        # Try quick scraping first with 15 pages limit
+        quick_scraper = Scraper([link], [company], force_update=False, max_pages=15)
+        complete_text = quick_scraper.scrape_website()
+        
+        # Check if we got enough content (at least 1000 characters)
+        if len(complete_text) < 1000:
+            # If not enough content, try full scraping
+            scraper = Scraper([link], [company], force_update=False, max_pages=max_pages)
+            complete_text = scraper.scrape_website()
+            quick_scrape_used = 0
+        else:
+            quick_scrape_used = 1
 
-        complete_text = scraper.scrape_website()
         print("Combined Text:", complete_text)
 
         response = self.gemini_handler.retrieve_info_gemini(complete_text)
         success = True if response else False
 
-        self.save_company(response, name, link, complete_text, success)
+        self.save_company(response, name, link, complete_text, success, quick_scrape_used)
 
-    def save_company(self, json_str, name, link, website_full_text, success):
+    def save_company(self, json_str, name, link, website_full_text, success, quick_scrape_used=0):
         parsed = self.parse_json(json_str)
         parsing_success = parsed is not None
 
@@ -122,7 +136,9 @@ class Classifier:
                 "extra_info": "",
                 "company_website_text_united": website_full_text,
                 "success": 0,
-                "parsing_success": 0
+                "parsing_success": 0,
+                "quick_scrape_used": quick_scrape_used,
+                "most_relevant_contact": ""
             }
             self.save_companies_to_db([company_data])
             print("Company saved to database with failed parsing status.")
@@ -132,6 +148,21 @@ class Classifier:
         keywords = parsed.get("Keywords", [])
         if isinstance(keywords, list):
             keywords = ', '.join(str(k) for k in keywords)
+
+        # Format the most relevant contact
+        most_relevant = parsed.get("MostRelevantContact", {})
+        most_relevant_str = ""
+        if most_relevant:
+            parts = []
+            if most_relevant.get("FullName"):
+                parts.append(f"Name: {most_relevant['FullName']}")
+            if most_relevant.get("Role"):
+                parts.append(f"Role: {most_relevant['Role']}")
+            if most_relevant.get("Email"):
+                parts.append(f"Email: {most_relevant['Email']}")
+            if most_relevant.get("Reason"):
+                parts.append(f"Reason: {most_relevant['Reason']}")
+            most_relevant_str = " | ".join(parts)
 
         company_data = {
             "name": name,
@@ -144,7 +175,9 @@ class Classifier:
             "extra_info": parsed.get("ExtraInfo", ""),
             "company_website_text_united": website_full_text,
             "success": 1 if success else 0,
-            "parsing_success": 1
+            "parsing_success": 1,
+            "quick_scrape_used": quick_scrape_used,
+            "most_relevant_contact": most_relevant_str
         }
 
         self.save_companies_to_db([company_data])
