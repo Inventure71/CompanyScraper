@@ -100,18 +100,27 @@ class Classifier:
         link = f'https://www.{company}/'
         company = company.lower()
         
+        print(f"\nProcessing company: {name}")
+        print(f"Starting quick scrape with 15 pages limit...")
+        
         # Try quick scraping first with 15 pages limit
         quick_scraper = Scraper([link], [company], force_update=False, max_pages=15)
         complete_text = quick_scraper.scrape_website()
         
         # Check if we got enough content (at least 1000 characters)
-        if len(complete_text) < 1000:
+        content_length = len(complete_text)
+        print(f"Quick scrape content length: {content_length} characters")
+        
+        if content_length < 1000:
+            print("Quick scrape didn't yield enough content, falling back to full scraping...")
             # If not enough content, try full scraping
             scraper = Scraper([link], [company], force_update=False, max_pages=max_pages)
             complete_text = scraper.scrape_website()
             quick_scrape_used = 0
+            print(f"Full scrape content length: {len(complete_text)} characters")
         else:
             quick_scrape_used = 1
+            print("Quick scrape successful, using limited content")
 
         print("Combined Text:", complete_text)
 

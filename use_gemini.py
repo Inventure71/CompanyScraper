@@ -27,19 +27,23 @@ class GeminiHandler:
         while self.requests_timestamps and current_time - self.requests_timestamps[0] >= self.time_window:
             self.requests_timestamps.popleft()
 
-        # if we have less than rate_limit requests the window, we can proceed
+        # if we have less than rate_limit requests in the window, we can proceed
         if len(self.requests_timestamps) < self.rate_limit:
             self.requests_timestamps.append(current_time)
+            print(f"Rate limit check passed. Current requests in window: {len(self.requests_timestamps)}/{self.rate_limit}")
             return True
 
         # calculate wait time if we're at the limit
         if self.requests_timestamps:
             wait_time = self.time_window - (current_time - self.requests_timestamps[0])
             if wait_time > 0:
+                print(f"Rate limit reached. Waiting {wait_time:.2f} seconds...")
                 time.sleep(wait_time)
                 self.requests_timestamps.append(current_time + wait_time)
+                print("Wait complete, proceeding with request")
                 return True
 
+        print("Rate limit check failed")
         return False
 
     def generic_ask_gemini(self, prompt):
@@ -100,13 +104,18 @@ class GeminiHandler:
                             "PhoneNumber": types.Schema(type="STRING"),
                             "Email": types.Schema(type="STRING"),
                             "Role": types.Schema(type="STRING"),
-                            "RelevanceScore": types.Schema(type="INTEGER"),  # New field for contact relevance
+                            "RelevanceScore": types.Schema(
+                                type="INTEGER",
+                                minimum=1,
+                                maximum=10
+                            ),
                         },
                     ),
                 ),
                 "ExtraInfo": types.Schema(type="STRING"),
-                "MostRelevantContact": types.Schema(  # New field for most relevant contact
+                "MostRelevantContact": types.Schema(
                     type="OBJECT",
+                    required=["FullName", "Role", "Reason"],
                     properties={
                         "FullName": types.Schema(type="STRING"),
                         "Role": types.Schema(type="STRING"),
@@ -274,35 +283,12 @@ class GeminiHandler:
         return merged
 
     def divide_into_blocks(self, prompt):
-        """
-        # Use the existing client instance instead of creating a new one
-        response = self.client.models.count_tokens(
-            model=self.model_name,
-            contents=prompt,
-        )
-        print("Token count response:", response)
-        total_tokens = response.total_tokens
-        print("Total tokens:", total_tokens)
-
-        # If token count is under a threshold, return the whole prompt as one block.
-        if total_tokens <= 500000:
-            return [prompt]
-        else:
-            blocks = []
-            start = 0
-            block_size = 450000  # Adjust as needed to stay under the limit.
-            while start < len(prompt):
-                end = start + block_size
-                blocks.append(prompt[start:end])
-                start = end
-            print("Number of blocks:", len(blocks))
-            return blocks"""
-
         # Define maximum block size in characters (approximately 100K chars)
         max_block_size = 2000000
 
         # If text is small enough, return as single block
         if len(prompt) <= max_block_size:
+            print(f"Text size ({len(prompt)} chars) within limits, using single block")
             return [prompt]
 
         # Split into blocks
@@ -317,10 +303,12 @@ class GeminiHandler:
                 if last_period != -1:
                     end = start + last_period + 1
 
-            blocks.append(prompt[start:end])
+            block = prompt[start:end]
+            blocks.append(block)
+            print(f"Created block {len(blocks)} with size {len(block)} chars")
             start = end
 
-        print("Number of blocks:", len(blocks))
+        print(f"Text split into {len(blocks)} blocks")
         return blocks
 
 
