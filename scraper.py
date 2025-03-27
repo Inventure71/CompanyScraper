@@ -238,31 +238,44 @@ class Combiner:
 
 class CustomFolderSpider(CrawlSpider):
     name = 'custom_folder'
-    allowed_domains = ['accelerationrobotics.com']
-    start_urls = ['https://accelerationrobotics.com/']
+    allowed_domains = None  # Will be set in __init__
+    start_urls = None      # Will be set in __init__
     rules = (
         Rule(LinkExtractor(deny=(r'(?i)forum',)), callback='parse_item', follow=True),
     )
     custom_settings = {
-        'CLOSESPIDER_PAGECOUNT': 50,  # Default value, will be updated in __init__
+        'CLOSESPIDER_PAGECOUNT': 50,  # Default value
+        'LOG_LEVEL': 'ERROR',
+        'COOKIES_ENABLED': False,
+        'DOWNLOAD_DELAY': 1,
+        'CONCURRENT_REQUESTS': 1,
+        'TELNETCONSOLE_ENABLED': False,
+        'HTTPCACHE_ENABLED': False
     }
 
-    def __init__(self, *args, max_pages=50, **kwargs):
-        # Update the class attribute with the instance-specific value
-        self.__class__.custom_settings['CLOSESPIDER_PAGECOUNT'] = max_pages
+    def __init__(self, *args, start_urls=None, allowed_domains=None, max_pages=50, **kwargs):
         super().__init__(*args, **kwargs)
+        if start_urls:
+            self.start_urls = start_urls
+        if allowed_domains:
+            self.allowed_domains = allowed_domains
+        self.custom_settings['CLOSESPIDER_PAGECOUNT'] = max_pages
+        print(f"Spider initialized with {max_pages} pages limit")
 
     def parse_item(self, response):
-        # Save the scraped page to the temporary_files folder.
-        folder = 'temporary_files'
-        if not os.path.exists(folder):
-            os.makedirs(folder)
-        # Create a safe filename from the URL.
-        filename = re.sub(r'\W+', '_', response.url) + ".html"
-        filepath = os.path.join(folder, filename)
-        with open(filepath, 'wb') as f:
-            f.write(response.body)
-        self.logger.info("Saved file %s", filepath)
+        try:
+            # Save the scraped page to the temporary_files folder.
+            folder = 'temporary_files'
+            if not os.path.exists(folder):
+                os.makedirs(folder)
+            # Create a safe filename from the URL.
+            filename = re.sub(r'\W+', '_', response.url) + ".html"
+            filepath = os.path.join(folder, filename)
+            with open(filepath, 'wb') as f:
+                f.write(response.body)
+            self.logger.info("Saved file %s", filepath)
+        except Exception as e:
+            self.logger.error(f"Error saving file: {e}")
 
 class Scraper:
     _process = None  # Class variable to store the crawler process
@@ -289,14 +302,22 @@ class Scraper:
             Scraper._process = CrawlerProcess(self.settings)
         
         try:
-            Scraper._process.crawl(CustomFolderSpider,
-                                 start_urls=self.custom_start_urls,
-                                 allowed_domains=self.custom_allowed_domains,
-                                 max_pages=self.max_pages)
+            # Create a new spider instance
+            spider = CustomFolderSpider(
+                start_urls=self.custom_start_urls,
+                allowed_domains=self.custom_allowed_domains,
+                max_pages=self.max_pages
+            )
             
-            if not Scraper._process.running:
-                Scraper._process.start()
-                Scraper._process.stop()
+            # Add the spider to the process
+            Scraper._process.crawl(spider)
+            
+            # Start the process
+            Scraper._process.start()
+            
+            # Stop the process after it's done
+            Scraper._process.stop()
+            
         except Exception as e:
             print(f"Error running spider: {e}")
             # Reset the process if there's an error
@@ -321,7 +342,13 @@ class Scraper:
         os.makedirs('temporary_files', exist_ok=True)
 
         try:
+            print(f"Starting spider for {self.website_name} with {self.max_pages} pages limit...")
             self.run_spider()
+            
+            if not os.path.exists('temporary_files') or not os.listdir('temporary_files'):
+                print("Warning: No files were scraped")
+                return ""
+                
             source_folders = self.move_folders()
 
             # Combine text from all folders (both non-blog and blog pages)
@@ -333,8 +360,16 @@ class Scraper:
 
             time.sleep(1)
 
+            if not os.path.exists(output_file):
+                print("Warning: No output file was created")
+                return ""
+
             with open(output_file, 'r', encoding='utf-8') as f:
                 content = f.read()
+
+            if not content:
+                print("Warning: Output file is empty")
+                return ""
 
             return content
         except Exception as e:
