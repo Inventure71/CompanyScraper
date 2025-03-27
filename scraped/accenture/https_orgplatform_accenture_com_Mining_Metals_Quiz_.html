@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <base href="/Mining-Metals-Quiz/" />
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Mining & Metals quiz</title>
+   <link rel="stylesheet" href="style.css">
+ <body>
+
+    <!-- <br><br><br><br><br>
+    <div class="button" id="open-popup-button">
+      Open popup
+    </div> -->
+
+
+    <div id="popup">
+<!--
+      <svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43" fill="none" class="close-popup-button">
+        <line x1="1" y1="-1" x2="22" y2="-1" transform="matrix(0.707107 0.707107 0.707107 -0.707107 14.0753 12.125)" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <line x1="1" y1="-1" x2="22" y2="-1" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 12.6613 28.3887)" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <rect x="0.5" y="-0.5" width="42" height="42" rx="21" transform="matrix(1 0 0 -1 0 42)" stroke="white"/>
+      </svg>
+-->
+      <!-- intro screen -->
+      <div class="intro-screen">
+        <img src="images/Intro-image.png" alt="Intro image">
+        <div class="text-holder">
+          <h1>Assessing the state of your leadership maturity today</h1>
+
+          <p>Before embarking on a journey to become the ideal leader, it is essential to know your starting point. This is the key to determining the distance ahead, as well as the best path to take. With that in mind, we created a tool to assess where you currently fit within the three leadership archetypes and pinpoint what changes are needed to elevate your leadership characteristics.</p>
+
+          <p>The assessment is intended as a rough guide to help you judge in which pillars you and your organization have mature leadership behaviors, mindsets, practices and values, and where there is room for improvement. It is fifteen questions that measure the Responsible Leadership Elements and the behaviors that underly effective leadership. It has been designed to be leveraged on an individual basis, or as a collective assessment of your organization’s leaders, and has been validated against leadership and culture literature, frameworks and theories.</p>
+
+          <span class="button-with-arrow">
+            Next
+            <svg width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="31" cy="31" r="31" fill="#314DDF"/>
+              <path d="M25.85 44.1998L36.7166 33.3331C38 32.0498 38 29.9498 36.7166 28.6665L25.85 17.7998" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <!-- instructions screen -->
+      <div class="instructions-screen">
+        <h1>The intent of the assessment is to identify where you sit against the backdrop of our three archetypes: Foundational, Progressive and Advanced.</h1>
+        <h2>Archetype Average score</h2>
+        <div class="score-holder">
+          <p>Foundational leader 1 to 3</p>
+            <span></span>
+          <p>Progressive leader 3.1 to 5</p>
+            <span></span>
+          <p>Advanced leader 5.1 to 7</p>
+        </div>
+        <div class="button">
+          <span>
+            Start the assessment
+          </span>
+        </div>
+      </div>
+
+      <!-- question screen -->
+      <div class="question-screen" data-question-number="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="38" height="40" viewBox="0 0 38 40" fill="none" class="logo">
+          <path d="M0 40L38 25.2221V14.7779L0 0V10.4443L24.5717 20L0 29.5557V40Z" fill="white"/>
+        </svg>
+        <div class="top-question-text">
+          <p>How often do you engage in the following behaviors as part of your decarbonization agenda?</p>
+        </div>
+
+        <div class="question-number">
+          <svg viewBox="0 0 36 36" class="blue-circle">
+            <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+          </svg>
+
+          <svg viewBox="0 0 36 36" class="white-circle">
+            <path class="circle" stroke-dasharray="6.6, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+          </svg>
+
+          <span>01</span>
+        </div>
+
+        <h1 class="question-title"></h1>
+
+        <div class="question-image-holder">
+          <img src="" alt="Mining metals" class="image">
+          <img src="" alt="Mining metals" class="line">
+        </div>
+
+        <h4 class="question-of">Question <span></span> of 15</h4>
+
+        <h3>Q</h3>
+
+        <h2 class="question-text"></h2>
+
+        <h3>A</h3>
+
+        <div class="button" data-answer-number="1">
+          <span>
+            Never
+          </span>
+        </div>
+
+        <div class="button" data-answer-number="2">
+          <span>
+            Rarely
+          </span>
+        </div>
+
+        <div class="button" data-answer-number="3">
+          <span>
+            Occasionally
+          </span>
+        </div>
+
+        <div class="button" data-answer-number="4">
+          <span>
+            Sometimes
+          </span>
+        </div>
+
+        <div class="button" data-answer-number="5">
+          <span>
+            Frequently
+          </span>
+        </div>
+
+        <div class="button" data-answer-number="6">
+          <span>
+            Usually
+          </span>
+        </div>
+
+        <div class="button" data-answer-number="7">
+          <span>
+            Always
+          </span>
+        </div>
+
+        <p class="copyright">Copyright © 2023 Accenture. All rights reserved. Accenture and its logo are registered trademarks of Accenture.</p>
+
+      </div>
+
+      <!-- final score  screen -->
+      <div class="final-score-screen">
+        <h2 class="dark-text">Final score</h2>
+        <h1 class="score-achieved-number">6</h1>
+        <h2 class="blue-text">You are a</h2>
+        <h1 class="score-achieved-text">Advanced leader</h1>
+
+        <h3>Archetype Average score</h3>
+        <div class="score-holder">
+          <p>Foundational leader 1 to 3</p>
+          <span></span>
+          <p>Progressive leader 3.1 to 5</p>
+          <span></span>
+          <p>Advanced leader 5.1 to 7</p>
+        </div>
+
+        <h3>Get insights on your answers and see what actions you can take to move to the next level of leadership maturity in the report</h3>
+
+      </div>
+
+    </div>
+
+
+    <script src="jquery-3-7-0.js"></script>
+    <script src="questions.js" charset="utf-8"></script>
+    <script src="script.js" charset="utf-8"></script>
+ </body>
+ </html>

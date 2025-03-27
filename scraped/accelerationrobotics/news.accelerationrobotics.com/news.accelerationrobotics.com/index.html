@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Acceleration Robotics - Hardware Acceleration in Robotics (Page 17)</title>
+		<meta name="HandheldFriendly" content="True">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Corben:wght@700&family=Mulish:ital,wght@0,400;0,700;0,800;1,400;1,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Corben:wght@700&family=Mulish:ital,wght@0,400;0,700;0,800;1,400;1,700&display=swap">		<link rel="stylesheet" type="text/css" href="/assets/css/screen.css?v=9bd8d66580">
+		<link rel="icon" href="https://news.accelerationrobotics.com/content/images/size/w256h256/2022/03/favicon-1.png" type="image/png" />
+    <link rel="canonical" href="https://news.accelerationrobotics.com/author/acceleration/page/17/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="prev" href="https://news.accelerationrobotics.com/author/acceleration/page/16/" />
+    <meta name="generator" content="Ghost 5.33" />
+    <link rel="alternate" type="application/rss+xml" title="Hardware Acceleration in Robotics" href="https://news.accelerationrobotics.com/rss/" />
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.24/umd/portal.min.js" data-ghost="https://news.accelerationrobotics.com/" data-key="6daa7fdf136b5ee2ae6ace1e79" data-api="https://news.accelerationrobotics.com/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="6daa7fdf136b5ee2ae6ace1e79" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://news.accelerationrobotics.com/" crossorigin="anonymous"></script>
+    <link href="https://news.accelerationrobotics.com/webmentions/receive/" rel="webmention" />
+    <script defer src="/public/cards.min.js?v=9bd8d66580"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=9bd8d66580">
+    <script defer src="/public/member-attribution.min.js?v=9bd8d66580"></script>
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4H6RFWM7Z7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4H6RFWM7Z7');
+</script><style>:root {--ghost-accent-color: #4d4bf5;}</style>
+	</head>
+	<body class="author-template author-acceleration paged">
+		<div class="global-container">
+			
+			<header class="header-section global-section">
+	<div class="header-wrap global-wrap global-flex">
+		<div class="header-logo global-flex">
+			<a class="is-logo" href="https://news.accelerationrobotics.com"><img src="https://news.accelerationrobotics.com/content/images/2022/03/acceleration_robotics.svg" alt="Hardware Acceleration in Robotics"></a>
+		</div>
+		<div class="header-nav global-flex">
+			<input id="toggle" type="checkbox">
+			<label for="toggle" class="nav-label hamburger">
+				<span class="hamburger-inner">
+					<span class="hamburger-bar"></span>
+					<span class="hamburger-bar"></span>
+					<span class="hamburger-bar"></span>
+				</span>
+			</label>
+			<div class="nav-toggle">
+				<nav>
+					<ul>
+						<li class="nav-item-company">
+	<a href="https://accelerationrobotics.com/about.php">Company</a>
+</li>
+<li class="nav-item-news">
+	<a href="https://news.accelerationrobotics.com/">News</a>
+</li>
+<li class="nav-item-robotcore">
+	<a href="https://accelerationrobotics.com/robotcore.php">ROBOTCORE</a>
+</li>
+
+											</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>			<div class="global-main">
+				<div class="archive-section global-section">
+	<div class="archive-wrap global-wrap">
+		<div class="global-flex">
+			<div class="archive-image global-image">
+				<img src="https://news.accelerationrobotics.com/content/images/2022/03/favicon.svg" loading="lazy" alt="Acceleration Robotics">			</div>
+			<div class="archive-title-wrap global-flex is-author">
+				<div>
+					<h1 class="archive-title">Acceleration Robotics</h1>
+					<p class="archive-description">A firm focused on designing customized brains for robots to hasten their response time. The company creates custom compute architectures for high performance robots through hardware acceleration.</p>
+				</div>
+			</div>
+			<div class="archive-meta global-flex is-author">
+				<div class="archive-counter is-author">
+					<div>
+						<span>132</span>
+						<small class="global-heading">
+						Articles
+						</small>
+					</div>
+				</div>
+				<div class="archive-icons global-flex">
+					<a href="https://accelerationrobotics.com" aria-label="Acceleration Robotics website"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 12C0 5.374 5.374 0 12 0c6.628 0 12 5.374 12 12 0 6.628-5.372 12-12 12-6.626 0-12-5.372-12-12zm5.593-.866a5.34 5.34 0 0 0-1.558 3.74c0 2.868 2.369 5.237 5.174 5.174a5.235 5.235 0 0 0 3.74-1.558l1.559-1.558-1.746-1.745-1.558 1.558a2.737 2.737 0 0 1-1.933.81c-1.496 0-2.743-1.246-2.743-2.743 0-.748.313-1.434.81-1.932l1.559-1.558-1.745-1.746-1.559 1.559v-.001zm7.62-1.962l-4.85 4.85 1.698 1.696 4.848-4.85-1.696-1.696zm4.843 4.212a5.34 5.34 0 0 0 1.558-3.741c0-2.868-2.368-5.236-5.173-5.174A5.232 5.232 0 0 0 10.7 6.03L9.142 7.585l1.746 1.746 1.558-1.56a2.738 2.738 0 0 1 1.932-.809c1.496 0 2.743 1.246 2.743 2.742a2.74 2.74 0 0 1-.81 1.933l-1.56 1.559 1.746 1.745 1.56-1.558z"/></svg></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="loop-section global-section">
+	<div class="loop-wrap global-wrap global-flex loop-archive global-grid">
+
+
+
+		<article class="loop-item global-item global-flex global-aos is-archive is-image post tag-news tag-hardware-acceleration tag-nvidia tag-nvidia-gtc tag-isaac-ros-gems" data-aos="fade-up">
+			<a href="/hardware-acceleration-in-robotics-2/" class="global-link" aria-label="Hardware Acceleration in Robotics #2"></a>
+<div class="loop-content-wrap global-flex">
+	<div class="loop-content">
+		<div class="loop-tags global-tags">
+			<a href="/tag/news/">News</a>
+			<a href="/tag/hardware-acceleration/">Hardware Acceleration</a>
+			<a href="/tag/nvidia/">NVIDIA</a>
+		</div>
+		<h2 class="loop-title"><a href="/hardware-acceleration-in-robotics-2/">Hardware Acceleration in Robotics #2</a><span>
+<svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.69 9.847L13.1 6.189a2.151 2.151 0 0 1-.616-1.507c0-1.181.972-2.153 2.152-2.153.578 0 1.132.233 1.537.645l7.12 7.257c.091.092.172.191.242.295a2.15 2.15 0 0 1-.151 2.843l-7.12 7.257a2.156 2.156 0 0 1-1.537.645 2.163 2.163 0 0 1-2.152-2.152c0-.564.221-1.106.616-1.508l3.59-3.659H2.152A2.163 2.163 0 0 1 0 11.999c0-1.18.971-2.152 2.152-2.152H16.69z"/></svg>
+
+</span></h2>
+		<div class="loop-excerpt">
+			Hardware acceleration in robotics news about the NVIDIA H100 Tensor Core GPU, updates to CUDA-X Libraries and NVIDIA Isaac ROS GEMs for robot's perception, localization, and mapping.
+		</div>
+		<div class="loop-meta global-meta">
+			by
+			<a href="/author/acceleration/">Acceleration Robotics</a>
+		</div>
+	</div>
+</div>
+<div class="loop-image color-image global-image">
+	<img src="https://news.accelerationrobotics.com/content/images/2022/04/fondos-cabeceras-blog-5-copia.jpg" loading="lazy" alt="Hardware Acceleration in Robotics #2"></div>
+		</article>
+		<article class="loop-item global-item global-flex global-aos is-archive is-color is-color-dark post tag-ros tag-gpu tag-fpga tag-robot-architecture tag-systems-architecture tag-cpu tag-asic tag-hash-color-blog3 featured no-image" data-aos="fade-up">
+			<a href="/modern-robotics-compute-architectures/" class="global-link" aria-label="Modern Robotics Compute Architectures"></a>
+<div class="loop-content-wrap global-flex">
+	<div class="loop-content">
+		<div class="loop-tags global-tags">
+			<a href="/tag/ros/">ROS</a>
+			<a href="/tag/gpu/">GPU</a>
+			<a href="/tag/fpga/">FPGA</a>
+		</div>
+		<h2 class="loop-title"><a href="/modern-robotics-compute-architectures/">Modern Robotics Compute Architectures</a><span>
+<svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.69 9.847L13.1 6.189a2.151 2.151 0 0 1-.616-1.507c0-1.181.972-2.153 2.152-2.153.578 0 1.132.233 1.537.645l7.12 7.257c.091.092.172.191.242.295a2.15 2.15 0 0 1-.151 2.843l-7.12 7.257a2.156 2.156 0 0 1-1.537.645 2.163 2.163 0 0 1-2.152-2.152c0-.564.221-1.106.616-1.508l3.59-3.659H2.152A2.163 2.163 0 0 1 0 11.999c0-1.18.971-2.152 2.152-2.152H16.69z"/></svg>
+
+</span></h2>
+		<div class="loop-excerpt">
+			Robot behaviors are often built as computational graphs, with data flowing from sensors to compute technologies, all the way down to actuators and back. Roboticists must map these graph-like structures efficiently to computing platforms to obtain best performance.
+		</div>
+		<div class="loop-meta global-meta">
+			by
+			<a href="/author/acceleration/">Acceleration Robotics</a>
+		</div>
+	</div>
+</div>
+		</article>
+		<article class="loop-item global-item global-flex global-aos is-archive is-image post tag-news tag-hardware-acceleration tag-ros tag-nvidia tag-ros-2" data-aos="fade-up">
+			<a href="/hardware-acceleration-in-robotics-1/" class="global-link" aria-label="Hardware Acceleration in Robotics #1"></a>
+<div class="loop-content-wrap global-flex">
+	<div class="loop-content">
+		<div class="loop-tags global-tags">
+			<a href="/tag/news/">News</a>
+			<a href="/tag/hardware-acceleration/">Hardware Acceleration</a>
+			<a href="/tag/ros/">ROS</a>
+		</div>
+		<h2 class="loop-title"><a href="/hardware-acceleration-in-robotics-1/">Hardware Acceleration in Robotics #1</a><span>
+<svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.69 9.847L13.1 6.189a2.151 2.151 0 0 1-.616-1.507c0-1.181.972-2.153 2.152-2.153.578 0 1.132.233 1.537.645l7.12 7.257c.091.092.172.191.242.295a2.15 2.15 0 0 1-.151 2.843l-7.12 7.257a2.156 2.156 0 0 1-1.537.645 2.163 2.163 0 0 1-2.152-2.152c0-.564.221-1.106.616-1.508l3.59-3.659H2.152A2.163 2.163 0 0 1 0 11.999c0-1.18.971-2.152 2.152-2.152H16.69z"/></svg>
+
+</span></h2>
+		<div class="loop-excerpt">
+			News on ROS 2 can be used for automotive applications that implement Apex.OS, Intel announces world’s fastest FPGAs with in-package HBM, how to save project costs and improve quality with digital twins and the Nvidia GTC 2022 conference
+		</div>
+		<div class="loop-meta global-meta">
+			by
+			<a href="/author/acceleration/">Acceleration Robotics</a>
+		</div>
+	</div>
+</div>
+<div class="loop-image color-image global-image">
+	<img src="https://news.accelerationrobotics.com/content/images/2022/04/fondos-cabeceras-blog-6.jpg" loading="lazy" alt="Hardware Acceleration in Robotics #1"></div>
+		</article>
+
+
+
+
+		<article class="loop-item global-item global-flex global-aos is-archive is-color is-color-dark post tag-hardware-acceleration tag-robotics tag-ros-2 tag-fpga tag-gpu tag-amd tag-hash-color-blog4 no-image" data-aos="fade-up">
+			<a href="/ros-2-simplifies-hardware-acceleration-for-robots/" class="global-link" aria-label="ROS 2 Simplifies Hardware Acceleration for Robots"></a>
+<div class="loop-content-wrap global-flex">
+	<div class="loop-content">
+		<div class="loop-tags global-tags">
+			<a href="/tag/hardware-acceleration/">Hardware Acceleration</a>
+			<a href="/tag/robotics/">Robotics</a>
+			<a href="/tag/ros-2/">ROS 2</a>
+		</div>
+		<h2 class="loop-title"><a href="/ros-2-simplifies-hardware-acceleration-for-robots/">ROS 2 Simplifies Hardware Acceleration for Robots</a><span>
+<svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.69 9.847L13.1 6.189a2.151 2.151 0 0 1-.616-1.507c0-1.181.972-2.153 2.152-2.153.578 0 1.132.233 1.537.645l7.12 7.257c.091.092.172.191.242.295a2.15 2.15 0 0 1-.151 2.843l-7.12 7.257a2.156 2.156 0 0 1-1.537.645 2.163 2.163 0 0 1-2.152-2.152c0-.564.221-1.106.616-1.508l3.59-3.659H2.152A2.163 2.163 0 0 1 0 11.999c0-1.18.971-2.152 2.152-2.152H16.69z"/></svg>
+
+</span></h2>
+		<div class="loop-excerpt">
+			The process of creating optimized, hardware specific, compute architectures can be time consuming and complex. The ROS 2 Hardware Acceleration Working Group (HAWG) is working to simplify hardware acceleration engineering tasks by creating acceleration kernels based on open standards.
+		</div>
+		<div class="loop-meta global-meta">
+			by
+			<a href="/author/acceleration/">Acceleration Robotics</a>
+		</div>
+	</div>
+</div>
+		</article>
+	</div>
+</div>
+				<div class="subscribe-section">
+	<div class="subscribe-wrap">
+		<div class="subscribe-content global-aos" data-aos="fade-up">
+			<form data-members-form="subscribe" class="subscribe-form">
+				<h3 class="subscribe-title">Subscribe to see what we&#x27;re thinking</h3>
+				<div class="subscribe-ityped">
+					<span id="ityped"></span>
+				</div>
+				<input data-members-email class="subscribe-input global-input" type="email" placeholder="Your email address" aria-label="Your email address" required>
+				<button class="subscribe-button global-button" type="submit">Subscribe</button>
+				<script>
+				const iTypedText = ["Start your day with Hardware Acceleration in Robotics"];
+				</script>
+			</form>
+			<p class="subscribe-alert subscribe-alert-loading">Processing your application</p>
+			<p class="subscribe-alert subscribe-alert-error">There was an error sending the email</p>
+			<div class="subscribe-success">
+				<h3 class="subscribe-title">Great!</h3>
+				<p>Check your inbox and click the link to confirm your subscription</p>
+			</div>
+		</div>
+	</div>
+</div>
+				<div class="description-section global-flex">Hardware Acceleration in Robotics News</div>
+			</div>
+			<footer class="footer-section global-footer global-section">
+	<div class="footer-wrap global-wrap global-flex">
+		<div class="footer-nav">
+			<nav>
+				<ul>
+					<li class="nav-item-company">
+	<a href="https://accelerationrobotics.com/about.php">Company</a>
+</li>
+<li class="nav-item-news">
+	<a href="https://news.accelerationrobotics.com/">News</a>
+</li>
+<li class="nav-item-robotcore">
+	<a href="https://accelerationrobotics.com/robotcore.php">ROBOTCORE</a>
+</li>
+
+				</ul>
+			</nav>
+		</div>
+		<div class="footer-icons global-flex">
+			<a href="https://twitter.com/hwacceleration" aria-label="link Twitter"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg></a>
+			
+
+		</div>
+		<div class="footer-copyright">
+			<a href="https://news.accelerationrobotics.com">Hardware Acceleration in Robotics</a> &copy; 2025. 
+			All Right Reserved. Published with <a href="https://ghost.org" target="_blank" rel="noopener noreferrer">Ghost</a> & <a href="https://fueko.net" target="_blank" rel="noopener noreferrer">Maido</a>.
+		</div>
+	</div>
+</footer>			<div id="notifications" class="global-notification">
+	<div class="subscribe">You&#x27;ve successfully subscribed to Hardware Acceleration in Robotics</div>
+	<div class="signin">Welcome back! You&#x27;ve successfully signed in.</div>
+	<div class="signup">Great! You&#x27;ve successfully signed up.</div>
+	<div class="expired">Your link has expired</div>
+	<div class="checkout-success">Success! Your account is fully activated, you now have access to all content.</div>
+</div>
+		</div>
+				<script src="/assets/js/index.js?v=9bd8d66580"></script>
+		<script src="/assets/js/global.js?v=9bd8d66580"></script>
+		<script>document.addEventListener("DOMContentLoaded",function(){const a=document.body;a.classList.add("is-loaded")})</script>
+		<script>
+!function(){"use strict";const p=new URLSearchParams(window.location.search),isAction=p.has("action"),isStripe=p.has("stripe"),success=p.get("success"),action=p.get("action"),stripe=p.get("stripe"),n=document.getElementById("notifications"),a="is-subscribe",b="is-signin",c="is-signup",d="is-expired",e="is-checkout-success";p&&(isAction&&(action=="subscribe"&&success=="true"&&n.classList.add(a),action=="signin"&&success=="true"&&n.classList.add(b),action=="signup"&&success=="true"&&n.classList.add(c),success=="false"&&n.classList.add(d)),isStripe&&stripe=="success"&&n.classList.add(e),(isAction||isStripe)&&setTimeout(function(){window.history.replaceState(null,null,window.location.pathname),n.classList.remove(a,b,c,d,e)},5000))}();
+</script>
+
+		
+		
+	</body>
+</html>

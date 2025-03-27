@@ -1,0 +1,2690 @@
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Document</title> -->
+
+    <link rel="stylesheet" href="https://addverb.com/wp-content/themes/onepress/assets/css/warehouse.css" />
+    <link rel="stylesheet" href="https://addverb.com/wp-content/themes/onepress/assets/css/subcategory.css" />
+    <link rel="stylesheet" href="https://addverb.com/wp-content/themes/onepress/assets/css/software_overview.css" />
+    <link rel="stylesheet" href="https://addverb.com/wp-content/themes/onepress/assets/css/slick.css" />
+    <link rel="stylesheet" href="https://addverb.com/wp-content/themes/onepress/assets/css/jquery.mCustomScrollbar.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Futura Next Book", sans-serif;
+        }
+        
+        body{
+           padding-top: 0 !important;
+        }
+
+        .logo img{
+            position:absolute;
+            top:3%;
+            left:5%;
+            width: 20vw;
+            z-index:2;
+            filter : brightness(0) invert(1);
+        }
+
+        .butt{
+            position:absolute;
+            top:3%;
+            right:5%;
+            text-decoration: none;
+            color: #ee3124;
+            font-size: 1.5vw;
+            font-weight: bold;
+            background-color: white;
+            padding: 0.5% 1% 0;
+            border: 0.2rem solid white;
+            z-index:2;
+            border-radius:20px;
+        }
+
+        .butt:hover{
+            color: white;
+            background-color:#ee3124;
+            border: 0.2rem solid #ee3124;
+        }
+
+        .hero {
+            height: 100vh;
+            background-image: url('https://addverb.com/wp-content/smush-webp/2023/05/2-7-1.jpg.webp');
+            background-size: cover;
+        }
+
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            /* background: -moz-linear-gradient(left, rgba(0, 0, 0, .9) 0, rgba(0, 0, 0, 0) 100%); */
+            /* background: -webkit-linear-gradient(left,rgba(0,0,0,.6) 0,rgba(0,0,0,0) 100%); */
+            background: linear-gradient(to right, rgba(0, 0, 0, .7) 0, rgba(0, 0, 0, 0) 100%);
+            z-index: 1;
+        }
+
+        .herotext {
+            position: relative;
+            top: 40%;
+            color: white;
+            z-index: 2;
+            padding-left: 5vw;
+            max-width: 50%;
+        }
+
+        .herotext h1 {
+            font-size: 4vw;
+            border-bottom: solid 1vh #ee3124;
+            padding-bottom:1%;
+        }
+
+        .herotext p {
+            padding-top: 1vh;
+            font-size: 1.3vw;
+        }
+
+        .products {
+            height: 100vh;
+            padding: 0 3%;
+        }
+
+        .products h1,
+        .download h1,
+        .mainform h1 {
+            font-size: 3.5vw;
+            padding: 3% 2% 1% 2%;
+            text-align: left;
+        }
+
+        .products h1::before,
+        .download h1::before,
+        .mainform h1::before {
+            content: "";
+            height: 10%;
+            width: 10px;
+            background-color: #ee3124;
+            position: absolute;
+            /* top: 216px; */
+            left: 3%;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1%;
+        }
+
+        .card {
+            height: 35vh;
+            width: 30%;
+            margin-top: 2%;
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px !important;
+            cursor: pointer;
+            box-shadow: 3px 3px 7px #232121;
+            border:none !important;
+        }
+
+        .bg {
+            content: '';
+            position: relative;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border-radius: 20px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 100%);
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            align-items: center;
+            color: white;
+            transition: background 0.5s;
+        }
+
+
+        .bg:hover {
+            justify-content: center;
+            background: black;
+            opacity: 0.9;
+        }
+
+        .bg p {
+            padding-bottom: 3%;
+            font-size: 1.5vw;
+            font-weight: 600;
+        }
+
+        .pane {
+            display: none;
+            flex-direction:column;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 1% 3%;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            height:80vh;
+            width:60vw;
+            border-radius:20px;
+        }
+
+        .pane img {
+            height : 30%;
+            width: fit-content  ;
+        }
+
+        #overlay, #overlayf {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .poptext {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 2%;
+            align-items:center;
+        }
+
+        .pane h2 {
+            font-size: 3vw;
+            padding: 1% 0 1% 3%;
+            text-align:center;
+            font-weight:600;
+        }
+
+        .poptext p {
+            font-size: 1.3vw;
+            text-align: justify;
+            color: #353434;
+        }
+
+        .cross {
+            margin-left: 1%;
+            font-weight: 900;
+            color: #ee3214;
+            position:absolute;
+            right:2%;
+            top:2%;
+            font-size:2vw;
+        }
+
+        .cross:hover {
+            cursor: pointer;
+            color: black;
+        }
+
+        .poptext button {
+            padding: 1% 3%;
+            width:100%;
+            color: white;
+            font-size: 1.2vw;
+            background-color: #ee3214;
+            border: 2px solid #ee3214;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+
+        .poptext button:hover {
+            color: #ee3214;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .download {
+            height: 100vh;
+            padding: 0 3%;
+            background-color: #373636;
+            display: flex;
+            flex-direction:column;
+            justify-content: space-evenly;
+            align-items:center;
+        }
+
+        .download p {
+            color:white;
+            font-size:2.5vw;
+            font-weight:600;
+        }
+
+        .dbutton {
+            padding: 1% 2%;
+            color: #373636;
+            font-size: 1.4vw;
+            background-color: white;
+            border: 2px solid white;
+            font-weight: 600;
+            border-radius: 10px;
+            width: auto ;
+            margin: 0 auto;
+        }
+
+        .dbutton:hover{
+            color: white;
+            background-color: #373636;
+            cursor: pointer;
+        }
+
+        .singlecard {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5%;
+            width: 30vw;
+        }
+
+
+        .singlecard:hover{
+            filter: brightness(0) invert(1);
+        }
+
+        .ico{
+            font-size:4vw;
+            color:gray;
+            font-weight:600;
+            display:flex;
+            flex-direction:column;
+        }
+        
+        .ico span{
+            font-size:1vw;
+        }
+
+        .singlecard p {
+            font-size: 1vw;
+            color: gray;
+        }
+
+        .formleft iframe{
+            height: 38vh;
+            width: 90%;
+            border-radius: 20px;
+        }
+
+        .right{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        
+
+        .left{
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .dcards{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            margin-top: 1%;
+            gap: 3%;
+        }
+        
+        .mainform   {
+            padding: 0 3%;
+            height: 100vh;
+            display: flex;
+            justify-content: space-evenly;
+            background-image: url(https://addverb.com/wp-content/themes/onepress/assets/images/products/contact-globe.png);
+            background-size: auto;
+            background-position-x: right;
+            background-repeat: no-repeat;
+            background-position-y: bottom;
+        }
+        
+        .formleft{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap:3%;
+            width:50%;
+        }
+        
+        .formright{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .mainform p{
+            font-size: 1.3vw;
+            text-align: justify;
+            color: #353434;
+        }
+        
+        .mainform button{
+            margin:auto;
+        }
+        
+        .download p{
+            text-align:center;
+        }
+        
+        .downloadpane {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 2%;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            height:95%;
+            width:80vw;
+            justify-content:center;
+        }
+        
+        .downloadpane h1{
+            width:50%;
+        }
+        
+        .right img{
+            filter : brightness(0) invert(0.7) ;
+            width:15%;
+        }
+        
+        .right img:hover{
+            filter : brightness(0) invert(1) ;
+        }
+        
+        .nono{
+            display:none;
+        }
+        
+        .faq_main_section{
+            height:100vh;
+            background-color:#373636;
+            margin-top:0;
+        }
+        
+        .newaccordion-list li h3, .newaccordion-list li div.answer p, .main-heading{
+            color:white;
+        }
+        
+         .copyright{
+                background-color:#343434;
+                padding: 0.7% 0;
+                text-align:center;
+                color:white;
+                font-weight:700;
+        }
+        
+        .faq_main_section{
+            margin-bottom:0 !important;
+        }
+        
+        .fluid-width-video-wrapper{
+            width:93% !important;
+        }
+        
+        
+input#input_49_5{
+        padding-left:1.302083vw !important;
+    }
+    .spf-phone.valid-msg.hide{
+        display:none;
+    }
+        
+        @media screen and (max-width: 1400px){
+            .poptext p{
+                font-size:1.1vw;
+            }
+            
+            .poptext{
+                gap:1%
+            }
+            
+            .pane img{
+                height:20%;
+            }
+            
+            .products h1{
+                padding:2% 2% 1% 2%;
+            }
+            
+            .mainform{
+                height:120%;
+            }
+            .formright{
+                padding:0 3%;
+            }
+            
+            
+            
+            .faq_main_section{
+                margin-bottom : 0;
+            }
+            
+            .butt{
+                padding: 0 1%;
+            }
+            
+            .downloadpane{
+                height:100%;
+                overflow:auto;
+            }
+            
+            
+        }  
+        
+        
+        
+        
+        
+        @media screen and (max-width: 600px){
+            .hero{
+                background-position:center;
+            }
+            
+            .butt{
+                padding:1% 2% 0;
+                font-size:2.8vw;
+            }
+            
+            .logo img{
+                width:40vw;
+            }
+            
+            .herotext{
+                max-width:80%;
+            }
+            
+            .herotext h1 {
+            font-size: 7vw;
+            font-weight: 700;
+            border-bottom: solid 0.5vh #ee3124;
+            }
+            
+            .herotext p{
+                font-size:4vw;
+            }
+            
+            .products h1::before, .download h1::before, .mainform h1::before, .pane h2::before{
+                height:3%;
+                width:4px;
+            }
+            
+            .products h1, .download h1, .mainform h1{
+                font-size:7vw;
+                margin-top:2%;
+            }
+            
+            .cards{
+                flex-direction:column;
+            }
+            
+            .card{
+                width:99%;
+                height:16vh;
+            }
+            
+            .bg p{
+            padding-bottom: 0%;
+            font-size: 4.5vw;
+            }
+            
+            .pane{
+                width:90vw;
+            }
+            
+            .pane h2{
+                font-size:6vw;
+            }
+            
+            .pane img {
+            height: 40vh;
+            width: 100%;
+            object-fit: cover;
+            }
+            
+            .poptext p {
+            font-size: 3vw;
+            margin: 11% 0;
+            }
+            
+            .poptext button{
+                font-size:4vw;
+            }
+            
+            .cross{
+                font-size: 5vw;
+            }
+            
+            .download p{
+                font-size:7vw;
+            }
+            
+            .singlecard p{
+                font-size:4vw;
+                color:#cfcfcf;
+            }
+            
+            .ico{
+                font-size:9vw;
+                color:white;
+            }
+            
+            .dcards{
+                flex-wrap:wrap;
+            }
+            
+            .singlecard{
+                width:45vw;
+            }
+            
+            
+            .right {
+                flex-wrap:wrap;
+            }
+            
+            .right img{
+                width:30%;
+                filter: brightness(0) invert(1);
+            }
+            
+            .dbutton{
+                font-size:4vw;
+            }
+            
+            .downloadpane h1{
+                padding: 0% 0% 1% 2%;
+                font-size:6vw;
+                width: 100%;
+            }
+            
+            .downloadpane{
+                height : 90%;
+                width: 95vw;
+                flex-direction : column;
+                justify-content: flex-start;
+            }
+            
+            .downloadpane button {
+            width: 70%;
+            margin: auto;
+            margin-top: 9%;
+            }
+            
+            #contact {
+            height: auto;
+            flex-direction: column;
+            justify-content:start;
+            gap:5%;
+            }
+            
+            .formleft{
+                width:100%;
+            }
+            
+            .formleft iframe{
+                width:100%;
+                height: 43vh;
+                margin-bottom: 3%;
+            }
+            
+            .faq_main_section{
+                margin-bottom : 0;
+            }
+            
+            .products{
+                padding : 3%;
+            }
+            
+            .ico span{
+                font-size : 3vw;
+            }
+            
+            .gform-body, .gform_body{
+                max-height:max-content !important;
+            }
+        }
+        
+          @media screen and (min-width:1400px) and (max-width:1700px){
+            .pane{
+                height:85vh;
+                width:70vw;
+            }
+            
+            .poptext p{
+                margin-bottom:0;
+            }
+        }
+     
+    </style>
+
+<meta name="generator" content="WP Rocket 3.17.2.1" data-wpr-features="wpr_desktop wpr_dns_prefetch wpr_preload_links" /></head>
+
+    <div data-rocket-location-hash="13777b14edef7c13d812587e9ca062e0" class="nono">
+        <!DOCTYPE html>
+<html translate="no" lang="es" prefix="og: https://ogp.me/ns#">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	
+
+		<link rel="stylesheet" href="https://addverb.com/wp-content/themes/onepress/assets/css/header-min.css" />
+
+    
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="yandex-verification" content="0e5ec3adb4cea306" />
+	<link rel="icon" type="image/x-icon" href="https://addverb.com/wp-content/themes/onepress/assets/images/favicon.ico">
+	<link rel="apple-touch-icon" href="https://addverb.com/wp-content/themes/onepress/assets/images/favicon.ico">
+		<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<!-- Google tag (gtag.js) Consent Mode dataLayer added by Site Kit -->
+<script type="text/javascript" id="google_gtagjs-js-consent-mode-data-layer">
+/* <![CDATA[ */
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {"ad_personalization":"denied","ad_storage":"denied","ad_user_data":"denied","analytics_storage":"denied","functionality_storage":"denied","security_storage":"denied","personalization_storage":"denied","region":["AT","BE","BG","CH","CY","CZ","DE","DK","EE","ES","FI","FR","GB","GR","HR","HU","IE","IS","IT","LI","LT","LU","LV","MT","NL","NO","PL","PT","RO","SE","SI","SK"],"wait_for_update":500});
+window._googlesitekitConsentCategoryMap = {"statistics":["analytics_storage"],"marketing":["ad_storage","ad_user_data","ad_personalization"],"functional":["functionality_storage","security_storage"],"preferences":["personalization_storage"]};
+window._googlesitekitConsents = {"ad_personalization":"denied","ad_storage":"denied","ad_user_data":"denied","analytics_storage":"denied","functionality_storage":"denied","security_storage":"denied","personalization_storage":"denied","region":["AT","BE","BG","CH","CY","CZ","DE","DK","EE","ES","FI","FR","GB","GR","HR","HU","IE","IS","IT","LI","LT","LU","LV","MT","NL","NO","PL","PT","RO","SE","SI","SK"],"wait_for_update":500};
+/* ]]> */
+</script>
+<!-- End Google tag (gtag.js) Consent Mode dataLayer added by Site Kit -->
+
+<!-- Search Engine Optimization by Rank Math - https://rankmath.com/ -->
+<title>Robots móviles - Addverb</title>
+<meta name="robots" content="follow, noindex"/>
+<meta property="og:locale" content="es" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Robots móviles - Addverb" />
+<meta property="og:url" content="https://addverb.com/es/mobile-robotics-technology/" />
+<meta property="og:site_name" content="Addverb" />
+<meta property="og:updated_time" content="2024-08-05T18:03:01+05:30" />
+<meta property="og:image" content="https://addverb.com/wp-content/uploads/2024/01/Demystifying-Warehouse-Robotics_-Functions-and-Applications-social-banner.jpg" />
+<meta property="og:image:secure_url" content="https://addverb.com/wp-content/uploads/2024/01/Demystifying-Warehouse-Robotics_-Functions-and-Applications-social-banner.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="628" />
+<meta property="og:image:alt" content="Demystifying-Warehouse-Robotics_-Functions-and-Applications" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta name="twitter:card" content="resumen_imagen_grande" />
+<meta name="twitter:title" content="Robots móviles - Addverb" />
+<meta name="twitter:image" content="https://addverb.com/wp-content/uploads/2024/01/Demystifying-Warehouse-Robotics_-Functions-and-Applications-social-banner.jpg" />
+<meta name="twitter:label1" content="Time to read" />
+<meta name="twitter:data1" content="Less than a minute" />
+<!-- /Rank Math WordPress SEO plugin -->
+
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<style id='wp-emoji-styles-inline-css' type='text/css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://addverb.com/wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<style id='wp-block-library-theme-inline-css' type='text/css'>
+.wp-block-audio :where(figcaption){color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-audio :where(figcaption){color:#ffffffa6}.wp-block-audio{margin:0 0 1em}.wp-block-code{border:1px solid #ccc;border-radius:4px;font-family:Menlo,Consolas,monaco,monospace;padding:.8em 1em}.wp-block-embed :where(figcaption){color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-embed :where(figcaption){color:#ffffffa6}.wp-block-embed{margin:0 0 1em}.blocks-gallery-caption{color:#555;font-size:13px;text-align:center}.is-dark-theme .blocks-gallery-caption{color:#ffffffa6}:root :where(.wp-block-image figcaption){color:#555;font-size:13px;text-align:center}.is-dark-theme :root :where(.wp-block-image figcaption){color:#ffffffa6}.wp-block-image{margin:0 0 1em}.wp-block-pullquote{border-bottom:4px solid;border-top:4px solid;color:currentColor;margin-bottom:1.75em}.wp-block-pullquote cite,.wp-block-pullquote footer,.wp-block-pullquote__citation{color:currentColor;font-size:.8125em;font-style:normal;text-transform:uppercase}.wp-block-quote{border-left:.25em solid;margin:0 0 1.75em;padding-left:1em}.wp-block-quote cite,.wp-block-quote footer{color:currentColor;font-size:.8125em;font-style:normal;position:relative}.wp-block-quote:where(.has-text-align-right){border-left:none;border-right:.25em solid;padding-left:0;padding-right:1em}.wp-block-quote:where(.has-text-align-center){border:none;padding-left:0}.wp-block-quote.is-large,.wp-block-quote.is-style-large,.wp-block-quote:where(.is-style-plain){border:none}.wp-block-search .wp-block-search__label{font-weight:700}.wp-block-search__button{border:1px solid #ccc;padding:.375em .625em}:where(.wp-block-group.has-background){padding:1.25em 2.375em}.wp-block-separator.has-css-opacity{opacity:.4}.wp-block-separator{border:none;border-bottom:2px solid;margin-left:auto;margin-right:auto}.wp-block-separator.has-alpha-channel-opacity{opacity:1}.wp-block-separator:not(.is-style-wide):not(.is-style-dots){width:100px}.wp-block-separator.has-background:not(.is-style-dots){border-bottom:none;height:1px}.wp-block-separator.has-background:not(.is-style-wide):not(.is-style-dots){height:2px}.wp-block-table{margin:0 0 1em}.wp-block-table td,.wp-block-table th{word-break:normal}.wp-block-table :where(figcaption){color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-table :where(figcaption){color:#ffffffa6}.wp-block-video :where(figcaption){color:#555;font-size:13px;text-align:center}.is-dark-theme .wp-block-video :where(figcaption){color:#ffffffa6}.wp-block-video{margin:0 0 1em}:root :where(.wp-block-template-part.has-background){margin-bottom:0;margin-top:0;padding:1.25em 2.375em}
+</style>
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-family--inter: "Inter", sans-serif;--wp--preset--font-family--cardo: Cardo;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='woocommerce-layout-css' href='https://addverb.com/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css' type='text/css' media='all' />
+<link rel='stylesheet' id='woocommerce-smallscreen-css' href='https://addverb.com/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css' type='text/css' media='only screen and (max-width: 768px)' />
+<link rel='stylesheet' id='woocommerce-general-css' href='https://addverb.com/wp-content/plugins/woocommerce/assets/css/woocommerce.css' type='text/css' media='all' />
+<style id='woocommerce-inline-inline-css' type='text/css'>
+.woocommerce form .form-row .required { visibility: visible; }
+</style>
+<link rel='stylesheet' id='cmplz-general-css' href='https://addverb.com/wp-content/plugins/complianz-gdpr-premium/assets/css/cookieblocker.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='ivory-search-styles-css' href='https://addverb.com/wp-content/plugins/add-search-to-menu/public/css/ivory-search.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='weglot-css-css' href='https://addverb.com/wp-content/plugins/weglot/dist/css/front-css.css' type='text/css' media='all' />
+<style id='weglot-css-inline-css' type='text/css'>
+.country-selector.weglot-dropdown .wgcurrent:after{
+	display:none;
+}
+country-selector.weglot-dropdown .wgcurrent a, .country-selector.weglot-dropdown .wgcurrent span {
+    padding-right: 0;
+}
+.country-selector.weglot-dropdown .wgcurrent{
+	border:none;
+}
+.country-selector.weglot-dropdown a, .country-selector.weglot-dropdown span{
+	height:1rem;
+	line-height:0;
+}
+.country-selector.weglot-dropdown li {
+    padding: 5% 0;
+}
+</style>
+<link rel='stylesheet' id='new-flag-css-css' href='https://addverb.com/wp-content/plugins/weglot/app/styles/new-flags.css' type='text/css' media='all' />
+<link rel='stylesheet' id='onepress-fonts-css' href='https://fonts.googleapis.com/css?family=Raleway%3A400%2C500%2C600%2C700%2C300%2C100%2C800%2C900%7COpen+Sans%3A400%2C300%2C300italic%2C400italic%2C600%2C600italic%2C700%2C700italic&#038;subset=latin%2Clatin-ext&#038;display=swap' type='text/css' media='all' />
+<link rel='stylesheet' id='onepress-animate-css' href='https://addverb.com/wp-content/themes/onepress/assets/css/animate.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='onepress-fa-css' href='https://addverb.com/wp-content/themes/onepress/assets/css/font-awesome.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='onepress-bootstrap-css' href='https://addverb.com/wp-content/themes/onepress/assets/css/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='onepress-style-css' href='https://addverb.com/wp-content/themes/onepress/style.css' type='text/css' media='all' />
+<style id='onepress-style-inline-css' type='text/css'>
+.site-logo-div img{height:512px;width:auto}#main .video-section section.hero-slideshow-wrapper{background:transparent}.hero-slideshow-wrapper:after{position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:rgba(0,0,0,0.3);display:block;content:""}.body-desktop .parallax-hero .hero-slideshow-wrapper:after{display:none!important}#parallax-hero>.parallax-bg::before{background-color:rgba(0,0,0,0.3);opacity:1}.body-desktop .parallax-hero .hero-slideshow-wrapper:after{display:none!important}#footer-widgets{}.gallery-carousel .g-item{padding:0px 10px}.gallery-carousel-wrap{margin-left:-10px;margin-right:-10px}.gallery-grid .g-item,.gallery-masonry .g-item .inner{padding:10px}.gallery-grid-wrap,.gallery-masonry-wrap{margin-left:-10px;margin-right:-10px}.gallery-justified-wrap{margin-left:-20px;margin-right:-20px}
+</style>
+<link rel='stylesheet' id='onepress-gallery-lightgallery-css' href='https://addverb.com/wp-content/themes/onepress/assets/css/lightgallery.css' type='text/css' media='all' />
+<link rel='stylesheet' id='heateor_sss_frontend_css-css' href='https://addverb.com/wp-content/plugins/sassy-social-share/public/css/sassy-social-share-public.css' type='text/css' media='all' />
+<style id='heateor_sss_frontend_css-inline-css' type='text/css'>
+.heateor_sss_button_instagram span.heateor_sss_svg,a.heateor_sss_instagram span.heateor_sss_svg{background:radial-gradient(circle at 30% 107%,#fdf497 0,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)}div.heateor_sss_horizontal_sharing a.heateor_sss_button_instagram span{background:White!important;}div.heateor_sss_standard_follow_icons_container a.heateor_sss_button_instagram span{background:White}.heateor_sss_horizontal_sharing .heateor_sss_svg,.heateor_sss_standard_follow_icons_container .heateor_sss_svg{background-color:White!important;background:White!important;color:blue;border-width:0px;border-style:solid;border-color:transparent}.heateor_sss_horizontal_sharing span.heateor_sss_svg:hover,.heateor_sss_standard_follow_icons_container span.heateor_sss_svg:hover{border-color:transparent;}.heateor_sss_vertical_sharing span.heateor_sss_svg,.heateor_sss_floating_follow_icons_container span.heateor_sss_svg{color:#fff;border-width:0px;border-style:solid;border-color:transparent;}.heateor_sss_vertical_sharing span.heateor_sss_svg:hover,.heateor_sss_floating_follow_icons_container span.heateor_sss_svg:hover{border-color:transparent;}@media screen and (max-width:783px) {.heateor_sss_vertical_sharing{display:none!important}}
+</style>
+<script type="text/javascript" src="https://addverb.com/wp-includes/js/jquery/jquery.min.js" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://addverb.com/wp-includes/js/jquery/jquery-migrate.min.js" id="jquery-migrate-js"></script>
+<script type="text/javascript" id="3d-flip-book-client-locale-loader-js-extra">
+/* <![CDATA[ */
+var FB3D_CLIENT_LOCALE = {"ajaxurl":"https:\/\/addverb.com\/wp-admin\/admin-ajax.php","dictionary":{"Table of contents":"Table of contents","Close":"Close","Bookmarks":"Bookmarks","Thumbnails":"Thumbnails","Search":"Search","Share":"Share","Facebook":"Facebook","Twitter":"Twitter","Email":"Email","Play":"Play","Previous page":"Previous page","Next page":"Next page","Zoom in":"Zoom in","Zoom out":"Zoom out","Fit view":"Fit view","Auto play":"Auto play","Full screen":"Full screen","More":"More","Smart pan":"Smart pan","Single page":"Single page","Sounds":"Sounds","Stats":"Stats","Print":"Print","Download":"Download","Goto first page":"Goto first page","Goto last page":"Goto last page"},"images":"https:\/\/addverb.com\/wp-content\/plugins\/interactive-3d-flipbook-powered-physics-engine\/assets\/images\/","jsData":{"urls":[],"posts":{"ids_mis":[],"ids":[]},"pages":[],"firstPages":[],"bookCtrlProps":[],"bookTemplates":[]},"key":"3d-flip-book","pdfJS":{"pdfJsLib":"https:\/\/addverb.com\/wp-content\/plugins\/interactive-3d-flipbook-powered-physics-engine\/assets\/js\/pdf.min.js?ver=4.3.136","pdfJsWorker":"https:\/\/addverb.com\/wp-content\/plugins\/interactive-3d-flipbook-powered-physics-engine\/assets\/js\/pdf.worker.js?ver=4.3.136","stablePdfJsLib":"https:\/\/addverb.com\/wp-content\/plugins\/interactive-3d-flipbook-powered-physics-engine\/assets\/js\/stable\/pdf.min.js?ver=2.5.207","stablePdfJsWorker":"https:\/\/addverb.com\/wp-content\/plugins\/interactive-3d-flipbook-powered-physics-engine\/assets\/js\/stable\/pdf.worker.js?ver=2.5.207","pdfJsCMapUrl":"https:\/\/addverb.com\/wp-content\/plugins\/interactive-3d-flipbook-powered-physics-engine\/assets\/cmaps\/"},"pluginsurl":"https:\/\/addverb.com\/wp-content\/plugins\/","pluginurl":"https:\/\/addverb.com\/wp-content\/plugins\/interactive-3d-flipbook-powered-physics-engine\/","thumbnailSize":{"width":"150","height":"150"},"version":"1.16.13"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://addverb.com/wp-content/plugins/interactive-3d-flipbook-powered-physics-engine/assets/js/client-locale-loader.js" id="3d-flip-book-client-locale-loader-js" async="async" data-wp-strategy="async"></script>
+<script type="text/javascript" src="https://addverb.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js" id="jquery-blockui-js" defer="defer" data-wp-strategy="defer"></script>
+<script type="text/javascript" id="wc-add-to-cart-js-extra">
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"Ver carrito","cart_url":"https:\/\/addverb.com\/es\/","is_cart":"","cart_redirect_after_add":"no"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://addverb.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js" id="wc-add-to-cart-js" defer="defer" data-wp-strategy="defer"></script>
+<script type="text/javascript" src="https://addverb.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js" id="js-cookie-js" defer="defer" data-wp-strategy="defer"></script>
+<script type="text/javascript" id="woocommerce-js-extra">
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://addverb.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js" id="woocommerce-js" defer="defer" data-wp-strategy="defer"></script>
+<script type="text/javascript" src="https://addverb.com/wp-content/plugins/weglot/dist/front-js.js" id="wp-weglot-js-js"></script>
+
+<!-- Google tag (gtag.js) snippet added by Site Kit -->
+
+<!-- Google Analytics snippet added by Site Kit -->
+<script type="text/javascript" id="google_gtagjs-js-before">
+/* <![CDATA[ */
+	
+			
+	
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-YKN3VND4SB" id="google_gtagjs-js" async></script>
+<script type="text/javascript" id="google_gtagjs-js-after">
+/* <![CDATA[ */
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag("set","linker",{"domains":["addverb.com"]});
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "G-YKN3VND4SB", {"googlesitekit_post_type":"page"});
+/* ]]> */
+</script>
+
+<!-- End Google tag (gtag.js) snippet added by Site Kit -->
+<script type="text/javascript" id="whp6509front.js1931-js-extra">
+/* <![CDATA[ */
+var whp_local_data = {"add_url":"https:\/\/addverb.com\/wp-admin\/post-new.php?post_type=event","ajaxurl":"https:\/\/addverb.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://addverb.com/wp-content/plugins/wp-security-hardening/modules/js/front.js" id="whp6509front.js1931-js"></script>
+<link rel="https://api.w.org/" href="https://addverb.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://addverb.com/wp-json/wp/v2/pages/6998" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://addverb.com/xmlrpc.php?rsd" />
+<link rel='shortlink' href='https://addverb.com/?p=6998' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://addverb.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Faddverb.com%2Fmobile-robotics-technology%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://addverb.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Faddverb.com%2Fmobile-robotics-technology%2F&#038;format=xml" />
+<meta name="generator" content="Site Kit by Google 1.146.0" />			<style>.cmplz-hidden {
+					display: none !important;
+				}</style>
+<meta name="google" content="notranslate"/>
+<link rel="alternate" href="https://addverb.com/mobile-robotics-technology/" hreflang="en"/>
+<link rel="alternate" href="https://addverb.com/ko/mobile-robotics-technology/" hreflang="ko"/>
+<link rel="alternate" href="https://addverb.com/de/mobile-robotik-technologie/" hreflang="de"/>
+<link rel="alternate" href="https://addverb.com/es/mobile-robotics-technology/" hreflang="es"/>
+<link rel="alternate" href="https://addverb.com/nl/mobiele-robottechnologie/" hreflang="nl"/>
+	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+	<style class='wp-fonts-local' type='text/css'>
+@font-face{font-family:Inter;font-style:normal;font-weight:300 900;font-display:fallback;src:url('https://addverb.com/wp-content/plugins/woocommerce/assets/fonts/Inter-VariableFont_slnt,wght.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:Cardo;font-style:normal;font-weight:400;font-display:fallback;src:url('https://addverb.com/wp-content/plugins/woocommerce/assets/fonts/cardo_normal_400.woff2') format('woff2');}
+</style>
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="stylesheet" href="https://addverb.com/wp-content/themes/onepress/assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://addverb.com/wp-content/themes/onepress/assets/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="https://addverb.com/wp-content/themes/onepress/assets/css/aos.min.css" />
+	<link rel="stylesheet" href="https://addverb.com/wp-content/themes/onepress/assets/css/fonts.min.css" />
+	<link rel="stylesheet" href="https://addverb.com/wp-content/themes/onepress/assets/css/owl.carousel.min.css" />
+	<link rel="stylesheet" href="https://addverb.com/wp-content/themes/onepress/assets/css/owl.theme.default.min.css" />
+	<link rel="stylesheet" href="https://unpkg.com/splitting@1.1.0/dist/splitting.css" />
+	<link rel="stylesheet" href="https://unpkg.com/splitting@1.1.0/dist/splitting-cells.css" />
+	
+						
+				
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+
+
+					
+	<link rel="stylesheet" href="https://addverb.com/wp-content/themes/onepress/assets/css/banner.min.css" />
+	<link rel="stylesheet" href="https://addverb.com/wp-content/themes/onepress/assets/css/gravity-form.min.css" />
+	<link rel="stylesheet" href="https://addverb.com/wp-content/themes/onepress/assets/css/header-footer.min.css" />
+	<link rel="stylesheet" href="https://addverb.com/wp-content/themes/onepress/assets/css/header-search.min.css" />
+
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-W7C5ML7');</script>
+    <!-- End Google Tag Manager -->
+    
+
+</head>
+<body data-cmplz=1 class="head-fix">
+    
+  
+    
+    
+	<header data-rocket-location-hash="9496dc44cbda5cdebb84f02bfc4ab41b" class="header">
+	    
+		<nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top">
+		
+		
+    <section class="contact-banner container-fluid section-padding-hr">
+        <div class="left-cb">
+            <a href="#" onclick="return false">EMPRESA GLOBAL DE ROBÓTICA <strong>|</strong> </a>
+            <a href="https://support.addverb.com/" target="_blank">ASISTENCIA POSVENTA 24 HORAS AL DÍA, 7 DÍAS A LA SEMANA</a>
+        </div>
+        <div class="right-cb">
+            
+            <aside data-wg-notranslate="" class="country-selector weglot-dropdown close_outside_click closed weglot-shortcode wg-" tabindex="0" aria-expanded="false" aria-label="Language selected: Spanish"><input id="wg67b5cab9a6fce2.44005330173996716156" class="weglot_choice" type="checkbox" name="menu"/><label data-l="es" tabindex="-1" for="wg67b5cab9a6fce2.44005330173996716156" class="wgcurrent wg-li weglot-lang weglot-language weglot-flags flag-0 es" data-code-language="es" data-name-language="ES"><span class="wglanguage-name">ES</span></label><ul role="none"><li data-l="en" class="wg-li weglot-lang weglot-language weglot-flags flag-0 en" data-code-language="en" role="option"><a title="Language switcher : English" class="weglot-language-en" role="option" data-wg-notranslate="" href="https://addverb.com/mobile-robotics-technology/?wg-choose-original=true">EN</a></li><li data-l="ko" class="wg-li weglot-lang weglot-language weglot-flags flag-0 ko" data-code-language="ko" role="option"><a title="Language switcher : Korean" class="weglot-language-ko" role="option" data-wg-notranslate="" href="https://addverb.com/ko/mobile-robotics-technology/?wg-choose-original=false">KO</a></li><li data-l="de" class="wg-li weglot-lang weglot-language weglot-flags flag-0 de" data-code-language="de" role="option"><a title="Language switcher : German" class="weglot-language-de" role="option" data-wg-notranslate="" href="https://addverb.com/de/mobile-robotik-technologie/?wg-choose-original=false">DE</a></li><li data-l="nl" class="wg-li weglot-lang weglot-language weglot-flags flag-0 nl" data-code-language="nl" role="option"><a title="Language switcher : Dutch" class="weglot-language-nl" role="option" data-wg-notranslate="" href="https://addverb.com/nl/mobiele-robottechnologie/?wg-choose-original=false">NL</a></li></ul></aside>            <a href="/es/contact-us/"> <i class="fa fa-envelope" aria-hidden="true"></i>  Contacte con nosotros</a>
+            
+        </div>
+    </section>
+			<div class="container-fluid section-padding-hr">
+				<a class="navbar-brand" href="https://addverb.com/es/"><img src="https://addverb.com/wp-content/themes/onepress/assets/images/logo.png" data-src="https://addverb.com/wp-content/themes/onepress/assets/images/logo.png" data-home="https://addverb.com/wp-content/themes/onepress/assets/images/logo.png" alt="" class="logo" /></a>
+				<div class="mobile">
+					
+					<button class="navbar-toggler" type="button">
+						<img src="https://addverb.com/wp-content/themes/onepress/assets/images/menu_icon.png" alt="" data-src="https://addverb.com/wp-content/themes/onepress/assets/images/menu_icon.png" data-home="https://addverb.com/wp-content/themes/onepress/assets/images/menu_icon_white.png" data-close="https://addverb.com/wp-content/themes/onepress/assets/images/close_icon.png" class="serch" />
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="mobile_search"><form  data-min-no-for-search=1 data-result-box-max-height=400 data-form-id=3513 class="is-search-form is-disable-submit is-form-style is-form-style-3 is-form-id-3513 is-ajax-search" action="https://addverb.com/es/" method="get" role="search" ><label for="is-search-input-3513"><span class="is-screen-reader-text">Buscar:</span><input  type="search" id="is-search-input-3513" name="s" value="" class="is-search-input" placeholder="Buscar aquí..." autocomplete=off /><span class="is-loader-image" style="display: none;background-image:url(https://addverb.com/wp-content/plugins/add-search-to-menu/public/images/spinner.gif);" ></span></label><button type="submit" class="is-search-submit"><span class="is-screen-reader-text">Botón de búsqueda</span><span class="is-search-icon"><svg focusable="false" aria-label="Search" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24px"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></span></button><input type="hidden" name="id" value="3513" /></form></div>
+				
+					<ul class="navbar-nav mb-2 mb-lg-0">
+                                                  <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="https://addverb.com/es/industry/">
+							  Industria							  </a>
+                              <span class="dropIndicator"></span>
+                              <div id="menu-dark" class="dropdown-menu dropdown-menu-dark industryMenuDropdown">
+								
+                                  <div class="dropMenuRight">
+                                    <ul class="dropdown-menu dspgrid">
+                                                                                    <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/es/industry/automotive-and-tyre-automation/">Automoción y neumáticos</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/es/industry/consumer-goods-warehouse-automation/">Bienes de consumo</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/es/industry/intralogistics-solutions-for-grocery/">Tienda de comestibles</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/es/industry/solar-and-battery-automation/">Solar y batería</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/es/industry/chemicals-and-petrochemicals-industry-automation/">Química y petroquímica</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/es/industry/ecommerce-supply-chain-automation/">Comercio electrónico</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/es/industry/pharma-and-e-pharmacy-automation/">Productos farmacéuticos</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/es/industry/third-party-logistics-automation/">Logística de terceros</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/es/industry/cold-storage-automation/">Almacenamiento en frío</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/es/industry/fashion-supply-chain-management/">Moda</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/es/industry/semiconductors-automation/">Semiconductores</a>
+                                              </li>
+                                                                              </ul>
+                                  </div>
+                              </div>
+                            </li>
+                                                      <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#">
+							  Soluciones							  </a>
+                              <span class="dropIndicator"></span>
+                              <div id="menu-dark" class="dropdown-menu dropdown-menu-dark">
+								
+                                  <div class="dropMenuRight">
+                                    <ul class="dropdown-menu">
+                                                                                    <li class="levelOne">
+                                                <a class="dropdown-item arrow" href="https://addverb.com/es/functionality/">Funcionalidad</a>
+                                                <span class="dropIndicator"></span>
+                                                <ul class="dropdown-menu dropdown-submenu">
+                                                                                                          <li>
+                                                          <a class="dropdown-item" href="https://addverb.com/es/solutions_category/material-movements/">Movimiento de materiales</a>
+                                                        </li>
+                                                                                                              <li>
+                                                          <a class="dropdown-item" href="https://addverb.com/es/solutions_category/sortation/">Clasificación</a>
+                                                        </li>
+                                                                                                              <li>
+                                                          <a class="dropdown-item" href="https://addverb.com/es/solutions_category/picking/">Elegir</a>
+                                                        </li>
+                                                                                                              <li>
+                                                          <a class="dropdown-item" href="https://addverb.com/es/solutions_category/storage/">Almacenamiento</a>
+                                                        </li>
+                                                                                                              <li>
+                                                          <a class="dropdown-item" href="https://addverb.com/es/solutions_category/reverse-logistics/">Logística inversa</a>
+                                                        </li>
+                                                      
+                                                </ul>
+                                              </li>
+                                                                                          <li class="levelOne">
+                                                <a class="dropdown-item arrow" href="https://addverb.com/solutions/products/">Productos</a>
+                                                <span class="dropIndicator"></span>
+                                                <ul class="dropdown-menu dropdown-submenu">
+                                                                                                          <li class="">
+                                                          <a class="dropdown-item arrow" href="https://addverb.com/es/product-category/mobile-robots/">Robots móviles</a>
+                                                          <span class="dropIndicator"></span>
+                                                          <ul class="dropdown-menu dropdown-submenu">
+                                                                                                                            <li>
+                                                                  <a class="dropdown-item" href="https://addverb.com/es/autonomous-mobile-robot/">Robot móvil autónomo</a>
+                                                                </li>
+                                                                                                                              <li>
+                                                                  <a class="dropdown-item" href="https://addverb.com/es/multi-carton-picking-robot/">Robot de picking multicaja</a>
+                                                                </li>
+                                                                                                                              <li>
+                                                                  <a class="dropdown-item" href="https://addverb.com/es/rail-guided-vehicle/">Vehículo guiado por raíles</a>
+                                                                </li>
+                                                                                                                        </ul>
+                                                        </li>
+                                                                                                              <li class="">
+                                                          <a class="dropdown-item arrow" href="https://addverb.com/es/product-category/sorting-robots/">Robots clasificadores</a>
+                                                          <span class="dropIndicator"></span>
+                                                          <ul class="dropdown-menu dropdown-submenu">
+                                                                                                                            <li>
+                                                                  <a class="dropdown-item" href="https://addverb.com/es/robotic-sorter/">Clasificador robotizado</a>
+                                                                </li>
+                                                                                                                              <li>
+                                                                  <a class="dropdown-item" href="https://addverb.com/es/vertical-sortation-robot/">Robot de clasificación vertical</a>
+                                                                </li>
+                                                                                                                        </ul>
+                                                        </li>
+                                                                                                              <li class="">
+                                                          <a class="dropdown-item arrow" href="https://addverb.com/es/product-category/asrs/">ASRS</a>
+                                                          <span class="dropIndicator"></span>
+                                                          <ul class="dropdown-menu dropdown-submenu">
+                                                                                                                            <li>
+                                                                  <a class="dropdown-item" href="https://addverb.com/es/carton-shuttle/">Lanzadera de cajas</a>
+                                                                </li>
+                                                                                                                              <li>
+                                                                  <a class="dropdown-item" href="https://addverb.com/es/mother-child-shuttle/">Lanzadera madre-hijo</a>
+                                                                </li>
+                                                                                                                              <li>
+                                                                  <a class="dropdown-item" href="https://addverb.com/es/pallet-shuttles/">Pallet Shuttle</a>
+                                                                </li>
+                                                                                                                              <li>
+                                                                  <a class="dropdown-item" href="https://addverb.com/es/multi-level-shuttle/">Lanzadera multinivel</a>
+                                                                </li>
+                                                                                                                              <li>
+                                                                  <a class="dropdown-item" href="https://addverb.com/es/crane-asrs/">Crane ASRS</a>
+                                                                </li>
+                                                                                                                              <li>
+                                                                  <a class="dropdown-item" href="https://addverb.com/es/4-way-pallet-shuttle/">Pallet Shuttle 4 Vías</a>
+                                                                </li>
+                                                                                                                        </ul>
+                                                        </li>
+                                                                                                              <li class="">
+                                                          <a class="dropdown-item arrow" href="https://addverb.com/es/product-category/person-to-goods/">De persona a mercancía</a>
+                                                          <span class="dropIndicator"></span>
+                                                          <ul class="dropdown-menu dropdown-submenu">
+                                                                                                                            <li>
+                                                                  <a class="dropdown-item" href="https://addverb.com/es/pick-to-light/">Pick-to-Light</a>
+                                                                </li>
+                                                                                                                              <li>
+                                                                  <a class="dropdown-item" href="https://addverb.com/es/pick-by-voice/">Pick-by-Voice</a>
+                                                                </li>
+                                                                                                                        </ul>
+                                                        </li>
+                                                                                                              <li class="">
+                                                          <a class="dropdown-item arrow" href="https://addverb.com/es/software-overview/">Software</a>
+                                                          <span class="dropIndicator"></span>
+                                                          <ul class="dropdown-menu dropdown-submenu">
+                                                                                                                            <li>
+                                                                  <a class="dropdown-item" href="https://addverb.com/es/software/warehouse-management-system/">Sistema de gestión de almacenes</a>
+                                                                </li>
+                                                                                                                              <li>
+                                                                  <a class="dropdown-item" href="https://addverb.com/es/software/warehouse-execution-system/">Sistema de ejecución de almacenes</a>
+                                                                </li>
+                                                                                                                              <li>
+                                                                  <a class="dropdown-item" href="https://addverb.com/es/software/warehouse-control-system/">Sistema de control de almacenes</a>
+                                                                </li>
+                                                                                                                              <li>
+                                                                  <a class="dropdown-item" href="https://addverb.com/es/software/fleet-management-system/">Sistema de gestión de flotas</a>
+                                                                </li>
+                                                                                                                        </ul>
+                                                        </li>
+                                                      
+                                                </ul>
+                                              </li>
+                                                                                </ul>
+                                  </div>
+                              </div>
+                            </li>
+                                                      <li class="nav-item">
+                               <a data="  service" data-id=" mobile-robotics-technology" class="nav-link" href="https://addverb.com/es/service/">Servicio</a>
+                            </li>
+
+                                                        <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#">
+							  Sala de prensa							  </a>
+                              <span class="dropIndicator"></span>
+                              <div id="menu-dark" class="dropdown-menu dropdown-menu-dark">
+								
+                                  <div class="dropMenuRight">
+                                    <ul class="dropdown-menu">
+                                                                                    <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/es/case-studies/">Casos prácticos</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/es/blog/">Blogs</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/whitepaper/">Libros blancos</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/event/">Eventos</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/press-release-listing/">Noticias</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/podcasts/">Podcasts</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/es/sustainability/">Sostenibilidad</a>
+                                              </li>
+                                                                              </ul>
+                                  </div>
+                              </div>
+                            </li>
+                                                      <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#">
+							  <i class="fa fa-bars" aria-hidden="true"></i>							  </a>
+                              <span class="dropIndicator"></span>
+                              <div id="menu-dark" class="dropdown-menu dropdown-menu-dark">
+								
+                                  <div class="dropMenuRight">
+                                    <ul class="dropdown-menu">
+                                                                                    <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/es/career/">Carreras profesionales</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/es/about-us/">Quiénes somos</a>
+                                              </li>
+                                                                                        <li class="">
+                                                <a class="dropdown-item" href="https://addverb.com/es/partnerships-and-alliances/">Socios</a>
+                                              </li>
+                                                                              </ul>
+                                  </div>
+                              </div>
+                            </li>
+                          
+              </ul>
+
+          <ul class="enquire-links">
+              
+            <li>
+              <a href="https://addverb.com/podcasts/">
+                <picture>
+                  
+                  <img src="https://addverb.com/wp-content/themes/onepress/assets/images/podcast.png" alt="Flores" style="width: auto" />
+                </picture>
+                <span>Podcasts</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://addverb.com/es/contact-us/">
+                <picture>
+                  
+                  <img src="https://addverb.com/wp-content/themes/onepress/assets/images/enquire.png" alt="Flores" style="width: auto" />
+                </picture>
+                <span>Consulte</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://addverb.com/es/blog/">
+                <picture>
+                  
+                  <img src="https://addverb.com/wp-content/themes/onepress/assets/images/blog.png" alt="Flores" style="width: auto" />
+                </picture>
+                <span>Blog</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://support.addverb.com/">
+                <picture>
+                  
+                  <img src="https://addverb.com/wp-content/themes/onepress/assets/images/support.png" alt="Flores" style="width: auto" />
+                </picture>
+                <span>Ayuda</span>
+              </a>
+            </li>
+          </ul>
+         
+        </div>
+		
+        <ul class="rightNav">
+		<li>
+            <div class="form_main" id="form_part"> <form  data-min-no-for-search=1 data-result-box-max-height=400 data-form-id=3513 class="is-search-form is-disable-submit is-form-style is-form-style-3 is-form-id-3513 is-ajax-search" action="https://addverb.com/es/" method="get" role="search" ><label for="is-search-input-3513"><span class="is-screen-reader-text">Buscar:</span><input  type="search" id="is-search-input-3513" name="s" value="" class="is-search-input" placeholder="Buscar aquí..." autocomplete=off /><span class="is-loader-image" style="display: none;background-image:url(https://addverb.com/wp-content/plugins/add-search-to-menu/public/images/spinner.gif);" ></span></label><button type="submit" class="is-search-submit"><span class="is-screen-reader-text">Botón de búsqueda</span><span class="is-search-icon"><svg focusable="false" aria-label="Search" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24px"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></span></button><input type="hidden" name="id" value="3513" /></form> <button class="search_close"><i class="fa fa-close"></i></button></div>
+            <a class="search_div" id="search_hed_icon" href="#"><img src="https://addverb.com/wp-content/themes/onepress/assets/images/search_icon.svg" data-src="https://addverb.com/wp-content/themes/onepress/assets/images/search_icon.svg" data-home="https://addverb.com/wp-content/themes/onepress/assets/images/search_icon.svg" alt="" class="search" id="search" /></a>
+          </li>
+
+
+        </ul>
+      </div>
+    </nav>
+  </header>    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"91462aa6790e1bb4","version":"2025.1.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"bc8261bc7c8e4d60841adaab11c16588","b":1}' crossorigin="anonymous"></script>
+</div>    
+    
+    
+    <section data-rocket-location-hash="87b94736e93d091e4cd20c7fff036587" class="navb">
+        <div data-rocket-location-hash="84ed4d5a10953f3955b9bcba2177f3bd" class="logo">
+            <a href="https://addverb.com/es/?utm_source=Google%20Ads%20Redirect&utm_medium=ads&utm_campaign=Google%20Ads%20Redirect&utm_id=Google%20Ads%20Redirect" target="_blank"><img src="https://addverb.com/wp-content/smush-webp/2023/10/left-logo.png.webp"  alt=""></a>
+        </div>
+        <div >
+            <a class="butt" href="#contact">Hable con nosotros</a>
+        </div>
+    </section>
+    
+    
+    <section data-rocket-location-hash="71fa6c4ee549b5dbdd184bedcbe3e6d6" class="hero">
+        <div data-rocket-location-hash="c893880ea6e5a475e6cf062a186cdbe1" class="herotext">
+            <h1>Robots móviles</h1>
+            <p>AddverbLa tecnología puntera de robótica móvil de SGS potencia sus operaciones, desde la agilización de flujos de trabajo específicos como la preparación de pedidos, la clasificación o el movimiento de materiales, hasta la revolución de todo el proceso con una automatización perfecta para satisfacer las demandas del futuro.</p>
+        </div>
+    </section>
+
+    <section data-rocket-location-hash="451312b0d03cfe445d33dcb4a36821e8" class="products" id="solutions">
+        <h1>Soluciones MR</h1>
+
+        <div data-rocket-location-hash="7d7b5ade71d72c4686c8d07f188f7ba1" class="cards">
+            
+            <div class="card"
+                style="background-image: url('https://addverb.com/wp-content/smush-webp/2023/07/4-3.jpg.webp');"
+                onclick="openQuadron()">
+                <div class="bg">
+                    <p>Robot de picking multicartón</p>
+                </div>
+            </div>
+            <div class="card"
+                style="background-image: url('https://addverb.com/wp-content/uploads/2023/07/4.jpg;"
+                onclick="openCruiser()">
+                <div class="bg">
+                    <p>Robot móvil autónomo</p>
+                </div>
+            </div>
+            <div class="card"
+                style="background-image: url('https://addverb.com/wp-content/smush-webp/2023/07/1-3.jpg.webp');"
+                onclick="openMulti()">
+                <div class="bg">
+                    <p>Robot clasificador</p>
+                </div>
+            </div>
+            <div class="card"
+                style="background-image: url('https://addverb.com/wp-content/smush-webp/2023/07/5-1.jpg.webp');"
+                onclick="openCrane()">
+                <div class="bg">
+                    <p>Vehículo guiado por raíles</p>
+                </div>
+            </div>
+            <div class="card"
+                style="background-image: url('https://addverb.com/wp-content/uploads/2023/07/2-4.jpg;"
+                onclick="openMedius()">
+                <div class="bg">
+                    <p>Robot de clasificación vertical</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div data-rocket-location-hash="011ef7f4abc52415ec3cc25665ca0207" id="overlay">
+            <div data-rocket-location-hash="46737ba16fa9401d560176d8b76c36a8" id="crane" class="pane">
+                
+                <div class="cross" onclick="closeCrane()">x</div>
+                <div class="poptext">
+                    <h2>Travect</h2>
+                    <img src="https://addverb.com/wp-content/smush-webp/2023/05/1-17.jpg.webp" alt="">
+                    <p>TravectNuestro revolucionario vehículo guiado por raíles transforma el transporte de palets en almacenes y fábricas. Experimente un movimiento rápido, flexible y fiable en un bucle de raíles gemelos de suelo fijo. Con capacidades ampliables y múltiples orígenes/destinos, Travect gestiona grandes volúmenes y un rendimiento eficiente.</p>
+                    <button onclick="scrollToDownload()">Más información</button>
+                </div>
+                
+            </div>
+
+            <div data-rocket-location-hash="8115a3bc6f6e05c8a2cd3d1b01aa5941" id="cruiser" class="pane">
+                <h2>Dynamo</h2>
+                <div class="cross" onclick="closeCruiser()">x</div>
+                <div class="poptext">
+                    <img src="https://addverb.com/wp-content/smush-webp/2023/05/3-3-1.jpg.webp" alt="">
+                    <p>Dynamonuestro versátil robot móvil, destaca en aplicaciones de almacenamiento como el movimiento de materiales, la preparación de pedidos y la clasificación. Conforme a las normas EN1525 y ANSI/TTSDF B56.5, Dynamo garantiza la fiabilidad con un chasis robusto y un diseño compacto. Se desplaza por terrenos complejos, reconoce objetos, detecta obstáculos y permite realizar pedidos de forma eficaz mediante técnicas avanzadas de inteligencia artificial.</p>
+                    <button onclick="scrollToDownload()">Más información</button>
+                </div>
+            </div>
+
+            <div data-rocket-location-hash="6defb3b865207e3197157d60ae40a1d9" id="multi" class="pane">
+                <h2>Zippy</h2>
+                <div class="cross" onclick="closeMulti()">x</div>
+                <div class="poptext">
+                    <img src="https://addverb.com/wp-content/smush-webp/2023/05/2-9-1.jpg.webp" alt="">
+                    <p>Zippynuestro robot de clasificación de alta velocidad, clasifica eficazmente las referencias a gran velocidad. Emplea detección de obstáculos y marcadores de suelo basados en cuadrículas para optimizar las operaciones. Ofrece flexibilidad para añadir y eliminar robots y destinos de clasificación. Está disponible en dos versiones: de sobremesa para clasificación vertical y de suelo para integración con cintas transportadoras y cajas-palé.</p>
+                    <button onclick="scrollToDownload()">Más información</button>
+                </div>
+            </div>
+
+            <div data-rocket-location-hash="bd2c92d500f9aa262e17a2457a325f42" id="quadron" class="pane">
+                <h2>Veloce</h2>           
+                    
+                <div class="cross" onclick="closeQuadron()">x</div>
+
+                <div class="poptext">
+                    <img src="https://addverb.com/wp-content/smush-webp/2023/05/3-7-1.jpg.webp" alt="">
+                    <p>VeloceNuestro flexible robot de picking multicartón responde a las elevadas necesidades de almacenamiento de cajas de cartón, cajones y contenedores de diferentes tamaños. Esta solución adaptable optimiza el espacio y mejora la eficiencia en las operaciones de entrega de mercancías a las personas. Gracias a su navegación basada en cuadrículas, Veloce se desplaza sin esfuerzo por pasillos estrechos, lo que permite el almacenamiento a doble profundidad y la recuperación de cartones, cajas y contenedores con una precisión excepcional.</p>
+                    <button onclick="scrollToDownload()">Más información</button>
+                </div>
+
+            </div>
+
+            <div data-rocket-location-hash="df1b55c155b691558bec95252bd444a4" id="medius" class="pane">
+                <h2>SortIE</h2>
+                <div class="cross" onclick="closeMedius()">x</div>
+                <div class="poptext">
+                    <img src="https://addverb.com/wp-content/uploads/2023/05/2-67.jpg" alt="">
+                    <p>SortIENuestro robot de clasificación vertical modular funciona sobre una pista específica, clasificando rápidamente los paquetes en sus respectivas ubicaciones en una pared. Gracias a su innovador diseño, su eficaz mecanismo de transmisión por correa y su preciso control de movimiento, garantiza una clasificación perfecta. Ideal para el comercio rápido y la logística inversa, SortIE puede ampliarse fácilmente para adaptarse a una mayor demanda.</p>
+                    <button onclick="scrollToDownload()">Más información</button>
+                </div>
+                
+            </div>
+
+        </div>
+    </section>
+
+    <section data-rocket-location-hash="13ed13d513e8e1d6975ae05ed1c75092" class="download" id="why-addverb">
+        <div data-rocket-location-hash="7b16eca0652d4703f83ba63e304f2030">
+        <p>¿Por qué Addverb?</p>
+        <div data-rocket-location-hash="269bdac49d267293b344ab948ce449bd" class="left">
+            <div class="dcards">
+                <div class="singlecard">
+                    <div class="ico"><span>Hasta 2500</span>kg</div>
+                    <p>La carga útil máxima que transporta nuestro AMR.</p>
+                </div>
+                <div class="singlecard">
+                    <div class="ico"><span>Hasta 30</span>.000 clases</div>
+                    <p>por hora con nuestras capacidades de alta velocidad</p>
+                </div>
+                <div class="singlecard">
+                    <div class="ico"><span>Hasta el 99</span>,9</div>
+                    <p>Precisión en la clasificación de inventarios</p>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div data-rocket-location-hash="26bc12e381defed1a481d0665a2c2e99">
+        <p>De confianza</p>
+        <div data-rocket-location-hash="b553b0acb252ce6e215ccdb8849b1ae9" class="right">
+            <img src="https://addverb.com/wp-content/smush-webp/2023/06/logo-15.png.webp" alt="CCI">
+            <img src="https://addverb.com/wp-content/smush-webp/2023/06/logo-20.png.webp" alt="Grupo Landmark">
+            <img src="https://addverb.com/wp-content/smush-webp/2023/06/logo-23.png.webp" alt="Reliance">
+            <img src="https://addverb.com/wp-content/smush-webp/2023/06/logo-25.png.webp" alt="Pepsico">
+            <img src="https://addverb.com/wp-content/smush-webp/2023/06/logo-24.png.webp" alt="Unilever">
+
+        </div>
+        </div>
+        
+        <!--<button class="dbutton" onclick="downloadForm()">Download Brochure Now!</button>-->
+        <div data-rocket-location-hash="550c8edc04132a52d4df7172cf0b895d" id="overlayf">
+            <div data-rocket-location-hash="846f8c758104847796e5d4b4be4b7ff0" id="ddform" class="downloadpane">
+                <h1>Rellene el formulario para descargar el folleto</h1>
+                                <div class="cross" onclick="closePopd()">x</div>
+            </div>
+        </div>
+    </section>
+
+    <section data-rocket-location-hash="e06034c939a932e482fec07e8fde5131" class="mainform" id="contact">
+        <div data-rocket-location-hash="e9d88079d8913a44d03807378033fda7" class="formleft">
+            <h1>¿Quiere saber más?</h1>
+            <iframe data-placeholder-image="https://addverb.com/wp-content/uploads/complianz/placeholders/youtubeABwkeknxFLc-maxresdefault.webp" data-category="marketing" data-service="youtube" class="cmplz-placeholder-element cmplz-iframe cmplz-iframe-styles cmplz-video" data-cmplz-target="src" data-src-cmplz="https://www.youtube.com/embed/ABwkeknxFLc?si=bk_ssNGio6B2gbCs" width="560" height="315"  src="about:blank"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <!--<iframe data-placeholder-image="https://addverb.com/wp-content/uploads/complianz/placeholders/youtubeAT85qS38cM0-maxresdefault.webp" data-category="marketing" data-service="youtube" class="cmplz-placeholder-element cmplz-iframe cmplz-iframe-styles cmplz-video " data-cmplz-target="src" data-src-cmplz="https://www.youtube.com/embed/AT85qS38cM0?si=nEaL-8_ZsSlJojmC" width="560" height="315"  src="about:blank"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+        </div>
+
+        <div data-rocket-location-hash="311739385dcfcf10e53e7e9c03a93d68" class="formright">
+			
+        </div>
+    </section>
+
+    <section data-rocket-location-hash="9000a99c4cd0db665715ea7fc1aaacf3" class="main faq_main_section">
+        
+        <div data-rocket-location-hash="0d4b57802b49045b6673738ef95b3625" class="faq_main_sec" id="faq-section">
+            <h2 class="main-heading"> Preguntas frecuentes </h2>
+            <div data-rocket-location-hash="25c499d358af27a80c3df6aa96a5873f" class="faq_scrollbar">
+                <ul class="newaccordion-list">
+                                        <li>
+                        <h3>¿Qué es un robot móvil?</h3>
+                        <div class="answer">
+                            <p>Los robots móviles como Addverb's Dynamo, Zippy y Veloce, son robots de automatización flexibles que pueden navegar de forma autónoma por diversos entornos, revolucionando las cadenas de suministro mediante la automatización de las tareas de almacén para mejorar la eficiencia, la seguridad y la adaptabilidad, satisfaciendo las demandas del mercado a través del funcionamiento continuo y la optimización basada en datos. Zippy Veloce  son nuestros AGV, mientras que Dynamo es nuestro AMR.</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <h3>¿Cuáles son las aplicaciones de los AGV y los AMR?</h3>
+                        <div class="answer">
+                            <p>Los vehículos de guiado automático (AGV) o robots móviles autónomos (AMR) son soluciones robóticas móviles que se utilizan para la manipulación de materiales en almacenes, fábricas, microcentros de distribución y centros de distribución. Estos robots se utilizan para clasificar y mover materiales con precisión, eficacia y fiabilidad.</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <h3>¿Es seguro utilizar robots móviles cerca de personas? ¿Qué ocurre si el robot encuentra un obstáculo?</h3>
+                        <div class="answer">
+                            <p>Los AMR colaborativos, ejemplificados por la tecnología de Addverb, garantizan la seguridad detectando rápidamente los obstáculos con sistemas de escaneado láser y adaptando las rutas para evitar colisiones. Gracias al análisis de datos en tiempo real, estos robots operan con seguridad a velocidades de desplazamiento en entornos dinámicos, priorizando la comodidad de los empleados y la eficiencia operativa.</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <h3>¿Cómo navegan las AMR por los almacenes?</h3>
+                        <div class="answer">
+                            <p>Los robots AMR se diferencian de los AGV en que se basan en mapas generados por software en lugar de sistemas de guiado físicos como códigos de barras, cables o sensores. Al igual que un coche con GPS, los robots móviles autónomos (AMR) utilizan escáneres láser o planos de instalaciones precargados para construir mapas y navegar en consecuencia. El sistema determina la ruta óptima entre los puntos especificados, sirviendo las direcciones como puntos en el mapa. La interfaz de los AMR permite enseñar de forma intuitiva los lugares de recogida y entrega, definir las zonas de velocidad, las áreas de conducción preferente y las zonas restringidas. Equipado con cámaras, sensores, escáneres láser y un sofisticado software, el robot móvil autónomo detecta su entorno y selecciona la ruta más eficiente. Cuando se encuentran obstáculos, como carretillas elevadoras o personas, nuestros AMR maniobran con seguridad a su alrededor, adaptando su ruta según sea necesario.</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <h3>¿Cómo se integran los robots móviles con los sistemas y procesos de almacén existentes, garantizando una transición fluida y una interrupción mínima de las operaciones diarias?</h3>
+                        <div class="answer">
+                            <p>Los robots móviles se integran a la perfección con los sistemas y procesos de almacén existentes, lo que garantiza una transición fluida y una interrupción mínima de las operaciones diarias. Están diseñados para ser compatibles con los sistemas de gestión de almacenes (SGA) más utilizados y pueden comunicarse e intercambiar datos sin problemas. A través de la integración API, nuestra tecnología de automatización Mobile Robotic puede recibir instrucciones y transmitir actualizaciones de estado en tiempo real al SGA, lo que permite una asignación y coordinación de tareas eficiente. Además, los robots móviles son flexibles y adaptables, capaces de navegar por los diseños de almacén existentes y trabajar junto a operarios humanos. Esta integración permite una colaboración perfecta entre los robots y los procesos existentes, lo que garantiza un flujo de trabajo racionalizado y operaciones optimizadas.</p>
+                        </div>
+                    </li>
+                                    </ul>
+            </div>
+        </div>
+    </section>
+    
+    
+    <section data-rocket-location-hash="084d367dc7da7f284f79cfae63328553" class="copyright">
+        Copyright de Addverb Technologies 2024
+    </section>
+
+
+    <div class="nono" >
+    	
+
+		<link rel="stylesheet" href="https://addverb.com/wp-content/themes/onepress/assets/css/footer-min.css" />
+
+
+    <footer data-rocket-location-hash="5f447e7b97fefe9a1ef966d027912569" class="footer">
+      <div data-rocket-location-hash="6a7a09b0185058a20eba23787b0ca4a2" class="footer-top">
+        <div class="boxWrap">
+          <div class="box">
+            <a href="#" class="brand-logo mobile-hide">
+              <img src="https://addverb.com/wp-content/themes/onepress/assets/images/logo-white.png" alt="" class="footer-logo" />
+            </a>
+
+            <ul class="footer-links">
+              <li>
+                  <a href="#" onclick="return false" style="color:#ffffff8f;"><strong>Addverb Technologies Limited</strong></a>
+              </li>
+              <li>
+                  <a href="#" onclick="return false" style="color:#ffffff8f;">Parcela nº 5, Sector-156, Fase-II, Noida, 201301, Uttar Pradesh, India</a>
+              </li>
+              <li>
+                  <a href="#" onclick="return false" style="color:#ffffff8f;">CIN: U74999UP2016PLC122944</a>
+              </li>    
+              <li>
+                <img src="https://addverb.com/wp-content/themes/onepress/assets/images/call-icon.png" alt="" class="call-icon" /><a
+                  href="tel:+91 9871590101"
+                  >+91 9871590101</a
+>
+              </li>
+
+              <li>
+                <img src="https://addverb.com/wp-content/themes/onepress/assets/images/mail-icon.png" alt="" class="call-icon" /><a href="/cdn-cgi/l/email-protection#8feefafbe0e2eefbeacfeeebebf9eafdeda1ece0e2"><span class="__cf_email__" data-cfemail="345541405b5955405174555050425146561a575b59">[email&#160;protected]</span></a
+>
+              </li>
+            </ul>
+			            <a href="https://addverb.com/es/contact-us/" class="contact-btn desktop-hide">Contacte con nosotros</a>
+			          </div>
+
+          <div class="box mobile-hide">
+            <h3>Empresa</h3>
+            <ul class="footer-links">
+                                <li><a href="https://addverb.com/es/about-us/">Quiénes somos</a></li>              
+                                    
+                  <li style="margin-top:15%;"><a href="#" onclick="return false" style="color:#ffffff8f;"><strong>Para reclamaciones de inversores:</strong></a></li>
+                    <li><a href="#" onclick="return false" style="color:#ffffff8f;">Sra. Divya Wadhawan</a></li>
+                    <li><a href="#" onclick="return false" style="color:#ffffff8f;">Secretario de empresa</a></li>
+                    <li><a href="#" onclick="return false" style="color:#ffffff8f;">Correo electrónico: <span class="__cf_email__" data-cfemail="22414d4f524e4b434c414762434646544750400c414d4f">[email&#160;protected]</span></a></li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h3>Enlaces rápidos</h3>
+
+            <ul class="footer-links">
+                                <li><a target="_blank" href="https://addverb.com/press-release-listing/">Prensa y medios de comunicación</a></li>              
+                                      <li><a target="_blank" href="https://addverb.com/investor-relation/">Relación con los inversores</a></li>              
+                                      <li><a target="_blank" href="https://addverb.com/whitepaper/">Whitepaper</a></li>              
+                                      <li><a target="_blank" href="https://addverb.com/wp-content/uploads/2023/06/A3-Version-1-1.pdf">Política de IMS</a></li>              
+                                      <li><a target="_blank" href="https://addverb.com/wp-content/uploads/2024/09/AT.LG_.COC_.01-Addverb-Vendor_Code_of_Conduct__.pdf">Código de conducta para vendedores</a></li>              
+                                      <li><a target="_blank" href="https://addverb.com/wp-content/uploads/2024/09/AT-HR-COC-01-Code-of-Conduct-2.pdf">Código de conducta para los empleados</a></li>              
+                                      <li><a target="_blank" href="https://addverb.com/es/html-site-map/">Mapa del sitio</a></li>              
+                              </ul>
+
+            <a href="#" onclick="return false" class="bsi-link desktop-hide"
+              ><img src="https://addverb.com/wp-content/themes/onepress/assets/images/iso_icon.png" alt="" class="bsi"
+            /></a>
+          </div>
+			
+			
+			<div class="box mobile-hide">
+									<a href="https://addverb.com/es/contact-us/" class="contact-btn mobile-hide">Contacte con nosotros</a>
+								
+				
+			</div>
+        </div>
+      </div>
+
+      <div data-rocket-location-hash="c9a601d5d3519b1e29ff6d9c00b29d39" class="footer-bottom">
+        <div class="bottomWrap">
+          <div class="foot-left">
+            <a href="#" class="bsi-link mobile-hide"
+              ><img src="https://addverb.com/wp-content/themes/onepress/assets/images/iso_icon.png" alt="" class="bsi"
+            /></a>
+
+            <div class="privacy-links">
+								<a href="https://addverb.com/privacy-policy/">Política de privacidad</a>
+								<a href="https://addverb.com/cookie-policy/">Política de cookies</a>
+								<a href="https://addverb.com/terms-of-use/">Condiciones de uso</a>
+								<a href="https://addverb.com/wp-content/uploads/2024/07/Addverb_End-User-License-Agreement-July-2024.pdf">Acuerdo de licencia de usuario final</a>
+				
+				<p>Addverb Technologies Limited - Todos los derechos reservados</p>
+            </div>
+		</div>
+		
+		
+        <div class="mobile-right">
+            <!--Weglot 4.3.0--><aside data-wg-notranslate="" class="country-selector weglot-dropdown close_outside_click closed weglot-shortcode wg-" tabindex="0" aria-expanded="false" aria-label="Language selected: Spanish"><input id="wg67b5cab9ad1389.882317961739967161336" class="weglot_choice" type="checkbox" name="menu"/><label data-l="es" tabindex="-1" for="wg67b5cab9ad1389.882317961739967161336" class="wgcurrent wg-li weglot-lang weglot-language weglot-flags flag-0 es" data-code-language="es" data-name-language="ES"><span class="wglanguage-name">ES</span></label><ul role="none"><li data-l="en" class="wg-li weglot-lang weglot-language weglot-flags flag-0 en" data-code-language="en" role="option"><a title="Language switcher : English" class="weglot-language-en" role="option" data-wg-notranslate="" href="https://addverb.com/mobile-robotics-technology/?wg-choose-original=true">EN</a></li><li data-l="ko" class="wg-li weglot-lang weglot-language weglot-flags flag-0 ko" data-code-language="ko" role="option"><a title="Language switcher : Korean" class="weglot-language-ko" role="option" data-wg-notranslate="" href="https://addverb.com/ko/mobile-robotics-technology/?wg-choose-original=false">KO</a></li><li data-l="de" class="wg-li weglot-lang weglot-language weglot-flags flag-0 de" data-code-language="de" role="option"><a title="Language switcher : German" class="weglot-language-de" role="option" data-wg-notranslate="" href="https://addverb.com/de/mobile-robotik-technologie/?wg-choose-original=false">DE</a></li><li data-l="nl" class="wg-li weglot-lang weglot-language weglot-flags flag-0 nl" data-code-language="nl" role="option"><a title="Language switcher : Dutch" class="weglot-language-nl" role="option" data-wg-notranslate="" href="https://addverb.com/nl/mobiele-robottechnologie/?wg-choose-original=false">NL</a></li></ul></aside>        </div>
+
+          <div class="foot-right">
+            <ul class="social-links">
+              <!--   <li>Follow us on</li> -->
+
+              <li>
+                <a href="https://www.linkedin.com/company/addverb/" target="_blank" class="hover-switch linkeding">
+                  <img src="https://addverb.com/wp-content/themes/onepress/assets/images/lenkedin-white.png" alt="" class="linkedin"/>
+                  <img src="https://addverb.com/wp-content/themes/onepress/assets/images/link-col.png" alt="" class="linkedin1" />
+                </a>
+              </li>
+
+              <li class="instagram-icon">
+                <a href="https://www.instagram.com/addverbtechnologies/" target="_blank" class="instagram hover-switch1">
+                  <img src="https://addverb.com/wp-content/themes/onepress/assets/images/instagram-white.png" alt="" class="instagram"/>
+                  <img src="https://addverb.com/wp-content/themes/onepress/assets/images/insta-col.png" alt="" class="linkedin" />
+                </a>
+              </li>
+
+              <li>
+                <a href="https://www.youtube.com/channel/UCa8AAFOa0p_RqScN5SDlpTQ" target="_blank" class="youtube hover-switch2">
+                  <img src="https://addverb.com/wp-content/themes/onepress/assets/images/youtube-white.png" alt="" class="youtube" />
+                  <img src="https://addverb.com/wp-content/themes/onepress/assets/images/you-col.png" alt="" class="youtube" />
+                </a>
+              </li>
+
+              <li>
+                <a href="https://x.com/Addverb_Tech" target="_blank" class="twitter hover-switch3">
+                  <img src="https://addverb.com/wp-content/smush-webp/2024/08/twitter-whitem-1.png.webp" alt="" class="twitter" />
+                  <img src="https://addverb.com/wp-content/smush-webp/2024/08/x-color-1.png.webp" alt="" class="twitter" />
+                </a>
+              </li>
+
+              <li class="facebook-icon">
+                <a href="https://www.facebook.com/AddverbTech/" target="_blank" class="facebook hover-switch4">
+                  <img src="https://addverb.com/wp-content/themes/onepress/assets/images/facebook-white.png" alt=""class="facebook"/>
+                  <img src="https://addverb.com/wp-content/themes/onepress/assets/images/face-col.png" alt="" class="facebook" />
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+    
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://addverb.com/wp-content/themes/onepress/assets/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/splitting@1.1.0/dist/splitting.min.js"></script>
+    <script src="https://addverb.com/wp-content/themes/onepress/assets/js/aos.min.js"></script>
+    <script src="https://addverb.com/wp-content/themes/onepress/assets/js/owl.carousel.min.js"></script>
+    <script src="https://addverb.com/wp-content/themes/onepress/assets/js/custom.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+     
+    </script>
+			            		 
+							
+	<script>
+  
+  
+let lastScrollTop = 0;
+    let navbarHeight = document.getElementById("navbar").offsetHeight;
+    let scrolledPastNavbar = false;
+
+    window.addEventListener("scroll", function() {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      let navbar = document.getElementById("navbar");
+      let dropdownMenus = document.querySelectorAll(".dropdown-menu");
+      
+      var navMobile = document.getElementById("navbarSupportedContent");
+
+      let hideNavbar = false;
+
+      if (currentScroll > navbarHeight) {
+        scrolledPastNavbar = true;
+      } else {
+        scrolledPastNavbar = false; 
+      }
+
+      if (scrolledPastNavbar) {
+        dropdownMenus.forEach(function(dropdownMenu) {
+          let dropdownMenuStyle = window.getComputedStyle(dropdownMenu);
+          let dropdownMenuDisplay = dropdownMenuStyle.getPropertyValue('display');
+          
+          if (dropdownMenuDisplay === 'none') {
+            hideNavbar = true;
+          }
+        });
+
+        if (currentScroll > lastScrollTop && hideNavbar && !navMobile.classList.contains("show")) {
+          
+          navbar.classList.add('navbar-hidden');
+        } else {
+          
+          navbar.classList.remove('navbar-hidden');
+        }
+      }
+
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+  
+  
+</script>
+
+	
+    <script>
+   
+    jQuery( document ).ready(function( $ ) {
+
+	
+		var id = 1;
+    
+	    var final_value = '';
+      $(".gfield_select").each(function () {
+        var $this = $(this),
+          numberOfOptions = $(this).children("option").length;
+
+        $this.addClass("select-hidden");
+        $this.wrap('<div class="select-wrapper"></div>');
+        $this.after('<div data-rocket-location-hash="34885b8b8071484d3d7ad50347bc6fad" class="selectet-styled"></div>');
+
+        var $styledSelect = $this.next("div.selectet-styled");
+        $styledSelect.text($this.children("option").eq(0).text());
+
+        var $list = $("<ul />", {
+          class: "select-options",
+        }).insertAfter($styledSelect);
+
+        for (var i = 0; i < numberOfOptions; i++) {
+          if($this.children("option").eq(i).val() == id) {
+            final_value = $this.children("option").eq(i).text();
+            $('.selectet-styled').html(final_value)
+          }
+          
+          $("<li />", {
+            text: $this.children("option").eq(i).text(),
+            rel: $this.children("option").eq(i).val(),
+          }).appendTo($list);
+          
+        }
+
+        var $listItems = $list.children("li");
+
+        $styledSelect.click(function (e) {
+          e.stopPropagation();
+          $("div.selectet-styled.active")
+            .not(this)
+            .each(function () {
+              $(this).removeClass("active").next("ul.select-options").hide();
+            });
+          $(this).toggleClass("active").next("ul.select-options").toggle();
+        });
+
+        $listItems.click(function (e) {
+          e.stopPropagation();
+          $styledSelect.text($(this).text()).removeClass("active");
+          $this.val($(this).attr("rel"));
+          $list.hide();
+          $("#blog_form").submit();
+          //console.log($this.val());
+        });
+        
+
+        $(document).click(function () {
+          $styledSelect.removeClass("active");
+          $list.hide();
+        });
+      });
+    });
+         
+      jQuery(function ($) {
+        var owl = $(".news-list .owl-carousel"),
+          owlOptions = {
+            loop: false,
+            nav: false,
+            dots: false,
+            margin: 30,
+            autoplay: true,
+            responsiveClass: true,
+            responsive: {
+              0: {
+                items: 2,
+                autoplay: true,
+              },
+              461: {
+                items: 2,
+              },
+            },
+          };
+
+        if ($(window).width() < 767) {
+          var owlActive = owl.owlCarousel(owlOptions);
+        } else {
+          owl.addClass("off");
+        }
+
+        $(window).resize(function () {
+          if ($(window).width() < 767) {
+            if ($(".owl-carousel").hasClass("off")) {
+              var owlActive = owl.owlCarousel(owlOptions);
+              owl.removeClass("off");
+            }
+          } else {
+            if (!$(".owl-carousel").hasClass("off")) {
+              owl.addClass("off").trigger("destroy.owl.carousel");
+              owl.find(".owl-stage-outer").children(":eq(0)").unwrap();
+            }
+          }
+        });
+      });
+   
+      jQuery(document).ready(function ($) {	
+    var $newLogo = $(".navbar-brand img").attr("data-home");
+    var $blogicon = $("img#blog").attr("data-home");
+    var $searchicon = $("img#search").attr("data-home");
+    var $langicon = $("img#lang").attr("data-home");
+    var $langiconMob = $(".language-link img").attr("data-home");
+    var $menuIcon = $(".navbar-toggler img").attr("data-home");
+    var className = $("body").attr("class");
+
+    var $navbar = $("header .navbar");
+    var $sectionMenu = $(".section-menu");
+
+    // Check if navbar exists before accessing its height
+    if ($navbar.length && $sectionMenu.length) {
+        var headerHeight = $navbar.height();
+        $sectionMenu.css("top", headerHeight);
+    }
+
+    if (className && className.includes("home-page")) {
+        $(".navbar-brand img").attr("src", $newLogo);
+        $("#search").attr("src", $searchicon);
+        $("#blog").attr("src", $blogicon);
+        $("#lang").attr("src", $langicon);
+        $(".language-link img").attr("src", $langiconMob);
+        $(".navbar-toggler img").attr("src", $menuIcon);
+    }
+
+    $(window).scroll(function () {
+        var pathname = window.location.pathname;
+        if (pathname === '/' || pathname === '/dev/adverb/') {
+            var scroll = $(window).scrollTop();
+            var $navbarSupportedContent = $("#navbarSupportedContent");
+
+            // Ensure navbar exists before using height
+            if ($navbar.length && !$navbarSupportedContent.hasClass("show")) {
+                if (scroll >= $(window).height() - $navbar.height()) {
+                    $("body").addClass("fixed-nav");
+                    $navbar.addClass("fixed-top").removeClass("home-fixed");
+                    $(".section-menu").addClass("fixed");
+                    $(".nav li img").addClass("animate");
+
+                    $(".navbar-brand img").attr("src", "https://addverb.com/wp-content/themes/onepress/assets/images/logo.png");
+                    $("#search").attr("src", "https://addverb.com/wp-content/themes/onepress/assets/images/search_icon.svg");
+                    $("#blog").attr("src", "https://addverb.com/wp-content/themes/onepress/assets/images/blog_icon.png");
+                    $("#lang").attr("src", "https://addverb.com/wp-content/themes/onepress/assets/images/lang_icon_red.png");
+                    $(".language-link img").attr("src", "https://addverb.com/wp-content/themes/onepress/assets/images/lang_icon-black.png");
+                    $(".navbar-toggler img").attr("src", "https://addverb.com/wp-content/themes/onepress/assets/images/menu_icon.png");
+                }
+            }
+        }
+    });
+});
+
+  
+     jQuery( document ).ready(function( $ ) {	
+      var countryArray = [];
+      $("#country-code option").each(function () {
+        var img = $(this).attr("data-flag");
+        var text = this.innerText;
+        var value = $(this).val();
+        var item =
+          '<li><img src="' +
+          img +
+          '" alt="" value="' +
+          value +
+          '"/><span>' +
+          text +
+          "</span></li>";
+        countryArray.push(item);
+        console.log(countryArray)
+      });
+      $("#countryDropdown").html(countryArray);
+      $("#countryDropdown1").html(countryArray);
+      
+      $(".btn-select").html(countryArray[0]);
+      $(".btn-select").attr("value", "en");
+      
+      $(".country-dropdown li").click(function () {
+        var img = $(this).find("img").attr("src");
+        var value = $(this).find("img").attr("value");
+        var text = this.innerText;
+        var item =
+          '<img src="' + img + '" alt="" /><span>' + text + "</span>";
+        //$(".btn-select").html(item);
+        $(this).parent().siblings(".btn-select").html(item)
+        $(this).parent().siblings(".btn-select").attr("value", value);
+        $(this).parent().toggle()
+        
+      });
+      $(".btn-select").click(function () {
+        $(this).siblings(".country-dropdown").toggle();
+        console.log('clicked ')
+        
+      });
+      
+      var sessionLang = localStorage.getItem("lang");
+      if (sessionLang) {
+        
+        var langIndex = countryArray.indexOf(sessionLang);
+        $(".btn-select").html(countryArray[langIndex]);
+        $(".btn-select").attr("value", sessionLang);
+      } else {
+        var langIndex = countryArray.indexOf("ch");
+        console.log(langIndex);
+        $(".btn-select").html(countryArray[langIndex]);
+        
+      }
+    });
+  
+      jQuery(document).ready(function ($) {	
+    
+    var $navbar = $('.navbar');
+    var $dropdownMenuDark = $('.dropdown-menu-dark');
+
+    // Ensure navbar exists before accessing its height
+    if ($navbar.length && $dropdownMenuDark.length) {
+        var navHeight = $navbar.height();
+        $dropdownMenuDark.css('top', navHeight);
+    }
+
+    if ($(window).width() > 991) {
+        $('.dropdown-toggle').on('click', function (e) {
+            if (this.href) {
+                window.location.href = this.href;
+            }
+        });
+    }
+
+    if ($(window).width() < 767) {
+        $('.dropIndicator').on('click', function (e) {
+            console.log('clicked');
+            e.stopPropagation();
+            e.preventDefault();
+
+            var $parentLi = $(this).parent('li');
+
+            if ($parentLi.length) {
+                console.log($parentLi);
+                
+                if ($parentLi.hasClass('levelOne')) {
+                    $parentLi.toggleClass('dspgrid');
+                    $('body').toggleClass('overFlow');
+                }
+
+                // Remove active/show classes from siblings
+                $parentLi.siblings().find('.dropdown-item, .nav-link, .dropIndicator').removeClass('active show');
+                $parentLi.siblings().find('.dropdown-menu').removeClass('show');
+
+                // Toggle submenu visibility
+                var $subMenu = $(this).next(".dropdown-submenu");
+                $(this).next(".dropdown-menu").toggleClass('show');
+                $(this).toggleClass('show');
+                $(this).siblings('a').toggleClass('active');
+            }
+        });
+    }
+});
+
+    
+      jQuery( document ).ready(function($) {	
+
+    
+      jQuery('.form_main').hide()
+      jQuery('.search_div').on('click',function(){
+         jQuery('.form_main').toggle();
+      });
+
+      jQuery('.search_close').on('click',function(){
+         jQuery('.form_main').hide();
+      });
+
+      
+      
+     });
+
+
+     jQuery(function () {
+      jQuery(document).on('gform_post_render', function () {	
+        jQuery('input[type=file], .join-us__form input[type=file]').on('change', function () {			
+        const fileName = jQuery(this).val().split('\\').pop()			
+        if(!fileName.trim()) {
+          //jQuery('label', jQuery(this).parent().parent()).html(fileName)
+        }else {
+          jQuery('label', jQuery(this).parent().parent()).html(fileName)
+        }
+        
+        })
+      
+      })
+	  })
+
+    
+if(screen.width > 1000){
+    
+document.addEventListener('DOMContentLoaded', function () {
+    const dropdowns = document.querySelectorAll('.navbar-expand-lg .navbar-nav .dropdown');
+    const delay = 100; 
+
+    dropdowns.forEach(dropdown => {
+        const menuDark = dropdown.querySelector('#menu-dark');
+
+        if (menuDark) {
+            let timeoutId;
+            let menuDarkOpen = false;
+
+            function hideMenuDark() {
+                if (menuDarkOpen) {
+                    timeoutId = setTimeout(function () {
+                        menuDark.style.opacity = '0';
+                        menuDark.style.visibility = 'hidden';
+                        menuDarkOpen = false;
+                    }, delay);
+                }
+            }
+
+            dropdown.addEventListener('mouseenter', function () {
+                clearTimeout(timeoutId);
+                menuDark.style.opacity = '1';
+                menuDark.style.visibility = 'visible';
+                menuDarkOpen = true;
+            });
+
+            dropdown.addEventListener('mouseleave', hideMenuDark);
+
+            menuDark.addEventListener('mouseenter', function () {
+                clearTimeout(timeoutId);
+            });
+
+            window.addEventListener('scroll', hideMenuDark);
+
+
+            document.addEventListener('mousemove', function (event) {
+                const screenHeight = window.innerHeight;
+                const cursorY = event.clientY;
+                
+                if (menuDarkOpen && cursorY > (0.85 * screenHeight)) {
+                    menuDark.style.opacity = '0';
+                    menuDark.style.visibility = 'hidden';
+                    menuDarkOpen = false;
+                }
+            });
+        }
+    });
+});
+
+}
+
+
+
+
+if(screen.width > 1000){
+    
+    document.addEventListener('DOMContentLoaded', () => {
+    const menuItems = document.querySelectorAll('.levelOne');
+    let hideTimeout;
+    let currentSubmenu = null;
+    const delay = 200; 
+
+    menuItems.forEach(item => {
+        const submenu = item.querySelector('.dropdown-submenu');
+
+        if (submenu) {
+            item.addEventListener('mouseover', (event) => {
+                
+                event.preventDefault();
+                clearTimeout(hideTimeout);
+
+                if (currentSubmenu && currentSubmenu !== submenu) {
+                    currentSubmenu.style.display = 'none';
+                }
+
+                submenu.style.display = 'block';
+                currentSubmenu = submenu;
+            });
+
+            item.addEventListener('mouseout', () => {
+                
+                hideTimeout = setTimeout(() => {
+                    submenu.style.display = 'none';
+                    if (currentSubmenu === submenu) {
+                        currentSubmenu = null; 
+                    }
+                }, delay);
+            });
+
+            submenu.addEventListener('mouseover', () => {
+                clearTimeout(hideTimeout);
+                submenu.style.display = 'block';
+                currentSubmenu = submenu; 
+            });
+
+        }
+    });
+});
+}
+
+
+if(screen.width > 1000){
+document.addEventListener('DOMContentLoaded', () => {
+    const menuItems = document.querySelectorAll('.levelOne .dropdown-menu > li');
+    let hideTimeout;
+    let currentSubmenu = null; 
+    const delay = 300; 
+
+    menuItems.forEach(item => {
+        const submenu = item.querySelector('.levelOne .dropdown-menu > li .dropdown-submenu');
+
+        if (submenu) {
+            item.addEventListener('mouseenter', () => {
+                clearTimeout(hideTimeout);
+
+                if (currentSubmenu && currentSubmenu !== submenu) {
+                    currentSubmenu.style.display = 'none';
+                }
+
+                // Show the new submenu
+                submenu.style.display = 'block';
+                currentSubmenu = submenu;
+            });
+
+            item.addEventListener('mouseleave', () => {
+                hideTimeout = setTimeout(() => {
+                    submenu.style.display = 'none';
+                    if (currentSubmenu === submenu) {
+                        currentSubmenu = null;
+                    }
+                }, delay);
+            });
+
+            submenu.addEventListener('mouseenter', () => {
+                clearTimeout(hideTimeout);
+                submenu.style.display = 'block';
+                currentSubmenu = submenu;
+            });
+
+        }
+    });
+});
+
+}
+
+jQuery(document).ready(function($) {
+    var maxChars = 50;
+    const allowedCharacters = /^[a-zA-Z0-9 @.-]*$/;  
+    
+    $('input[type="text"], textarea, input[type="email"], input[type="tel"]').attr('maxlength', maxChars);
+ 
+    $('input[type="text"], textarea, input[type="email"], input[type="tel"]').on('input', function() {
+        let value = $(this).val();
+        
+        let filteredValue = value.split('').filter(char => allowedCharacters.test(char)).join('');
+        
+        if (filteredValue.length > maxChars) {
+            filteredValue = filteredValue.substring(0, maxChars);
+        }
+        
+        if (filteredValue !== value) {
+            $(this).val(filteredValue);
+        }
+    });
+});
+
+</script>
+
+  
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7C5ML7"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+    
+
+	<script>
+	var imgPath = 'https://addverb.com/wp-content/themes/onepress';
+</script>
+
+<!-- Consent Management powered by Complianz | GDPR/CCPA Cookie Consent https://wordpress.org/plugins/complianz-gdpr -->
+<div id="cmplz-cookiebanner-container"><div class="cmplz-cookiebanner cmplz-hidden banner-4 consent-banner optin cmplz-bottom-right cmplz-categories-type-view-preferences" aria-modal="true" data-nosnippet="true" role="dialog" aria-live="polite" aria-labelledby="cmplz-header-4-optin" aria-describedby="cmplz-message-4-optin">
+	<div class="cmplz-header">
+		<div class="cmplz-logo"></div>
+		<div class="cmplz-title" id="cmplz-header-4-optin">Gestionar el consentimiento</div>
+		<div class="cmplz-close" tabindex="0" role="button" aria-label="Close dialog">
+			<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>
+		</div>
+	</div>
+
+	<div class="cmplz-divider cmplz-divider-header"></div>
+	<div class="cmplz-body">
+		<div class="cmplz-message" id="cmplz-message-4-optin"><p>Creemos en las experiencias sin fisuras, a través de su viaje de navegación. Al hacer clic en "Aceptar cookies", nos permite automatizar sus preferencias y mejorar su tiempo en nuestro sitio. Nuestras prácticas de automatización están diseñadas teniendo en cuenta su privacidad</p></div>
+		<!-- categories start -->
+		<div class="cmplz-categories">
+			<details class="cmplz-category cmplz-functional" >
+				<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Funcional</span>
+							<span class='cmplz-always-active'>
+								<span class="cmplz-banner-checkbox">
+									<input type="checkbox"
+										   id="cmplz-functional-optin"
+										   data-category="cmplz_functional"
+										   class="cmplz-consent-checkbox cmplz-functional"
+										   size="40"
+										   value="1"/>
+									<label class="cmplz-label" for="cmplz-functional-optin" tabindex="0"><span class="screen-reader-text">Funcional</span></label>
+								</span>
+								Siempre activo							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"  height="18" ><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>
+							</span>
+						</span>
+				</summary>
+				<div class="cmplz-description">
+					<span class="cmplz-description-functional">El almacenamiento o acceso técnico es estrictamente necesario para el fin legítimo de permitir el uso de un servicio específico solicitado explícitamente por el abonado o usuario, o con el único fin de llevar a cabo la transmisión de una comunicación a través de una red de comunicaciones electrónicas.</span>
+				</div>
+			</details>
+
+			<details class="cmplz-category cmplz-preferences" >
+				<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Preferencias</span>
+							<span class="cmplz-banner-checkbox">
+								<input type="checkbox"
+									   id="cmplz-preferences-optin"
+									   data-category="cmplz_preferences"
+									   class="cmplz-consent-checkbox cmplz-preferences"
+									   size="40"
+									   value="1"/>
+								<label class="cmplz-label" for="cmplz-preferences-optin" tabindex="0"><span class="screen-reader-text">Preferencias</span></label>
+							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"  height="18" ><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>
+							</span>
+						</span>
+				</summary>
+				<div class="cmplz-description">
+					<span class="cmplz-description-preferences">El almacenamiento o acceso técnico es necesario para el fin legítimo de almacenar preferencias no solicitadas por el abonado o usuario.</span>
+				</div>
+			</details>
+
+			<details class="cmplz-category cmplz-statistics" >
+				<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Estadísticas</span>
+							<span class="cmplz-banner-checkbox">
+								<input type="checkbox"
+									   id="cmplz-statistics-optin"
+									   data-category="cmplz_statistics"
+									   class="cmplz-consent-checkbox cmplz-statistics"
+									   size="40"
+									   value="1"/>
+								<label class="cmplz-label" for="cmplz-statistics-optin" tabindex="0"><span class="screen-reader-text">Estadísticas</span></label>
+							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"  height="18" ><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>
+							</span>
+						</span>
+				</summary>
+				<div class="cmplz-description">
+					<span class="cmplz-description-statistics">El almacenamiento o acceso técnico utilizado exclusivamente con fines estadísticos.</span>
+					<span class="cmplz-description-statistics-anonymous">El almacenamiento o acceso técnico que se utiliza exclusivamente con fines estadísticos anónimos. Sin una citación judicial, el cumplimiento voluntario por parte de su proveedor de servicios de Internet o registros adicionales de un tercero, la información almacenada o recuperada únicamente con este fin no puede utilizarse normalmente para identificarle.</span>
+				</div>
+			</details>
+			<details class="cmplz-category cmplz-marketing" >
+				<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Marketing</span>
+							<span class="cmplz-banner-checkbox">
+								<input type="checkbox"
+									   id="cmplz-marketing-optin"
+									   data-category="cmplz_marketing"
+									   class="cmplz-consent-checkbox cmplz-marketing"
+									   size="40"
+									   value="1"/>
+								<label class="cmplz-label" for="cmplz-marketing-optin" tabindex="0"><span class="screen-reader-text">Marketing</span></label>
+							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"  height="18" ><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>
+							</span>
+						</span>
+				</summary>
+				<div class="cmplz-description">
+					<span class="cmplz-description-marketing">El almacenamiento o acceso técnico es necesario para crear perfiles de usuario para enviar publicidad, o para seguir al usuario en un sitio web o en varios sitios web con fines de marketing similares.</span>
+				</div>
+			</details>
+		</div><!-- categories end -->
+			</div>
+
+	<div class="cmplz-links cmplz-information">
+		<a class="cmplz-link cmplz-manage-options cookie-statement" href="#" data-relative_url="#cmplz-manage-consent-container">Gestionar opciones</a>
+		<a class="cmplz-link cmplz-manage-third-parties cookie-statement" href="#" data-relative_url="#cmplz-cookies-overview">Gestionar servicios</a>
+		<a class="cmplz-link cmplz-manage-vendors tcf cookie-statement" href="#" data-relative_url="#cmplz-tcf-wrapper">Gestionar {vendor_count} proveedores</a>
+		<a class="cmplz-link cmplz-external cmplz-read-more-purposes tcf" target="_blank" rel="noopener noreferrer nofollow" href="https://cookiedatabase.org/tcf/purposes/">Más información sobre estos fines</a>
+			</div>
+
+	<div class="cmplz-divider cmplz-footer"></div>
+
+	<div class="cmplz-buttons">
+		<button class="cmplz-btn cmplz-accept">Acepte</button>
+		<button class="cmplz-btn cmplz-deny">Aceptar Necesario</button>
+		<button class="cmplz-btn cmplz-view-preferences">Ver preferencias</button>
+		<button class="cmplz-btn cmplz-save-preferences">Guardar preferencias</button>
+		<a class="cmplz-btn cmplz-manage-options tcf cookie-statement" href="#" data-relative_url="#cmplz-manage-consent-container">Ver preferencias</a>
+			</div>
+
+	<div class="cmplz-links cmplz-documents">
+		<a class="cmplz-link cookie-statement" href="#" data-relative_url="">{título}</a>
+		<a class="cmplz-link privacy-statement" href="#" data-relative_url="">{title}</a>
+		<a class="cmplz-link impressum" href="#" data-relative_url="">{título}</a>
+			</div>
+
+</div>
+<div class="cmplz-cookiebanner cmplz-hidden banner-4 consent-banner optout cmplz-bottom-right cmplz-categories-type-view-preferences" aria-modal="true" data-nosnippet="true" role="dialog" aria-live="polite" aria-labelledby="cmplz-header-4-optout" aria-describedby="cmplz-message-4-optout">
+	<div class="cmplz-header">
+		<div class="cmplz-logo"></div>
+		<div class="cmplz-title" id="cmplz-header-4-optout">Gestionar el consentimiento</div>
+		<div class="cmplz-close" tabindex="0" role="button" aria-label="Close dialog">
+			<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>
+		</div>
+	</div>
+
+	<div class="cmplz-divider cmplz-divider-header"></div>
+	<div class="cmplz-body">
+		<div class="cmplz-message" id="cmplz-message-4-optout">Para ofrecer las mejores experiencias, utilizamos tecnologías como las cookies para almacenar y/o acceder a la información del dispositivo. Consentir estas tecnologías nos permitirá procesar datos como el comportamiento de navegación o identificaciones únicas en este sitio. No consentir o retirar el consentimiento, puede afectar negativamente a ciertas características y funciones.</div>
+		<!-- categories start -->
+		<div class="cmplz-categories">
+			<details class="cmplz-category cmplz-functional" >
+				<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Funcional</span>
+							<span class='cmplz-always-active'>
+								<span class="cmplz-banner-checkbox">
+									<input type="checkbox"
+										   id="cmplz-functional-optout"
+										   data-category="cmplz_functional"
+										   class="cmplz-consent-checkbox cmplz-functional"
+										   size="40"
+										   value="1"/>
+									<label class="cmplz-label" for="cmplz-functional-optout" tabindex="0"><span class="screen-reader-text">Funcional</span></label>
+								</span>
+								Siempre activo							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"  height="18" ><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>
+							</span>
+						</span>
+				</summary>
+				<div class="cmplz-description">
+					<span class="cmplz-description-functional">El almacenamiento o acceso técnico es estrictamente necesario para el fin legítimo de permitir el uso de un servicio específico solicitado explícitamente por el abonado o usuario, o con el único fin de llevar a cabo la transmisión de una comunicación a través de una red de comunicaciones electrónicas.</span>
+				</div>
+			</details>
+
+			<details class="cmplz-category cmplz-preferences" >
+				<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Preferencias</span>
+							<span class="cmplz-banner-checkbox">
+								<input type="checkbox"
+									   id="cmplz-preferences-optout"
+									   data-category="cmplz_preferences"
+									   class="cmplz-consent-checkbox cmplz-preferences"
+									   size="40"
+									   value="1"/>
+								<label class="cmplz-label" for="cmplz-preferences-optout" tabindex="0"><span class="screen-reader-text">Preferencias</span></label>
+							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"  height="18" ><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>
+							</span>
+						</span>
+				</summary>
+				<div class="cmplz-description">
+					<span class="cmplz-description-preferences">El almacenamiento o acceso técnico es necesario para el fin legítimo de almacenar preferencias no solicitadas por el abonado o usuario.</span>
+				</div>
+			</details>
+
+			<details class="cmplz-category cmplz-statistics" >
+				<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Estadísticas</span>
+							<span class="cmplz-banner-checkbox">
+								<input type="checkbox"
+									   id="cmplz-statistics-optout"
+									   data-category="cmplz_statistics"
+									   class="cmplz-consent-checkbox cmplz-statistics"
+									   size="40"
+									   value="1"/>
+								<label class="cmplz-label" for="cmplz-statistics-optout" tabindex="0"><span class="screen-reader-text">Estadísticas</span></label>
+							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"  height="18" ><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>
+							</span>
+						</span>
+				</summary>
+				<div class="cmplz-description">
+					<span class="cmplz-description-statistics">El almacenamiento o acceso técnico utilizado exclusivamente con fines estadísticos.</span>
+					<span class="cmplz-description-statistics-anonymous">El almacenamiento o acceso técnico que se utiliza exclusivamente con fines estadísticos anónimos. Sin una citación judicial, el cumplimiento voluntario por parte de su proveedor de servicios de Internet o registros adicionales de un tercero, la información almacenada o recuperada únicamente con este fin no puede utilizarse normalmente para identificarle.</span>
+				</div>
+			</details>
+			<details class="cmplz-category cmplz-marketing" >
+				<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Marketing</span>
+							<span class="cmplz-banner-checkbox">
+								<input type="checkbox"
+									   id="cmplz-marketing-optout"
+									   data-category="cmplz_marketing"
+									   class="cmplz-consent-checkbox cmplz-marketing"
+									   size="40"
+									   value="1"/>
+								<label class="cmplz-label" for="cmplz-marketing-optout" tabindex="0"><span class="screen-reader-text">Marketing</span></label>
+							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"  height="18" ><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>
+							</span>
+						</span>
+				</summary>
+				<div class="cmplz-description">
+					<span class="cmplz-description-marketing">El almacenamiento o acceso técnico es necesario para crear perfiles de usuario para enviar publicidad, o para seguir al usuario en un sitio web o en varios sitios web con fines de marketing similares.</span>
+				</div>
+			</details>
+		</div><!-- categories end -->
+			</div>
+
+	<div class="cmplz-links cmplz-information">
+		<a class="cmplz-link cmplz-manage-options cookie-statement" href="#" data-relative_url="#cmplz-manage-consent-container">Gestionar opciones</a>
+		<a class="cmplz-link cmplz-manage-third-parties cookie-statement" href="#" data-relative_url="#cmplz-cookies-overview">Gestionar servicios</a>
+		<a class="cmplz-link cmplz-manage-vendors tcf cookie-statement" href="#" data-relative_url="#cmplz-tcf-wrapper">Gestionar {vendor_count} proveedores</a>
+		<a class="cmplz-link cmplz-external cmplz-read-more-purposes tcf" target="_blank" rel="noopener noreferrer nofollow" href="https://cookiedatabase.org/tcf/purposes/">Más información sobre estos fines</a>
+			</div>
+
+	<div class="cmplz-divider cmplz-footer"></div>
+
+	<div class="cmplz-buttons">
+		<button class="cmplz-btn cmplz-accept">Acepte</button>
+		<button class="cmplz-btn cmplz-deny">Aceptar Necesario</button>
+		<button class="cmplz-btn cmplz-view-preferences">Ver preferencias</button>
+		<button class="cmplz-btn cmplz-save-preferences">Guardar preferencias</button>
+		<a class="cmplz-btn cmplz-manage-options tcf cookie-statement" href="#" data-relative_url="#cmplz-manage-consent-container">Ver preferencias</a>
+			</div>
+
+	<div class="cmplz-links cmplz-documents">
+		<a class="cmplz-link cookie-statement" href="#" data-relative_url="">{título}</a>
+		<a class="cmplz-link privacy-statement" href="#" data-relative_url="">{title}</a>
+		<a class="cmplz-link impressum" href="#" data-relative_url="">{título}</a>
+			</div>
+
+</div>
+</div>
+					<div id="cmplz-manage-consent" data-nosnippet="true"><button class="cmplz-btn cmplz-hidden cmplz-manage-consent manage-consent-4">Gestionar el consentimiento</button>
+
+<button class="cmplz-btn cmplz-hidden cmplz-manage-consent manage-consent-4">Gestionar el consentimiento</button>
+
+</div>			<script>
+				(function(){let request = new XMLHttpRequest();
+					let url = 'ht' + 'tps:' + '//' + 'api.weglot.com/' + 'pageviews?api_key=' + 'wg_5202f8e5276d316928b7f7174b055b071';
+					let data = JSON.stringify({
+							url: location.protocol + '//' + location.host + location.pathname,
+							language: document.getElementsByTagName('html')[0].getAttribute('lang'),
+							browser_language: (navigator.language || navigator.userLanguage)
+						}
+					);
+					request.open('POST', url, true);
+					request.send(data);
+				})();
+			</script>
+				<script>
+ document.addEventListener('DOMContentLoaded', function () {
+				if (!String.prototype.startsWith) {
+					String.prototype.startsWith = function (searchString, position) {
+						position = position || 0;
+						return this.substr(position, searchString.length) === searchString;
+					};
+				}
+				jQuery('.weglot-lang a').on('click', function (e) {
+					e.preventDefault();
+					var href = jQuery(this).attr('href');
+					Object.keys(window.sessionStorage).forEach(function (element) {
+						if (element.startsWith('wc_cart_hash_') || element.startsWith('wc_fragments_')) {
+							window.sessionStorage.removeItem(element);
+						}
+					});
+					window.location.replace(href);
+				})
+			})
+ </script>
+			<script type="text/javascript">
+    if (window['jQuery']) {
+        (function ($) {
+            $(document).on('gform_post_render', function () {
+                // Reset flag for conditional logic reevaluation
+                window['gwfef'] = false;
+                var hasError = gwFirstErrorFocus().length;
+                var $stepPage = $('.gf_step_current_page');
+                var onSubsequentPage = $stepPage.length > 0 && parseInt($stepPage.text()) > 1;
+
+                if (!hasError && onSubsequentPage) {
+                    requestAnimationFrame(function() {
+                        var $gformWrapper = $('.gform_wrapper');
+                        if ($gformWrapper.length > 0 && $gformWrapper.offset()) {
+                            window.scrollTo(0, $gformWrapper.offset().top);
+                        }
+                    });
+                }
+            });
+
+            $(document).on('gform_post_conditional_logic', function (event, formId, fields, isInit) {
+                if (!window['gwfef'] && fields === null && isInit === true) {
+                    gwFirstErrorFocus();
+                    window['gwfef'] = true;
+                }
+            });
+
+            function gwFirstErrorFocus() {
+                var $firstError = $('.gfield.gfield_error:visible:first');
+                if ($firstError.length > 0 && $firstError.offset()) {  // Ensure element exists
+                    requestAnimationFrame(function () {
+                        window.scrollTo(0, $firstError.offset().top + 200);
+                        console.log($firstError.offset().top);
+                        console.log($firstError.offset().top + 500);
+                        $firstError.find('input, select, textarea').eq(0).focus();
+                    });
+                }
+                return $firstError;
+            }
+        })(jQuery);
+    }
+</script>
+
+	<link rel='stylesheet' id='whp2887tw-bs4.css-css' href='https://addverb.com/wp-content/plugins/wp-security-hardening/modules/inc/assets/css/tw-bs4.css' type='text/css' media='all' />
+<link rel='stylesheet' id='whp6750font-awesome.min.css-css' href='https://addverb.com/wp-content/plugins/wp-security-hardening/modules/inc/fa/css/font-awesome.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='whp5030front.css-css' href='https://addverb.com/wp-content/plugins/wp-security-hardening/modules/css/front.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wc-blocks-style-css' href='https://addverb.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css' type='text/css' media='all' />
+<link rel='stylesheet' id='ivory-ajax-search-styles-css' href='https://addverb.com/wp-content/plugins/add-search-to-menu/public/css/ivory-ajax-search.min.css' type='text/css' media='all' />
+<script type="text/javascript" id="rocket-browser-checker-js-after">
+/* <![CDATA[ */
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+/* ]]> */
+</script>
+<script type="text/javascript" id="rocket-preload-links-js-extra">
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/career-apply-now\/|\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/(index.php\/)?(.*)wp-json(\/.*|$)|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https:\/\/addverb.com","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="text/javascript" id="rocket-preload-links-js-after">
+/* <![CDATA[ */
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+/* ]]> */
+</script>
+<script type="text/javascript" id="onepress-theme-js-extra">
+/* <![CDATA[ */
+var onepress_js_settings = {"onepress_disable_animation":"","onepress_disable_sticky_header":"","onepress_vertical_align_menu":"","hero_animation":"flipInX","hero_speed":"5000","hero_fade":"750","submenu_width":"0","hero_duration":"5000","hero_disable_preload":"","disabled_google_font":"","is_home":"","gallery_enable":"1","is_rtl":"","parallax_speed":"0.5"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://addverb.com/wp-content/themes/onepress/assets/js/theme-all.min.js" id="onepress-theme-js"></script>
+<script type="text/javascript" src="https://addverb.com/wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-consent-mode-3d6495dceaebc28bcca3.js" id="googlesitekit-consent-mode-js"></script>
+<script type="text/javascript" id="heateor_sss_sharing_js-js-before">
+/* <![CDATA[ */
+function heateorSssLoadEvent(e) {var t=window.onload;if (typeof window.onload!="function") {window.onload=e}else{window.onload=function() {t();e()}}};	var heateorSssSharingAjaxUrl = 'https://addverb.com/wp-admin/admin-ajax.php', heateorSssCloseIconPath = 'https://addverb.com/wp-content/plugins/sassy-social-share/public/../images/close.png', heateorSssPluginIconPath = 'https://addverb.com/wp-content/plugins/sassy-social-share/public/../images/logo.png', heateorSssHorizontalSharingCountEnable = 0, heateorSssVerticalSharingCountEnable = 0, heateorSssSharingOffset = -10; var heateorSssMobileStickySharingEnabled = 0;var heateorSssCopyLinkMessage = "Link copied.";var heateorSssUrlCountFetched = [], heateorSssSharesText = 'Shares', heateorSssShareText = 'Share';function heateorSssPopup(e) {window.open(e,"popUpWindow","height=400,width=600,left=400,top=100,resizable,scrollbars,toolbar=0,personalbar=0,menubar=no,location=no,directories=no,status")}
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://addverb.com/wp-content/plugins/sassy-social-share/public/js/sassy-social-share-public.js" id="heateor_sss_sharing_js-js"></script>
+<script type="text/javascript" src="https://addverb.com/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js" id="sourcebuster-js-js"></script>
+<script type="text/javascript" id="wc-order-attribution-js-extra">
+/* <![CDATA[ */
+var wc_order_attribution = {"params":{"lifetime":1.0e-5,"session":30,"base64":false,"ajaxurl":"https:\/\/addverb.com\/wp-admin\/admin-ajax.php","prefix":"wc_order_attribution_","allowTracking":true},"fields":{"source_type":"current.typ","referrer":"current_add.rf","utm_campaign":"current.cmp","utm_source":"current.src","utm_medium":"current.mdm","utm_content":"current.cnt","utm_id":"current.id","utm_term":"current.trm","utm_source_platform":"current.plt","utm_creative_format":"current.fmt","utm_marketing_tactic":"current.tct","session_entry":"current_add.ep","session_start_time":"current_add.fd","session_pages":"session.pgs","session_count":"udata.vst","user_agent":"udata.uag"}};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://addverb.com/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js" id="wc-order-attribution-js"></script>
+<script type="text/javascript" id="ivory-search-scripts-js-extra">
+/* <![CDATA[ */
+var IvorySearchVars = {"is_analytics_enabled":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://addverb.com/wp-content/plugins/add-search-to-menu/public/js/ivory-search.min.js" id="ivory-search-scripts-js"></script>
+<script type="text/javascript" id="cmplz-cookiebanner-js-extra">
+/* <![CDATA[ */
+var complianz = {"prefix":"cmplz_","user_banner_id":"4","set_cookies":[],"block_ajax_content":"0","banner_version":"138","version":"7.1.4","store_consent":"1","do_not_track_enabled":"1","consenttype":"optin","region":"eu","geoip":"1","dismiss_timeout":"","disable_cookiebanner":"","soft_cookiewall":"","dismiss_on_scroll":"","cookie_expiry":"30","url":"https:\/\/addverb.com\/wp-json\/complianz\/v1\/","locale":"lang=en&locale=en_US","set_cookies_on_root":"0","cookie_domain":"","current_policy_id":"47","cookie_path":"\/","categories":{"statistics":"statistics","marketing":"marketing"},"tcf_active":"","placeholdertext":"Haga clic para aceptar {category} cookies y habilitar este contenido","css_file":"https:\/\/addverb.com\/wp-content\/uploads\/complianz\/css\/banner-{banner_id}-{type}.css?v=138","page_links":{"eu":{"cookie-statement":{"title":"Pol\u00edtica de privacidad","url":"https:\/\/addverb.com\/privacy-policy\/"},"privacy-statement":{"title":"Pol\u00edtica de privacidad","url":"https:\/\/addverb.com\/privacy-policy\/"}},"us":{"cookie-statement":{"title":"Pol\u00edtica de privacidad","url":"https:\/\/addverb.com\/privacy-policy\/"},"privacy-statement":{"title":"Pol\u00edtica de privacidad","url":"https:\/\/addverb.com\/privacy-policy\/"},"privacy-statement-children":{"title":"","url":"https:\/\/addverb.com\/how-much-does-a-warehouse-management-system-cost\/"}},"uk":{"cookie-statement":{"title":"Pol\u00edtica de privacidad","url":"https:\/\/addverb.com\/privacy-policy\/"},"privacy-statement":{"title":"Pol\u00edtica de privacidad","url":"https:\/\/addverb.com\/privacy-policy\/"},"privacy-statement-children":{"title":"","url":"https:\/\/addverb.com\/how-much-does-a-warehouse-management-system-cost\/"}},"ca":{"cookie-statement":{"title":"Pol\u00edtica de privacidad","url":"https:\/\/addverb.com\/privacy-policy\/"},"privacy-statement":{"title":"Pol\u00edtica de privacidad","url":"https:\/\/addverb.com\/privacy-policy\/"},"privacy-statement-children":{"title":"","url":"https:\/\/addverb.com\/how-much-does-a-warehouse-management-system-cost\/"}},"au":{"cookie-statement":{"title":"Pol\u00edtica de privacidad","url":"https:\/\/addverb.com\/privacy-policy\/"},"privacy-statement":{"title":"Pol\u00edtica de privacidad","url":"https:\/\/addverb.com\/privacy-policy\/"},"privacy-statement-children":{"title":"","url":"https:\/\/addverb.com\/how-much-does-a-warehouse-management-system-cost\/"}},"za":{"cookie-statement":{"title":"Pol\u00edtica de privacidad","url":"https:\/\/addverb.com\/privacy-policy\/"},"privacy-statement":{"title":"Pol\u00edtica de privacidad","url":"https:\/\/addverb.com\/privacy-policy\/"},"privacy-statement-children":{"title":"","url":"https:\/\/addverb.com\/how-much-does-a-warehouse-management-system-cost\/"}},"br":{"cookie-statement":{"title":"Pol\u00edtica de privacidad","url":"https:\/\/addverb.com\/privacy-policy\/"},"privacy-statement":{"title":"Pol\u00edtica de privacidad","url":"https:\/\/addverb.com\/privacy-policy\/"},"privacy-statement-children":{"title":"","url":"https:\/\/addverb.com\/how-much-does-a-warehouse-management-system-cost\/"}}},"tm_categories":"1","forceEnableStats":"","preview":"","clean_cookies":"","aria_label":"Click to accept {category} cookies and enable this content"};
+/* ]]> */
+</script>
+<script defer type="text/javascript" src="https://addverb.com/wp-content/plugins/complianz-gdpr-premium/cookiebanner/js/complianz.min.js" id="cmplz-cookiebanner-js"></script>
+<script type="text/javascript" id="cmplz-cookiebanner-js-after">
+/* <![CDATA[ */
+	let cmplzBlockedContent = document.querySelector('.cmplz-blocked-content-notice');
+	if ( cmplzBlockedContent) {
+	        cmplzBlockedContent.addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+	}
+    
+/* ]]> */
+</script>
+<script type="text/javascript" id="ivory-ajax-search-scripts-js-extra">
+/* <![CDATA[ */
+var IvoryAjaxVars = {"ajaxurl":"https:\/\/addverb.com\/wp-admin\/admin-ajax.php","ajax_nonce":"bd26bf3ed0"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://addverb.com/wp-content/plugins/add-search-to-menu/public/js/ivory-ajax-search.min.js" id="ivory-ajax-search-scripts-js"></script>
+<script>var rocket_beacon_data = {"ajax_url":"https:\/\/addverb.com\/wp-admin\/admin-ajax.php","nonce":"39d7a9d7b0","url":"https:\/\/addverb.com\/mobile-robotics-technology","is_mobile":false,"width_threshold":1600,"height_threshold":700,"delay":500,"debug":null,"status":{"atf":true,"lrc":true},"elements":"img, video, picture, p, main, div, li, svg, section, header, span","lrc_threshold":1800}</script><script data-name="wpr-wpr-beacon" src='https://addverb.com/wp-content/plugins/wp-rocket/assets/js/wpr-beacon.min.js' async></script></body>
+</html>    </div>
+    
+    <script>
+        function openCrane() {
+            document.getElementById('crane').style.display = 'flex';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function openCruiser() {
+            document.getElementById('cruiser').style.display = 'flex';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function openMulti() {
+            document.getElementById('multi').style.display = 'flex';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function openQuadron() {
+            document.getElementById('quadron').style.display = 'flex';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function openMedius() {
+            document.getElementById('medius').style.display = 'flex';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closeCrane() {
+            document.getElementById('crane').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function closeCruiser() {
+            document.getElementById('cruiser').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function closeMulti() {
+            document.getElementById('multi').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function closeQuadron() {
+            document.getElementById('quadron').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function closeMedius() {
+            document.getElementById('medius').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+        
+        function closePopd() {
+            document.getElementById('overlayf').style.display = 'none';
+        }
+
+        function downloadForm(){
+            document.getElementById('overlayf').style.display = 'block';
+            document.getElementById('ddform').style.display = 'flex';
+        }
+
+        function scrollToDownload(){
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+    
+    
+<script>
+	var img_path = 'https://addverb.com/wp-content/themes/onepress';
+</script>
+
+<script src="https://addverb.com/wp-content/themes/onepress/assets/js/software_overview.js"></script>
+<script src="https://addverb.com/wp-content/themes/onepress/assets/js/jquery.mCustomScrollbar.min.js"></script>
+<script>
+	// start scroll
+	(function($){
+		$(window).on("load",function(){
+			$(".scrollbar").mCustomScrollbar({theme:"dark-3"});
+		});
+
+		$(".accordion-item:first .accordion-button").trigger("click");
+	})(jQuery);
+	// end scroll
+
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if there is a hash in the URL
+    if (window.location.hash && window.location.hash !== '#') {
+        // Get the target element based on the hash
+        var targetElement = document.querySelector(window.location.hash);
+
+        // Check if the target element exists
+        if (targetElement) {
+            // Prevent the default scroll behavior
+            targetElement.scrollIntoView(false);
+
+            // Optionally, you can also scroll to the top of the page
+            // window.scrollTo(0, 0);
+
+            // Remove the hash from the URL to prevent further scrolling
+            history.replaceState(null, null, ' ');
+        }
+    }
+
+    // Your delayed JavaScript code here
+    // Example:
+    console.log('Delayed JavaScript execution after preventing initial scrolling to section.');
+});
+
+</script>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->

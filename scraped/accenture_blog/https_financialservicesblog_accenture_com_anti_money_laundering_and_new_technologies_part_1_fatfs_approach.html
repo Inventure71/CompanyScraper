@@ -1,0 +1,1253 @@
+<!doctype html>
+<html lang="ja-JP">
+	<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	
+	<!-- This site is optimized with the Yoast SEO Premium plugin  - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>マネロン対策と新技術：第1回　FATFの取組み | Financial Services Blog</title>
+	<link rel="canonical" href="https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach" />
+	<meta property="og:locale" content="ja_JP" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="マネロン対策と新技術：第1回　FATFの取組み" />
+	<meta property="og:description" content="1.「AML/CFTのDX」はFATFの最近2年間の目標だった FATF（Financial Action Task Force：金融活動作業部会）の総裁（President）は、就任時に任期中の目標を公表する。2020年7月から2年の任期で総裁を務めたドイツ出身のPleyer総裁は、就任時に下の表に示す5つの目標を掲げ、その１番目が「AML/CFTのDX（デジタル・トランスフォーメーション）」だった。 5つの目標 　　1番目 AML/CFTのDX 　　2番目 民族・人種関連動機のテロへの資金供与の阻止 　　3番目 MLと移民人身売買の阻止 　　4番目 環境犯罪の阻止 　　5番目 不正な武器輸出の阻止 出所：FATF「Objectives for the FATF during the German Presidency (2020-2022) 」、2020年7月1日公表。 FATFは、2020年7月の時点で、上記の１番目の「AML/CFTのDX」について、以下の３つの施策を行うこととしていた。 施策1　民間部門と規制監督当局がAML/CFT施策をより効率的に遂行する目的で新技術の機会と課題を研究すること。 施策2　法執行のための組織（警察等）が行うML/TFの検知・捜査や、それらのリスクの理解をより効率的に進めるための新技術の利点と課題を研究すること。 施策3　民間部門がテータ保護を確保しつつ人工知能（AI）やビッグデータ分析をAML/CFTのために活用し、規制をより効率的に遵守できるようになることへの支援を目指して、データ保存と分析の現状を把握すること。 FATFは、これらのうち施策1と3については、2021年7月1日にその研究・検討の結果を本稿の２．で紹介する2つの報告書として公表した。また、施策３については、「情報共有とデータ保護」をテーマとする報告書の公表について2022年6月の総会で合意済であり、7月に同報告書を公表の予定である。 施策２については、２つのフェーズに分けた取組みが行われた。まず、その第1フェーズは、各国FIUが集まるEgmontグループ（注1）とFATFの共同研究として進められ、第２フェーズはFATF単独の取組みとして実施された。施策２についての取組みは、本稿の３．で紹介する。 （注1）FIU、Egmontグループについては、参考２を参照。 参考１ FATF・FSRBs、FATFの総裁 FATFは「マネロン・テロ資金対策の国際基準（FATF勧告）を策定し、その履行状況について相互審査を行う多国間の枠組み」である。 FATFの加盟先は39（37ヵ国・地域と2つの地域機関）である。FATFとは別に、FSRBs（注2）と呼ばれる9つの組織が世界の各地域に存在し（各FSRBにはFATF加盟国と非加盟国が所属）、FATF勧告をベースに相互審査を実施している。FATFと9つのFSRBsにより、FATF勧告は世界中で190余の国・地域に適用されている。 （注2）FATF-style regional bodies、FATF型地域体。 FATFは今から33年前の1989年に創設され、うち30年間は総裁任期が1年だったが、31年目となる2020年から総裁任期が2年に改められた。総裁は、加盟各国のAML/CFT関係当局者が就任するが、これまでのFATF総裁の出身国は次の表のとおりであり、ドイツは3回、フランス等7ヵ国からは2回総裁が就任している。 初代  仏 ２代  スイス ３代  豪 ４代  英 ５代  蘭 ６代  米 ７代  伊&#8230;" />
+	<meta property="og:url" content="https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach" />
+	<meta property="og:site_name" content="Financial Services Blog" />
+	<meta property="article:published_time" content="2022-07-08T04:11:21+00:00" />
+	<meta property="article:modified_time" content="2022-07-10T10:13:09+00:00" />
+	<meta property="og:image" content="https://financialservicesblog.accenture.com/wp-content/uploads/2022/07/11665.jpg" />
+	<meta property="og:image:width" content="550" />
+	<meta property="og:image:height" content="413" />
+	<meta property="og:image:type" content="image/jpeg" />
+	<meta name="author" content="水口 毅" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="水口 毅" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="3 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach","url":"https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach","name":"マネロン対策と新技術：第1回　FATFの取組み | Financial Services Blog","isPartOf":{"@id":"https://financialservicesblog.accenture.com/#website"},"primaryImageOfPage":{"@id":"https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach#primaryimage"},"image":{"@id":"https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach#primaryimage"},"thumbnailUrl":"https://financialservicesblog.accenture.com/wp-content/uploads/2022/07/11665.jpg","datePublished":"2022-07-08T04:11:21+00:00","dateModified":"2022-07-10T10:13:09+00:00","author":{"@id":"https://financialservicesblog.accenture.com/#/schema/person/6438e7a28a1150a425fe0e2341f07933"},"breadcrumb":{"@id":"https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach#breadcrumb"},"inLanguage":"ja-JP","potentialAction":[{"@type":"ReadAction","target":["https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach"]}]},{"@type":"ImageObject","inLanguage":"ja-JP","@id":"https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach#primaryimage","url":"https://financialservicesblog.accenture.com/wp-content/uploads/2022/07/11665.jpg","contentUrl":"https://financialservicesblog.accenture.com/wp-content/uploads/2022/07/11665.jpg","width":550,"height":413,"caption":"Security guards working at CCTV screens in control room"},{"@type":"BreadcrumbList","@id":"https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://financialservicesblog.accenture.com/"},{"@type":"ListItem","position":2,"name":"マネロン対策と新技術：第1回　FATFの取組み"}]},{"@type":"WebSite","@id":"https://financialservicesblog.accenture.com/#website","url":"https://financialservicesblog.accenture.com/","name":"Financial Services Blog","description":"Accenture","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://financialservicesblog.accenture.com/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"ja-JP"},{"@type":"Person","@id":"https://financialservicesblog.accenture.com/#/schema/person/6438e7a28a1150a425fe0e2341f07933","name":"水口 毅","image":{"@type":"ImageObject","inLanguage":"ja-JP","@id":"https://financialservicesblog.accenture.com/#/schema/person/image/","url":"https://financialservicesblog.accenture.com/wp-content/uploads/userphoto/432.jpg","contentUrl":"https://secure.gravatar.com/avatar/d8e45ed13bac2792ad372921ade2055a?s=96&d=https%3A%2F%2Ffinancialservicesblog.accenture.com%2Fwp-content%2Fthemes%2Faccenturepress%2Fdist%2Fimages%2Fpwa-icons%2Ficon-512x512.png&r=g","caption":"水口 毅"},"description":"日本銀行で総務局（現企画局）、ロンドン事務所、総裁秘書、業務局、那覇支店長、金融広報中央委員会事務局次長、広島支店長等を歴任した後に退職。米系大手保険会社の役員、大手監査法人のディレクターを経て、2022年からアクセンチュア金融サービス本部顧問。 日銀在職中は、日銀の国庫業務（「政府の銀行」業務）の電子化のプロジェクトを統括し、電子申告・納税（e-tax）等を実現させた経験を持つ。","url":"https://financialservicesblog.accenture.com/author/xfs-takeshi-mizuguchi"}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel='dns-prefetch' href='//secure.gravatar.com' />
+<link rel='dns-prefetch' href='//js.maxmind.com' />
+<link rel='dns-prefetch' href='//stats.wp.com' />
+<link rel='dns-prefetch' href='//v0.wordpress.com' />
+<meta name="theme-color" content="#A100FF" ><link rel="manifest" href="/wp-json/pwa/v1/manifest" ><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Financial Services Blog"><meta name="apple-mobile-web-app-capable" content="yes"><script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/financialservicesblog.accenture.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=589b12"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83d\udc26\u200d\u2b1b","\ud83d\udc26\u200b\u2b1b")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id='wp-emoji-styles-inline-css' type='text/css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='mediaelement-css' href='https://financialservicesblog.accenture.com/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=9e5d7d' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-mediaelement-css' href='https://financialservicesblog.accenture.com/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=f97be4' type='text/css' media='all' />
+<style id='jetpack-sharing-buttons-style-inline-css' type='text/css'>
+.jetpack-sharing-buttons__services-list{display:flex;flex-direction:row;flex-wrap:wrap;gap:0;list-style-type:none;margin:5px;padding:0}.jetpack-sharing-buttons__services-list.has-small-icon-size{font-size:12px}.jetpack-sharing-buttons__services-list.has-normal-icon-size{font-size:16px}.jetpack-sharing-buttons__services-list.has-large-icon-size{font-size:24px}.jetpack-sharing-buttons__services-list.has-huge-icon-size{font-size:36px}@media print{.jetpack-sharing-buttons__services-list{display:none!important}}.editor-styles-wrapper .wp-block-jetpack-sharing-buttons{gap:0;padding-inline-start:0}ul.jetpack-sharing-buttons__services-list.has-background{padding:1.25em 2.375em}
+</style>
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='segment-variants-css' href='https://financialservicesblog.accenture.com/wp-content/plugins/acc-client-segment-page/css/segment-variants.css?ver=d6717e' type='text/css' media='all' />
+<link rel='stylesheet' id='brave-author-resume-view-css' href='https://financialservicesblog.accenture.com/wp-content/plugins/brave-author-resume-view/dist/author-resume-view.css?ver=614cc0' type='text/css' media='all' />
+<link rel='stylesheet' id='acc-author-widget-style-d75171398898-css' href='https://financialservicesblog.accenture.com/wp-content/uploads/siteorigin-widgets/acc-author-widget-style-d75171398898.css?ver=007a7c' type='text/css' media='all' />
+<link rel='stylesheet' id='acc-popular-posts-style-d75171398898-css' href='https://financialservicesblog.accenture.com/wp-content/uploads/siteorigin-widgets/acc-popular-posts-style-d75171398898.css?ver=7c6ccf' type='text/css' media='all' />
+<link rel='stylesheet' id='swiftype-css' href='https://financialservicesblog.accenture.com/wp-content/plugins/swiftype-search-braveaccentureblog/assets/autocomplete.css?ver=c88f9f' type='text/css' media='all' />
+<style id='akismet-widget-style-inline-css' type='text/css'>
+
+			.a-stats {
+				--akismet-color-mid-green: #357b49;
+				--akismet-color-white: #fff;
+				--akismet-color-light-grey: #f6f7f7;
+
+				max-width: 350px;
+				width: auto;
+			}
+
+			.a-stats * {
+				all: unset;
+				box-sizing: border-box;
+			}
+
+			.a-stats strong {
+				font-weight: 600;
+			}
+
+			.a-stats a.a-stats__link,
+			.a-stats a.a-stats__link:visited,
+			.a-stats a.a-stats__link:active {
+				background: var(--akismet-color-mid-green);
+				border: none;
+				box-shadow: none;
+				border-radius: 8px;
+				color: var(--akismet-color-white);
+				cursor: pointer;
+				display: block;
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
+				font-weight: 500;
+				padding: 12px;
+				text-align: center;
+				text-decoration: none;
+				transition: all 0.2s ease;
+			}
+
+			/* Extra specificity to deal with TwentyTwentyOne focus style */
+			.widget .a-stats a.a-stats__link:focus {
+				background: var(--akismet-color-mid-green);
+				color: var(--akismet-color-white);
+				text-decoration: none;
+			}
+
+			.a-stats a.a-stats__link:hover {
+				filter: brightness(110%);
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 0 2px rgba(0, 0, 0, 0.16);
+			}
+
+			.a-stats .count {
+				color: var(--akismet-color-white);
+				display: block;
+				font-size: 1.5em;
+				line-height: 1.4;
+				padding: 0 13px;
+				white-space: nowrap;
+			}
+		
+</style>
+<link rel='stylesheet' id='accenturepress/css-css' href='https://financialservicesblog.accenture.com/wp-content/themes/accenturepress/dist/styles/main-6c70e7dc07.css' type='text/css' media='all' />
+<script type="text/javascript" src="https://financialservicesblog.accenture.com/wp-includes/js/jquery/jquery.min.js?ver=58737b" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://financialservicesblog.accenture.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=ccf4a0" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="https://financialservicesblog.accenture.com/wp-content/themes/accenturepress/widgets/popular-posts/js/popular-posts.js?ver=a265c8" id="acc-popular-posts-js"></script>
+<script type="text/javascript" id="swiftype-js-extra">
+/* <![CDATA[ */
+var swiftypeParams = {"engineKey":"DVti-qHNkBBc-8X9yjL3","documentTypes":["japan"]};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://financialservicesblog.accenture.com/wp-content/plugins/swiftype-search-braveaccentureblog/assets/install_swiftype.min.js?ver=14a16b" id="swiftype-js"></script>
+<script type="text/javascript" src="//js.maxmind.com/js/apis/geoip2/v2.1/geoip2.js?ver=14bc50" id="geoip2" crossorigin="anonymous" integrity="sha256-lKlqT8MT/m37opDta8DoAuqrQIEOWQMqBvZ3RVOxxq4="></script><script type="text/javascript" id="accenturepress/js-js-extra">
+/* <![CDATA[ */
+var accenturepress = {"ajax":"https:\/\/financialservicesblog.accenture.com\/wp-admin\/admin-ajax.php","blogName":"Financial Services Blog","dtmSiteData":{"abbrv":"axfs","homepage":"axfsblog","categories":false,"onetrust":"e7ca6e15-d985-45e3-bcad-6625e5bdd6fe","content_owner_default":"Financial Services","industry_default":"Financial Services","service_capability_default":"Strategy and Consulting","market":"UnitedStates"},"serviceWorkerScope":"\/","serviceWorkerURI":"https:\/\/financialservicesblog.accenture.com\/wp-content\/themes\/accenturepress\/dist\/scripts\/service-worker-8cc5ac109c.js","serviceWorkerCache":["https:\/\/financialservicesblog.accenture.com\/wp-content\/themes\/accenturepress\/dist\/scripts\/main-b5f6eb92ba.js","https:\/\/financialservicesblog.accenture.com\/wp-content\/themes\/accenturepress\/dist\/styles\/main-6c70e7dc07.css","\/"],"marketoCategories":[],"templateDirURI":"https:\/\/financialservicesblog.accenture.com\/wp-content\/themes\/accenturepress\/","translatedText":{"Next":"Next","Previous":"Previous"},"clientGeoLocation":"jp-ja","clientLang":"ja"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://financialservicesblog.accenture.com/wp-content/themes/accenturepress/dist/scripts/main-b5f6eb92ba.js?ver=1906ef" id="accenturepress/js-js"></script>
+<link rel="https://api.w.org/" href="https://financialservicesblog.accenture.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://financialservicesblog.accenture.com/wp-json/wp/v2/posts/19108" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://financialservicesblog.accenture.com/xmlrpc.php?rsd" />
+
+<link rel='shortlink' href='https://financialservicesblog.accenture.com/?p=19108' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://financialservicesblog.accenture.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ffinancialservicesblog.accenture.com%2Fanti-money-laundering-and-new-technologies-part-1-fatfs-approach" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://financialservicesblog.accenture.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ffinancialservicesblog.accenture.com%2Fanti-money-laundering-and-new-technologies-part-1-fatfs-approach&#038;format=xml" />
+
+	<!--onetrust geo IP work around-->
+	<script>
+        function acnSetUserGeo(locationJson) {
+            window.otUserLocation = locationJson.country;
+        }
+    </script>
+    <script src="https://geolocation.onetrust.com/cookieconsentpub/v1/geo/location/acnSetUserGeo"></script>
+
+	<!-- OneTrust Cookies Consent Notice start -->
+	<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="e7ca6e15-d985-45e3-bcad-6625e5bdd6fe"></script>
+	<script type="text/javascript">
+		function OptanonWrapper() {}
+	</script>
+	<!-- OneTrust Cookies Consent Notice end -->
+
+    <!--sat_track implementation-->
+    <script>
+        function getCookie(name) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + name + "=");
+            if (parts.length === 2) return parts.pop().split(";").shift();
+        }
+    </script>
+
+    <script>
+        (function () {
+            // check if sat_track cookie exists
+            var check = (typeof getCookie !== "undefined") ? getCookie("sat_track") : undefined;
+            if (check === undefined) {
+                // list of geos where only strictly necessary cookies are allowed
+                let SNGeos = ["GB", "BE", "IE", "FR", "RU", "ES", "IT", "DE", "AT", "CH"];
+                if (SNGeos.indexOf(window.otUserLocation) !== -1) {
+                    document.cookie = "sat_track=false;path=/;secure;max-age=31536000";
+                }
+                else {
+                    document.cookie = "sat_track=true;path=/;secure;max-age=31536000";
+                }
+                console.log("creating sat_track");
+            }
+        }());
+    </script>
+	<script src="//scripts.demandbase.com/adobeanalytics/wDq4Hx70.min.js"></script><script> digitalData = {"pageInstanceId":"axfs:blogs:anti-money-laundering-and-new-technologies-part-1-fatfs-approach","version":"1.0","category":{"primaryCategory":"axfs"},"page":{"pageId":"axfs:blogs:anti-money-laundering-and-new-technologies-part-1-fatfs-approach","pageName":"axfs:blogs:anti-money-laundering-and-new-technologies-part-1-fatfs-approach","language":"ja_JP","geoRegion":"ja_JP","countryLanguage":"ja_JP","uniquePageName":"anti-money-laundering-and-new-technologies-part-1-fatfs-approach","publishedDate":"2022-07-08 04:11:21","contentDate":"2022-07-08 04:11:21","title":"\u30de\u30cd\u30ed\u30f3\u5bfe\u7b56\u3068\u65b0\u6280\u8853\uff1a\u7b2c1\u56de\u3000FATF\u306e\u53d6\u7d44\u307f","description":"1.\u300cAML\/CFT\u306eDX\u300d\u306fFATF\u306e\u6700\u8fd12\u5e74\u9593\u306e\u76ee\u6a19\u3060\u3063\u305f FATF\uff08Financial Action Task Force\uff1a\u91d1\u878d\u6d3b\u52d5\u4f5c\u696d\u90e8\u4f1a\uff09\u306e\u7dcf\u88c1\uff08President\uff09\u306f\u3001\u5c31\u4efb\u6642\u306b\u4efb\u671f\u4e2d\u306e\u76ee\u6a19\u3092\u516c\u8868\u3059\u308b\u30022020\u5e747\u6708\u304b\u30892\u5e74\u306e\u4efb\u671f\u3067\u7dcf\u88c1\u3092\u52d9\u3081\u305f\u30c9\u30a4\u30c4\u51fa\u8eab\u306ePleyer\u7dcf\u88c1\u306f\u3001\u5c31\u4efb\u6642\u306b\u4e0b\u306e\u8868\u306b\u793a\u30595\u3064\u306e\u76ee\u6a19\u3092\u63b2\u3052\u3001\u305d\u306e\uff11\u756a\u76ee\u304c\u300cAML\/CFT\u306eDX\uff08\u30c7\u30b8\u30bf\u30eb\u30fb\u30c8\u30e9\u30f3\u30b9\u30d5\u30a9\u30fc\u30e1\u30fc\u30b7\u30e7\u30f3\uff09\u300d\u3060\u3063\u305f\u3002 5\u3064\u306e\u76ee\u6a19 \u3000\u30001\u756a\u76ee AML\/CFT\u306eDX \u3000\u30002\u756a\u76ee \u6c11\u65cf\u30fb\u4eba\u7a2e\u95a2\u9023\u52d5\u6a5f\u306e\u30c6\u30ed\u3078\u306e\u8cc7\u91d1\u4f9b\u4e0e\u306e\u963b\u6b62 \u3000\u30003\u756a\u76ee ML\u3068\u79fb\u6c11\u4eba\u8eab\u58f2\u8cb7\u306e\u963b\u6b62 \u3000\u30004\u756a\u76ee \u74b0\u5883\u72af\u7f6a\u306e\u963b\u6b62 \u3000\u30005\u756a\u76ee \u4e0d\u6b63\u306a\u6b66\u5668\u8f38\u51fa\u306e\u963b\u6b62 \u51fa\u6240\uff1aFATF\u300cObjectives for the FATF during the German Presidency (2020-2022) \u300d\u30012020\u5e747\u67081\u65e5\u516c\u8868\u3002 FATF\u306f\u30012020\u5e747\u6708\u306e\u6642\u70b9\u3067\u3001\u4e0a\u8a18\u306e\uff11\u756a\u76ee\u306e\u300cAML\/CFT\u306eDX\u300d\u306b\u3064\u3044\u3066\u3001\u4ee5\u4e0b\u306e\uff13\u3064\u306e\u65bd\u7b56\u3092\u884c\u3046\u3053\u3068\u3068\u3057\u3066\u3044\u305f\u3002 \u65bd\u7b561\u3000\u6c11\u9593\u90e8\u9580\u3068\u898f\u5236\u76e3\u7763\u5f53\u5c40\u304cAML\/CFT\u65bd\u7b56\u3092\u3088\u308a\u52b9\u7387\u7684\u306b\u9042\u884c\u3059\u308b\u76ee\u7684\u3067\u65b0\u6280\u8853\u306e\u6a5f\u4f1a\u3068\u8ab2\u984c\u3092\u7814\u7a76\u3059\u308b\u3053\u3068\u3002 \u65bd\u7b562\u3000\u6cd5\u57f7\u884c\u306e\u305f\u3081\u306e\u7d44\u7e54\uff08\u8b66\u5bdf\u7b49\uff09\u304c\u884c\u3046ML\/TF\u306e\u691c\u77e5\u30fb\u635c\u67fb\u3084\u3001\u305d\u308c\u3089\u306e\u30ea\u30b9\u30af\u306e\u7406\u89e3\u3092\u3088\u308a\u52b9\u7387\u7684\u306b\u9032\u3081\u308b\u305f\u3081\u306e\u65b0\u6280\u8853\u306e\u5229\u70b9\u3068\u8ab2\u984c\u3092\u7814\u7a76\u3059\u308b\u3053\u3068\u3002 \u65bd\u7b563\u3000\u6c11\u9593\u90e8\u9580\u304c\u30c6\u30fc\u30bf\u4fdd\u8b77\u3092\u78ba\u4fdd\u3057\u3064\u3064\u4eba\u5de5\u77e5\u80fd\uff08AI\uff09\u3084\u30d3\u30c3\u30b0\u30c7\u30fc\u30bf\u5206\u6790\u3092AML\/CFT\u306e\u305f\u3081\u306b\u6d3b\u7528\u3057\u3001\u898f\u5236\u3092\u3088\u308a\u52b9\u7387\u7684\u306b\u9075\u5b88\u3067\u304d\u308b\u3088\u3046\u306b\u306a\u308b\u3053\u3068\u3078\u306e\u652f\u63f4\u3092\u76ee\u6307\u3057\u3066\u3001\u30c7\u30fc\u30bf\u4fdd\u5b58\u3068\u5206\u6790\u306e\u73fe\u72b6\u3092\u628a\u63e1\u3059\u308b\u3053\u3068\u3002 FATF\u306f\u3001\u3053\u308c\u3089\u306e\u3046\u3061\u65bd\u7b561\u30683\u306b\u3064\u3044\u3066\u306f\u30012021\u5e747\u67081\u65e5\u306b\u305d\u306e\u7814\u7a76\u30fb\u691c\u8a0e\u306e\u7d50\u679c\u3092\u672c\u7a3f\u306e\uff12\uff0e\u3067\u7d39\u4ecb\u3059\u308b2\u3064\u306e\u5831\u544a\u66f8\u3068\u3057\u3066\u516c\u8868\u3057\u305f\u3002\u307e\u305f\u3001\u65bd\u7b56\uff13\u306b\u3064\u3044\u3066\u306f\u3001\u300c\u60c5\u5831\u5171\u6709\u3068\u30c7\u30fc\u30bf\u4fdd\u8b77\u300d\u3092\u30c6\u30fc\u30de\u3068\u3059\u308b\u5831\u544a\u66f8\u306e\u516c\u8868\u306b\u3064\u3044\u30662022\u5e746\u6708\u306e\u7dcf\u4f1a\u3067\u5408\u610f\u6e08\u3067\u3042\u308a\u30017\u6708\u306b\u540c\u5831\u544a\u66f8\u3092\u516c\u8868\u306e\u4e88\u5b9a\u3067\u3042\u308b\u3002 \u65bd\u7b56\uff12\u306b\u3064\u3044\u3066\u306f\u3001\uff12\u3064\u306e\u30d5\u30a7\u30fc\u30ba\u306b\u5206\u3051\u305f\u53d6\u7d44\u307f\u304c\u884c\u308f\u308c\u305f\u3002\u307e\u305a\u3001\u305d\u306e\u7b2c1\u30d5\u30a7\u30fc\u30ba\u306f\u3001\u5404\u56fdFIU\u304c\u96c6\u307e\u308bEgmont\u30b0\u30eb\u30fc\u30d7\uff08\u6ce81\uff09\u3068FATF\u306e\u5171\u540c\u7814\u7a76\u3068\u3057\u3066\u9032\u3081\u3089\u308c\u3001\u7b2c\uff12\u30d5\u30a7\u30fc\u30ba\u306fFATF\u5358\u72ec\u306e\u53d6\u7d44\u307f\u3068\u3057\u3066\u5b9f\u65bd\u3055\u308c\u305f\u3002\u65bd\u7b56\uff12\u306b\u3064\u3044\u3066\u306e\u53d6\u7d44\u307f\u306f\u3001\u672c\u7a3f\u306e\uff13\uff0e\u3067\u7d39\u4ecb\u3059\u308b\u3002 \uff08\u6ce81\uff09FIU\u3001Egmont\u30b0\u30eb\u30fc\u30d7\u306b\u3064\u3044\u3066\u306f\u3001\u53c2\u8003\uff12\u3092\u53c2\u7167\u3002 \u53c2\u8003\uff11 FATF\u30fbFSRBs\u3001FATF\u306e\u7dcf\u88c1 FATF\u306f\u300c\u30de\u30cd\u30ed\u30f3\u30fb\u30c6\u30ed\u8cc7\u91d1\u5bfe\u7b56\u306e\u56fd\u969b\u57fa\u6e96\uff08FATF\u52e7\u544a\uff09\u3092\u7b56\u5b9a\u3057\u3001\u305d\u306e\u5c65\u884c\u72b6\u6cc1\u306b\u3064\u3044\u3066\u76f8\u4e92\u5be9\u67fb\u3092\u884c\u3046\u591a\u56fd\u9593\u306e\u67a0\u7d44\u307f\u300d\u3067\u3042\u308b\u3002 FATF\u306e\u52a0\u76df\u5148\u306f39\uff0837\u30f5\u56fd\u30fb\u5730\u57df\u30682\u3064\u306e\u5730\u57df\u6a5f\u95a2\uff09\u3067\u3042\u308b\u3002FATF\u3068\u306f\u5225\u306b\u3001FSRBs\uff08\u6ce82\uff09\u3068\u547c\u3070\u308c\u308b9\u3064\u306e\u7d44\u7e54\u304c\u4e16\u754c\u306e\u5404\u5730\u57df\u306b\u5b58\u5728\u3057\uff08\u5404FSRB\u306b\u306fFATF\u52a0\u76df\u56fd\u3068\u975e\u52a0\u76df\u56fd\u304c\u6240\u5c5e\uff09\u3001FATF\u52e7\u544a\u3092\u30d9\u30fc\u30b9\u306b\u76f8\u4e92\u5be9\u67fb\u3092\u5b9f\u65bd\u3057\u3066\u3044\u308b\u3002FATF\u30689\u3064\u306eFSRBs\u306b\u3088\u308a\u3001FATF\u52e7\u544a\u306f\u4e16\u754c\u4e2d\u3067190\u4f59\u306e\u56fd\u30fb\u5730\u57df\u306b\u9069\u7528\u3055\u308c\u3066\u3044\u308b\u3002 \uff08\u6ce82\uff09FATF-style regional bodies\u3001FATF\u578b\u5730\u57df\u4f53\u3002 FATF\u306f\u4eca\u304b\u308933\u5e74\u524d\u306e1989\u5e74\u306b\u5275\u8a2d\u3055\u308c\u3001\u3046\u306130\u5e74\u9593\u306f\u7dcf\u88c1\u4efb\u671f\u304c1\u5e74\u3060\u3063\u305f\u304c\u300131\u5e74\u76ee\u3068\u306a\u308b2020\u5e74\u304b\u3089\u7dcf\u88c1\u4efb\u671f\u304c2\u5e74\u306b\u6539\u3081\u3089\u308c\u305f\u3002\u7dcf\u88c1\u306f\u3001\u52a0\u76df\u5404\u56fd\u306eAML\/CFT\u95a2\u4fc2\u5f53\u5c40\u8005\u304c\u5c31\u4efb\u3059\u308b\u304c\u3001\u3053\u308c\u307e\u3067\u306eFATF\u7dcf\u88c1\u306e\u51fa\u8eab\u56fd\u306f\u6b21\u306e\u8868\u306e\u3068\u304a\u308a\u3067\u3042\u308a\u3001\u30c9\u30a4\u30c4\u306f3\u56de\u3001\u30d5\u30e9\u30f3\u30b9\u7b497\u30f5\u56fd\u304b\u3089\u306f2\u56de\u7dcf\u88c1\u304c\u5c31\u4efb\u3057\u3066\u3044\u308b\u3002 \u521d\u4ee3\u00a0 \u4ecf \uff12\u4ee3\u00a0 \u30b9\u30a4\u30b9 \uff13\u4ee3\u00a0 \u8c6a \uff14\u4ee3\u00a0 \u82f1 \uff15\u4ee3\u00a0 \u862d \uff16\u4ee3\u00a0 \u7c73 \uff17\u4ee3\u00a0 \u4f0a&#8230;","author":"","article":{"thumbnailUrl":{"tnSmall1x1":"https:\/\/financialservicesblog.accenture.com\/wp-content\/uploads\/2022\/07\/11665.jpg","tnLarge1x1":"https:\/\/financialservicesblog.accenture.com\/wp-content\/uploads\/2022\/07\/11665-506x380.jpg","tn16x9":"https:\/\/financialservicesblog.accenture.com\/wp-content\/uploads\/2022\/07\/11665.jpg"}},"siteBranch":"blogs"}}; dataModel = {"enableLaunch":true,"page":{"pageInstanceId":"axfs:blogs:anti-money-laundering-and-new-technologies-part-1-fatfs-approach","version":"1.0","category":{"primaryCategory":"axfs"},"pageInfo":{"siteID":"axfs","siteBranch":"acn financial services blog","pageId":"axfs:blogs:anti-money-laundering-and-new-technologies-part-1-fatfs-approach","pageName":"axfs:blogs:anti-money-laundering-and-new-technologies-part-1-fatfs-approach","pageType":"","responsiveLayout":"lg","errorMessage":"","language":"en","country":"us","sitecoreTemplateName":"template not available - acn financial services blog","sitecorePublishDate":"publish date not available - acn financial services blog","author":""},"meta":{"contentTypeMeta":"m81","serviceMeta":"","industryMeta":"","contentFormatMeta":"","pageCategoryMeta":"","externalMarketingCampaignsMeta":"","appliedNowThemeMeta":""}},"product":null,"events":null,"component":[{"componentInfo":{"componentID":"","componentName":""}},{"componentInfo":{"componentID":"","componentName":""}}],"category":null,"user":{"loginStatus":"anon","visitorGroup":"client","accentureEmployeeType":"","candidateId":"","candidateType":"","guid":"","profileIndustry":"","profileSkill":"","socialIndustry":"","socialSkill":""},"privacy":null}; dataModel.page.pageInfo.responsiveLayout = window.getResponsiveLayout(); </script><script>
+        let setScript3Runs = 0;
+        let setScript3 = function () {
+            setScript3Runs++;
+            if (typeof _satellite !== "undefined" && typeof _satellite["_runScript3"] == "function") {
+                _satellite["_runScript3"](function (event, target, Promise) {
+                    function isDataModelReady() {
+                        // Wait for blogs
+                        if (document.location.href.indexOf("/blogs/") > -1 && dataModel.page.pageInfo.blogs) return true;
+                        // Wait for user
+                        return !!dataModel.user;
+                    }
+                });
+            } else {
+                if (typeof _satellite !== "undefined" && typeof _satellite["_runScript3"] !== "function") console.warn(' _satellite["_runScript3"] is not a function. ');
+                if (setScript3Runs <= 3) setTimeout(setScript3, 5000);
+            }
+        }; setScript3();
+    </script><script src="//assets.adobedtm.com/launch-EN664f8f34ad5946f8a0f7914005f717cf.min.js"></script><script type="text/plain" class="optanon-category-2">
+	var demandbaseCDC_script = document.createElement("script");
+	demandbaseCDC_script.type = "text/javascript";
+	demandbaseCDC_script.async = true;
+	demandbaseCDC_script.writeSecureCookies = true;
+	demandbaseCDC_script.src = "//api.demandbase.com/api/v2/ip.json?key=4RB1W8tybpJRLdkTK0TRQcWfhYutivBKD5dyciDa&callback=Dmdbase_CDC.callback";
+	document.getElementsByTagName("head")[0].appendChild(demandbaseCDC_script);
+	console.log("functional - demandbaseCDC_callback script added");
+</script><!-- WordPress Most Popular --><script type="text/javascript">/* <![CDATA[ */ jQuery.post("https://financialservicesblog.accenture.com/wp-admin/admin-ajax.php", { action: "wmp_update", id: 19108, token: "b204aa8d6a" }); /* ]]> */</script><!-- /WordPress Most Popular -->	<style>img#wpstats{display:none}</style>
+		<link rel="amphtml" href="https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach?amp"><link rel="icon" href="https://financialservicesblog.accenture.com/wp-content/uploads/2019/08/cropped-favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://financialservicesblog.accenture.com/wp-content/uploads/2019/08/cropped-favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://financialservicesblog.accenture.com/wp-content/uploads/2019/08/cropped-favicon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://financialservicesblog.accenture.com/wp-content/uploads/2019/08/cropped-favicon-270x270.png" />
+		<style type="text/css" id="wp-custom-css">
+			.entry-content a:not([disabled]) {
+	border-bottom: 1.5px solid;
+	cursor: pointer;
+}
+
+.jp #comments {
+	display: none;
+}
+
+.acc-nav-container .acc-nav .acc-nav-center ul.main-menu > li {
+	max-width: 20% !important;
+}		</style>
+		</head>
+	<body class="post-template-default single single-post postid-19108 single-format-standard enable-marketo anti-money-laundering-and-new-technologies-part-1-fatfs-approach sidebar-primary">
+		<!--[if IE]>
+			<div class="alert alert-warning">
+				You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.			</div>
+		<![endif]-->
+		<div class="acc-nav-container">
+    <div class="acc-status">
+        <!-- Popular title -->
+        <div class="popular-title">
+                            <h6>Popular</h6>
+                    </div>
+
+        <!-- Popular Items Ticker -->
+        <div class="popular-items">
+            <div class="ticker">
+                                        <h6><a href="https://financialservicesblog.accenture.com/predicting-the-insurance-industry-in-2025-adapting-to-change"
+                                 data-analytics-link-name="2025年の保険業界を占う～変化に対応する" data-analytics-module-name="axfs-header" data-analytics-component-name="axfs-header" data-analytics-template-zone="header" data-analytics-content-type="nav/paginate" data-analytics-link-type="nav/paginate" analytics-no-content-click="true" data-analytics-content-class="Content" data-analytics-engagement="">2025年の保険業界を占う～変化に対応する</a>
+                        </h6>
+                                            <h6><a href="https://financialservicesblog.accenture.com/predicting-the-banking-industry-in-2025-accelerating-structural-reforms"
+                                 data-analytics-link-name="2025年の銀行業界を占う～構造改革の加速" data-analytics-module-name="axfs-header" data-analytics-component-name="axfs-header" data-analytics-template-zone="header" data-analytics-content-type="nav/paginate" data-analytics-link-type="nav/paginate" analytics-no-content-click="true" data-analytics-content-class="Content" data-analytics-engagement="">2025年の銀行業界を占う～構造改革の加速</a>
+                        </h6>
+                                            <h6><a href="https://financialservicesblog.accenture.com/aflac-project-zero-is-a-company-wide-initiative-by-aflac-life-insurance-company-limited-to-rebuild-policy-administration-operations-from-scratch-what-is-aflac-project-zero-a-company-wide-initi"
+                                 data-analytics-link-name="保険契約管理業務をゼロベースで再構築。アフラック生命保険株式会社が全社横断で取組む「アフラック プロジェクトZERO」とは" data-analytics-module-name="axfs-header" data-analytics-component-name="axfs-header" data-analytics-template-zone="header" data-analytics-content-type="nav/paginate" data-analytics-link-type="nav/paginate" analytics-no-content-click="true" data-analytics-content-class="Content" data-analytics-engagement="">保険契約管理業務をゼロベースで再構築。アフラック生命保険株式会社が全社横断で取組む「アフラック プロジェクトZERO」とは</a>
+                        </h6>
+                                            <h6><a href="https://financialservicesblog.accenture.com/cost-reduction-without-sanctuary-to-transform-into-a-muscular-management-structure"
+                                 data-analytics-link-name="筋肉質な経営体質に転換するための、聖域なきコスト削減 – リバウンドしない仕組みづくりとカルチャー変革" data-analytics-module-name="axfs-header" data-analytics-component-name="axfs-header" data-analytics-template-zone="header" data-analytics-content-type="nav/paginate" data-analytics-link-type="nav/paginate" analytics-no-content-click="true" data-analytics-content-class="Content" data-analytics-engagement="">筋肉質な経営体質に転換するための、聖域なきコスト削減 – リバウンドしない仕組みづくりとカルチャー変革</a>
+                        </h6>
+                                            <h6><a href="https://financialservicesblog.accenture.com/2023-to-tell-a-fortune-on-insurance-industry-in-a-year-at-insurance-company-should-next-10-years-total"
+                                 data-analytics-link-name="2023年の保険業界を占う ～保険会社が見据えるべき今後の10年の計" data-analytics-module-name="axfs-header" data-analytics-component-name="axfs-header" data-analytics-template-zone="header" data-analytics-content-type="nav/paginate" data-analytics-link-type="nav/paginate" analytics-no-content-click="true" data-analytics-content-class="Content" data-analytics-engagement="">2023年の保険業界を占う ～保険会社が見据えるべき今後の10年の計</a>
+                        </h6>
+                                                </div>
+        </div>
+
+        <!-- Cookie Button -->
+        <div id="optanon-minimize-wrapper" class="optanon-toggle-display cookie-settings"
+             data-analytics-template-zone="consent manager" data-analytics-module-name="consent manager">
+            <a id="optanon-minimize-button" title="Cookie Settings" data-analytics-link-name="cookie settings"
+               data-analytics-content-type="cta" aria-label="Cookie Settings">Cookie Settings <i
+                    class="icon-settings"></i></a>
+        </div>
+
+        <!-- Blog Switcher -->
+        <div class="blog-switcher">
+            <h5>Financial Services Blog
+                                    &nbsp;&nbsp;&nbsp;
+                
+
+            </h5>
+        </div>
+
+    </div>
+    <!-- acc-status End -->
+
+    <!-- acc-nav Start -->
+    <div class="acc-nav">
+
+        <div class="acc-nav-item acc-nav-left">
+                        <a class="logo-link" href="https://financialservicesblog.accenture.com/jp"  data-analytics-link-name="Logo" data-analytics-module-name="axfs-header" data-analytics-component-name="axfs-header" data-analytics-template-zone="header" data-analytics-content-type="nav/paginate" data-analytics-link-type="nav/paginate" analytics-no-content-click="true" data-analytics-content-class="Content" data-analytics-engagement="">
+                <svg width="143" height="38" viewBox="0 0 143 38" version="1.1" xmlns="http://www.w3.org/2000/svg"><title>logo</title><g id="Accenture" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Home" transform="translate(-23 -60)"><g id="Group-6"><g id="logo" transform="translate(23 60)"><path d="M5.755 37.75c-2.947 0-5.397-1.495-5.397-4.785v-.19c0-4.007 3.487-5.32 7.751-5.32h2.04v-.777c0-1.615-.723-2.591-2.415-2.591a2.264 2.264 0 0 0-1.698.53c-.469.4-.75.973-.778 1.586H.898c.314-3.61 3.2-5.38 7.09-5.38 3.888 0 6.783 1.675 6.783 5.717v10.88h-4.49v-1.865a5.25 5.25 0 0 1-4.526 2.194zm4.36-5.752v-1.555H8.292c-2.258 0-3.418.622-3.418 2.082v.155c0 1.123.689 1.9 2.232 1.9 1.544 0 3.044-.898 3.044-2.625l-.035.043zm14.971 5.752c-4.552 0-7.848-2.799-7.848-8.3v-.216c0-5.501 3.488-8.42 7.848-8.42 3.732 0 6.81 1.865 7.185 6.123h-4.36c-.279-1.58-1.099-2.591-2.703-2.591-1.944 0-3.296 1.52-3.296 4.724v.5c0 3.3 1.195 4.785 3.331 4.785 1.57 0 2.73-1.148 2.982-2.919h4.177c-.28 3.67-2.825 6.314-7.281 6.314h-.035zm17.073 0c-4.552 0-7.848-2.799-7.848-8.3v-.216c0-5.501 3.488-8.42 7.848-8.42 3.732 0 6.81 1.865 7.185 6.123h-4.36c-.28-1.58-1.099-2.591-2.703-2.591-1.945 0-3.296 1.52-3.296 4.724v.5c0 3.3 1.195 4.785 3.33 4.785 1.57 0 2.73-1.148 2.983-2.919h4.177c-.28 3.67-2.817 6.314-7.281 6.314h-.035zm17.203 0c-4.743 0-7.97-2.799-7.97-8.205v-.31c0-5.442 3.419-8.421 7.848-8.421 4.081 0 7.5 2.271 7.5 7.643v1.96H56.074c.192 2.92 1.448 4.042 3.418 4.042a2.832 2.832 0 0 0 3.017-2.116h4.238c-.48 3.066-3.052 5.407-7.35 5.407h-.036zm-3.26-10.364h6.155c-.096-2.392-1.194-3.455-3.017-3.455-1.412.044-2.729.82-3.104 3.464l-.035-.01zm13.436-6.244h4.578v2.427a5.356 5.356 0 0 1 4.961-2.764c2.982 0 4.962 1.77 4.962 5.717v10.882h-4.587v-10.2c0-1.9-.785-2.737-2.45-2.737a2.76 2.76 0 0 0-2.149.844 2.704 2.704 0 0 0-.737 2.17v9.914h-4.578V21.142zm23.072-4.914v4.914h3.139v3.385h-3.14v7.713c0 1.209.568 1.77 1.631 1.77a3.984 3.984 0 0 0 1.596-.276v3.54a9.45 9.45 0 0 1-2.616.346c-3.575 0-5.231-1.615-5.231-4.914v-8.179H86.07v-3.385h1.997v-3.006l4.543-1.908zm20.404 21.167h-4.587v-2.392a5.013 5.013 0 0 1-4.77 2.738c-2.947 0-5.118-1.77-5.118-5.596V21.142h4.613v10.363c0 1.866.75 2.738 2.389 2.738a2.778 2.778 0 0 0 2.142-.85c.555-.58.826-1.37.744-2.164V21.142h4.587v16.253zm3.33-16.262h4.578v2.988c.738-2.036 2.747-3.342 4.927-3.204v4.474c-3.104 0-4.927.933-4.927 3.636v8.36h-4.578V21.133zm18.93 16.6c-4.743 0-7.97-2.799-7.97-8.205v-.311c0-5.441 3.419-8.42 7.848-8.42 4.081 0 7.5 2.27 7.5 7.643v1.96H131.97c.192 2.92 1.447 4.042 3.418 4.042a2.832 2.832 0 0 0 3.017-2.116h4.238c-.515 3.083-3.044 5.424-7.342 5.424l-.026-.018zm-3.26-10.364h6.155c-.096-2.393-1.194-3.455-3.017-3.455-1.42.06-2.737.838-3.112 3.48l-.027-.025z" id="Shape" fill="#000" fill-rule="nonzero"/><path id="Path" fill="#A100FF" d="M83.289 10.977l8.187-3.014-8.187-3.17V.596l14.03 5.596v3.455l-14.03 5.63z"/></g></g></g></g></svg>            </a>
+        </div>
+
+        <!-- acc-nav items -->
+        <div class="acc-nav-item acc-nav-center show-inline-desktop">
+            <ul id="menu-japanse-header" class="main-menu"><li id="menu-item-1230" class="data-global-header menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1230"><a href="https://financialservicesblog.accenture.com/" data-ps2id-api="true" data-analytics-link-name="金融サービスブログ" data-analytics-module-name="axfs-header" data-analytics-component-name="axfs-header" data-analytics-template-zone="header" data-analytics-content-type="nav/paginate" data-analytics-link-type="nav/paginate" analytics-no-content-click="true" data-analytics-content-class="Content">金融サービスブログ</a></li>
+<li id="menu-item-1247" class="data-global-header menu-item menu-item-type-post_type menu-item-object-page menu-item-1247"><a href="https://financialservicesblog.accenture.com/jp/meet-our-bloggers" data-ps2id-api="true" data-analytics-link-name="著者紹介" data-analytics-module-name="axfs-header" data-analytics-component-name="axfs-header" data-analytics-template-zone="header" data-analytics-content-type="nav/paginate" data-analytics-link-type="nav/paginate" analytics-no-content-click="true" data-analytics-content-class="Content">著者紹介</a></li>
+<li id="menu-item-3002" class="data-global-header menu-item menu-item-type-post_type menu-item-object-page menu-item-3002"><a href="https://financialservicesblog.accenture.com/jp/industry-thought-leader" data-ps2id-api="true" data-analytics-link-name="インダストリーソートリーダー(ITL)" data-analytics-module-name="axfs-header" data-analytics-component-name="axfs-header" data-analytics-template-zone="header" data-analytics-content-type="nav/paginate" data-analytics-link-type="nav/paginate" analytics-no-content-click="true" data-analytics-content-class="Content">インダストリーソートリーダー(ITL)</a></li>
+<li id="menu-item-1541" class="data-global-header menu-item menu-item-type-post_type menu-item-object-page menu-item-1541"><a href="https://financialservicesblog.accenture.com/jp/fs-webinar" data-ps2id-api="true" data-analytics-link-name="金融ウェビナー" data-analytics-module-name="axfs-header" data-analytics-component-name="axfs-header" data-analytics-template-zone="header" data-analytics-content-type="nav/paginate" data-analytics-link-type="nav/paginate" analytics-no-content-click="true" data-analytics-content-class="Content">金融ウェビナー</a></li>
+<li id="menu-item-15870" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15870"><a target="_blank" href="https://info.accenture.com/fs-jp-blog-subscription-center" data-ps2id-api="true" data-analytics-link-name="サブスクリプションする" data-analytics-module-name="axfs-header" data-analytics-component-name="axfs-header" data-analytics-template-zone="header" data-analytics-content-type="nav/paginate" data-analytics-link-type="nav/paginate" analytics-no-content-click="true" data-analytics-content-class="Content">サブスクリプションする</a></li>
+</ul>        </div>
+
+        <!-- acc-nav items -->
+        <div class="acc-nav-item acc-nav-center show-inline-mobile">
+            <div role="navigation" class="acc-dropdown"                 tabindex="1">
+                <div class="btn btn--dropdown no-arrow"><span class="icon-menu"></span></div>
+                <ul id="menu-japanse-header-1" class="acc-dropdown-list"><li class="data-global-header menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1230"><a href="https://financialservicesblog.accenture.com/" data-ps2id-api="true" data-analytics-link-name="金融サービスブログ" data-analytics-module-name="axfs-header" data-analytics-component-name="axfs-header" data-analytics-template-zone="header" data-analytics-content-type="nav/paginate" data-analytics-link-type="nav/paginate" analytics-no-content-click="true" data-analytics-content-class="Content">金融サービスブログ</a></li>
+<li class="data-global-header menu-item menu-item-type-post_type menu-item-object-page menu-item-1247"><a href="https://financialservicesblog.accenture.com/jp/meet-our-bloggers" data-ps2id-api="true" data-analytics-link-name="著者紹介" data-analytics-module-name="axfs-header" data-analytics-component-name="axfs-header" data-analytics-template-zone="header" data-analytics-content-type="nav/paginate" data-analytics-link-type="nav/paginate" analytics-no-content-click="true" data-analytics-content-class="Content">著者紹介</a></li>
+<li class="data-global-header menu-item menu-item-type-post_type menu-item-object-page menu-item-3002"><a href="https://financialservicesblog.accenture.com/jp/industry-thought-leader" data-ps2id-api="true" data-analytics-link-name="インダストリーソートリーダー(ITL)" data-analytics-module-name="axfs-header" data-analytics-component-name="axfs-header" data-analytics-template-zone="header" data-analytics-content-type="nav/paginate" data-analytics-link-type="nav/paginate" analytics-no-content-click="true" data-analytics-content-class="Content">インダストリーソートリーダー(ITL)</a></li>
+<li class="data-global-header menu-item menu-item-type-post_type menu-item-object-page menu-item-1541"><a href="https://financialservicesblog.accenture.com/jp/fs-webinar" data-ps2id-api="true" data-analytics-link-name="金融ウェビナー" data-analytics-module-name="axfs-header" data-analytics-component-name="axfs-header" data-analytics-template-zone="header" data-analytics-content-type="nav/paginate" data-analytics-link-type="nav/paginate" analytics-no-content-click="true" data-analytics-content-class="Content">金融ウェビナー</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15870"><a target="_blank" href="https://info.accenture.com/fs-jp-blog-subscription-center" data-ps2id-api="true" data-analytics-link-name="サブスクリプションする" data-analytics-module-name="axfs-header" data-analytics-component-name="axfs-header" data-analytics-template-zone="header" data-analytics-content-type="nav/paginate" data-analytics-link-type="nav/paginate" analytics-no-content-click="true" data-analytics-content-class="Content">サブスクリプションする</a></li>
+</ul>            </div>
+        </div>
+
+                    <div class="acc-nav-item acc-nav-search">
+                <div class="acc-header-search-toggle">
+                    <img src="https://financialservicesblog.accenture.com/wp-content/themes/accenturepress/dist/images/search.svg"
+                         alt="Search Toggle" />
+                </div>
+            </div>
+        
+
+        <!-- Language Switcher -->
+        
+    </div>
+    <!-- acc-nav End -->
+
+            <div class="acc-floating-search" id="acc-floating-search">
+            <div class="widget widget_acc-search"><div
+			
+			class="so-widget-acc-search so-widget-"
+			
+		><div class="acc-search-base">
+	<form role="search" method="get" class="search-form" action="https://financialservicesblog.accenture.com/">
+		<label for="s">
+            <span class="screen-reader-text hide">Search for:</span>
+            <!--<i class="icon-search"></i>-->
+            <span class="search-icon"></span>
+		</label>
+		<input type="search" class="search-field"
+				value="" name="s"
+				title="Search for:"				placeholder="このブログを検索"/>
+		<input type="submit" class="search-submit" value="Search &nbsp; >"  data-analytics-link-name="Search" data-analytics-module-name="axfs-search-form" data-analytics-component-name="axfs-search-form" data-analytics-template-zone="search-form" data-analytics-link-type="search" data-analytics-content-class="Content" data-analytics-engagement="1"/>
+					<input type="hidden" name="lang" value="ja_JP" />
+		</form>
+</div>
+</div></div>        </div>
+    
+</div>
+
+
+
+<div class="page-header has-image normal">
+    <img width="550" height="413" src="https://financialservicesblog.accenture.com/wp-content/uploads/2022/07/11665.jpg" class="attachment-header-size size-header-size wp-post-image" alt="" decoding="async" fetchpriority="high" srcset="https://financialservicesblog.accenture.com/wp-content/uploads/2022/07/11665.jpg 550w, https://financialservicesblog.accenture.com/wp-content/uploads/2022/07/11665-300x225.jpg 300w, https://financialservicesblog.accenture.com/wp-content/uploads/2022/07/11665-506x380.jpg 506w" sizes="(max-width: 550px) 85vw, 550px" />    <div class="overlay" style="background-color: rgba(0,0,0, 0.25)"></div>
+    <div class="page-header-content middle">
+        <h1>マネロン対策と新技術：第1回　FATFの取組み</h1>
+        
+<p class="entry-meta">
+	<span><time class="JA" datetime="2022-07-08T04:11:21+00:00"><span class="year">2022.</span><span class="month">07.</span><span class="day">08</span></time></span></p>
+    </div>
+</div>
+		<div class="wrap container" role="document">
+			<div class="content row">
+				<main class="main">
+						<article class="post-19108 post type-post status-publish format-standard has-post-thumbnail hentry category-143 tag-245 tag-237 tag-236 tag-216 tag-213 tag-207 series-4057">
+		<div class="entry-content">
+						<div class="series-block">
+				<h4 class="section-title"> Other parts of this series: </h4>
+				<ol>
+											<li class="disabled"><a disabled="disabled">マネロン対策と新技術：第1回　FATFの取組み</a>
+						</li>
+											<li class=""><a href="https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-2-fsa-and-mof" data-analytics-link-name="Series Navigation for マネロン対策と新技術：第２回　金融庁・財務省の取組み" data-analytics-module-name="axfs-series-block" data-analytics-component-name="axfs-series-block" data-analytics-template-zone="series-block" data-analytics-link-type="navigation" data-analytics-content-class="Content" data-analytics-engagement="1">マネロン対策と新技術：第２回　金融庁・財務省の取組み</a>
+						</li>
+									</ol>
+			</div>
+		<hr/>
+							<h2><span style="color: #a100ff;"><span style="color: #a100ff;">1.</span>「AML/CFTのDX」はFATFの最近2年間の目標だった</span></h2>
+<p><span style="color: #333333;">FATF（Financial Action Task Force：金融活動作業部会）</span>の総裁（<span>President</span>）は、就任時に任期中の目標を公表する。<span id="more-19108"></span><span>2020</span>年<span>7</span>月から<span>2</span>年の任期で総裁を務めたドイツ出身の<span>Pleyer</span>総裁は、就任時に下の表に示す<span>5</span>つの目標を掲げ、その１番目が「<span>AML/CFT</span>の<span>DX</span>（デジタル・トランスフォーメーション）」だった。</p>
+<table width="625">
+<tbody>
+<tr style="border-style: solid; border-color: #000000;">
+<td width="625">5つの目標</td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td width="625">　　<span>1</span>番目<span> AML/CFT</span>の<span>DX</span></td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td width="625">　　<span>2</span>番目 民族・人種関連動機のテロへの資金供与の阻止</td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td width="625">　　<span>3</span>番目<span> ML</span>と移民人身売買の阻止</td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td width="625">　　<span>4</span>番目 環境犯罪の阻止</td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; width: 625px; border-color: #000000;" width="625">　　<span>5</span>番目 不正な武器輸出の阻止</td>
+</tr>
+</tbody>
+</table>
+<p>出所：<span>FATF</span>「<span><a rel="noopener" href="http://www.fatf-gafi.org/publications/fatfgeneral/documents/objectives-2020-2022.html" target="_blank"  data-analytics-link-name="Objectives for the FATF during the German Presidency (2020-2022)" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="">Objectives for the FATF during the German Presidency (2020-2022)</a> </span>」、<span>2020</span>年<span>7</span>月<span>1</span>日公表。</p>
+<p>FATFは、<span>2020</span>年<span>7</span>月の時点で、上記の１番目の「<span>AML/CFT</span>の<span>DX</span>」について、以下の３つの施策を行うこととしていた。</p>
+<table style="width: 500px; height: 281px;">
+<tbody>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000; width: 500px; height: 50px;">施策<span>1</span>　民間部門と規制監督当局が<span>AML/CFT</span>施策をより効率的に遂行する目的で<span style="color: #c00000;"><strong>新技術の機会と課題</strong></span>を研究すること。</td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000; width: 500px; height: 50px;">施策<span>2</span>　<span style="color: #c00000;"><strong>法執行のための組織</strong></span>（警察等）が行う<span>ML/TF</span>の検知・捜査や、それらのリスクの理解をより効率的に進めるための<span style="color: #c00000;"><strong>新技術の利点と課題</strong></span>を研究すること。</td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000; width: 500px; height: 50px;">施策<span>3</span>　民間部門が<span style="color: #c00000;"><strong>テータ保護を確保しつつ</strong></span>人工知能（<span>AI</span>）やビッグデータ分析を<span>AML/CFT</span>のために活用し、<span style="color: #c00000;"><strong>規制をより効率的に遵守できるようになる</strong></span>ことへの支援を目指して、<span style="color: #c00000;"><strong>データ保存と分析の現状を把握</strong></span>すること。</td>
+</tr>
+</tbody>
+</table>
+<p>FATFは、これらのうち施策<span>1</span>と<span>3</span>については、<span>2021</span>年<span>7</span>月<span>1</span>日にその研究・検討の結果を本稿の２．で紹介する<span>2</span>つの報告書として公表した。また、施策３については、「情報共有とデータ保護」をテーマとする報告書の公表について<span>2022</span>年<span>6</span>月の総会で合意済であり、<span>7</span>月に同報告書を公表の予定である。</p>
+<p>施策２については、２つのフェーズに分けた取組みが行われた。まず、その第<span>1</span>フェーズは、各国<span>FIU</span>が集まる<span>Egmont</span>グループ（注<span>1</span>）と<span>FATF</span>の共同研究として進められ、第２フェーズは<span>FATF</span>単独の取組みとして実施された。施策２についての取組みは、本稿の３．で紹介する。</p>
+<p style="padding-left: 40px;">（注<span>1</span>）<span>FIU</span>、<span>Egmont</span>グループについては、参考２を参照。</p>
+<h4><span style="color: #0070c0;">参考１ FATF・FSRBs、FATFの総裁</span></h4>
+<p><span style="color: #0070c0;">FATFは「マネロン・テロ資金対策の国際基準（FATF勧告）を策定し、その履行状況について相互審査を行う多国間の枠組み」である。</span></p>
+<p><span style="color: #0070c0;">FATFの加盟先は39（37ヵ国・地域と2つの地域機関）である。FATFとは別に、FSRBs（注2）と呼ばれる9つの組織が世界の各地域に存在し（各FSRBにはFATF加盟国と非加盟国が所属）、FATF勧告をベースに相互審査を実施している。FATFと9つのFSRBsにより、FATF勧告は世界中で190余の国・地域に適用されている。</span></p>
+<p style="padding-left: 40px;"><span style="color: #0070c0;">（注2）FATF-style regional bodies、FATF型地域体。</span></p>
+<p><span style="color: #0070c0;">FATFは今から33年前の1989年に創設され、うち30年間は総裁任期が1年だったが、31年目となる2020年から総裁任期が2年に改められた。総裁は、加盟各国のAML/CFT関係当局者が就任するが、これまでのFATF総裁の出身国は次の表のとおりであり、ドイツは3回、フランス等7ヵ国からは2回総裁が就任している。</span></p>
+<table width="650">
+<tbody>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000;" width="118">初代  仏</td>
+<td style="border-style: solid; border-color: #000000;" width="145">２代  スイス</td>
+<td style="border-style: solid; border-color: #000000;" width="124">３代  豪</td>
+<td style="border-style: solid; border-color: #000000;" width="128">４代  英</td>
+<td style="border-style: solid; border-color: #000000;" width="135">５代  蘭</td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000;" width="118">６代  米</td>
+<td style="border-style: solid; border-color: #000000;" width="145">７代  伊</td>
+<td style="border-style: solid; border-color: #000000;" width="124">８代  ベルギー</td>
+<td style="border-style: solid; border-color: #000000;" width="128">９代  日</td>
+<td style="border-style: solid; border-color: #000000;" width="135"><span>10代  ﾎﾟﾙﾄｶﾞﾙ</span></td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000;" width="118"><span>11代  ｽﾍﾟｲﾝ</span></td>
+<td style="border-style: solid; border-color: #000000;" width="145"><span>12代  香港</span></td>
+<td style="border-style: solid; border-color: #000000;" width="124"><span>13代  独※</span></td>
+<td style="border-style: solid; border-color: #000000;" width="128"><span>14代  ｽｳｪｰﾃﾞﾝ</span></td>
+<td style="border-style: solid; border-color: #000000;" width="135"><span>15代  仏※</span></td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000;" width="118"><span>16代  南ア</span></td>
+<td style="border-style: solid; border-color: #000000;" width="145"><span>17代  加</span></td>
+<td style="border-style: solid; border-color: #000000;" width="124"><span>18代  英※</span></td>
+<td style="border-style: solid; border-color: #000000;" width="128"><span>19代  ブラジル</span></td>
+<td style="border-style: solid; border-color: #000000;" width="135"><span>20代  蘭※</span></td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000;" width="118"><span>21代  メキシコ</span></td>
+<td style="border-style: solid; border-color: #000000;" width="145"><span>22代  伊※</span></td>
+<td style="border-style: solid; border-color: #000000;" width="124"><span>23代  ﾉﾙｳｪｰ</span></td>
+<td style="border-style: solid; border-color: #000000;" width="128"><span>24代  ロシア</span></td>
+<td style="border-style: solid; border-color: #000000;" width="135"><span>25代 豪※</span></td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000;" width="118"><span>26代  韓国</span></td>
+<td style="border-style: solid; border-color: #000000;" width="145"><span>27代 ｽﾍﾟｲﾝ※</span></td>
+<td style="border-style: solid; border-color: #000000;" width="124"><span>28代  ｱﾙｾﾞﾝﾁﾝ</span></td>
+<td style="border-style: solid; border-color: #000000;" width="128"><span>29代  米※</span></td>
+<td style="border-style: solid; border-color: #000000;" width="135"><span>30代  中国</span></td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000;" width="118"><span>31代  独※※</span></td>
+<td style="border-style: solid; border-color: #000000;" width="145"><span>32代 ｼﾝｶﾞﾎﾟｰﾙ</span></td>
+<td style="border-style: solid; border-color: #000000;" colspan="3"></td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: #0070c0;">※印は2回目、※※（独のみ）は3回目。</span></p>
+<p><span style="color: #0070c0;">FATFの総裁は、その就任時に自らの任期中に取り組む目標を文書で公表する。2022年7月初に就任するシンガポール出身の総裁は、7月1日に目標を公表する予定である。</span></p>
+<p><span style="color: #0070c0;">FATFはその加盟国の地域構成等から、欧州主導で議論が進む傾向が強い。本部事務局は、パリのOECDの中にある。</span></p>
+<h4><strong><span style="color: #0070c0;">参考２ FIUとEgmontグループ</span></strong></h4>
+<p><span style="color: #0070c0;">各国にはFIU（Financial Intelligence Unit：資金情報機関）と呼ばれる政府機関が１つずつある。日本におけるFIUは「JAFIC（Japan Financial Intelligence Center、警察庁の犯罪収益移転防止対策室）」である。FIUは、MLやTFに関する情報を一元的に受理・分析し、捜査機関等に提供する。</span></p>
+<p><span style="color: #0070c0;">Egmontグループは、各国FIUが情報交換等を行う国際機関で、1995年４月に発足。その名称は発足時の会合の開催場所に由来。同グループには167ヵ国・地域が加盟（2022年2月末現在）。</span></p>
+<h2><span style="color: #a100ff;">2.「新技術」・「データプーリング」関連のFATF報告書</span></h2>
+<p>2021年<span>7</span>月<span>1</span>日付で<span>FATF</span>は以下の<span>(1)</span>、<span>(2)</span>の報告書を公表した。また、<span>2022</span>年<span>7</span>月に<span>(3)</span>に記す報告書を公表予定である。</p>
+<h4><span style="color: #a100ff;">(1)「新技術の機会と課題」（注3）</span></h4>
+<p style="padding-left: 40px;">（注<span>3</span>）<span>FATF</span>「<a rel="noopener" href="http://www.fatf-gafi.org/publications/digitaltransformation/documents/opportunities-challenges-new-technologies-for-aml-cft.html?hf=10&amp;b=0&amp;s=desc(fatf_releasedate)" target="_blank"  data-analytics-link-name="Opportunities and Challenges of New Technologies for AML/CFT" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement=""><span>Opportunities and Challenges of New Technologies for AML/CFT</span></a>」、<span>2021</span>年<span>7</span>月<span>1</span>日公表。</p>
+<p>この報告書は、「新技術の活用は、<span>AML/CFT</span>の実効性・効率性の向上に寄与し得る」という問題意識に立ち、①新技術の例、②期待される効果、③課題等について、各国における官民双方の事例を交えて、骨子以下のとおり紹介。</p>
+<p>①新技術の例：</p>
+<p style="padding-left: 40px;">AI（機械学習）、自然言語処理技術、分散型台帳技術等。</p>
+<p>②期待される効果：</p>
+<p style="padding-left: 40px;">リスク評価・管理の改善、大規模データ分析の迅速化・正確性向上、効率的な本人確認、コスト削減と人手が対処すべき業務の絞り込み、疑わしい取引の届出（<span>STR</span>）の質の改善等。</p>
+<p>③新技術活用のための課題：</p>
+<p style="padding-left: 40px;">規制上の課題、運用上の課題、意図せざる結果（例：プライバシー侵害）の回避、ソリューションの有効性評価と残余リスクへの対処。</p>
+<p>――　なお、新技術活用を後押しする取組として、わが国の金融庁がブロックチェーン技術の発展に取り組んでいる<span> BGIN</span>（<span>Blockchain Governance Initiative Network</span>）も紹介。</p>
+<p>本報告書の主な構成は、次のとおり。</p>
+<table style="border-style: solid; border-color: #000000; height: 221px;">
+<tbody>
+<tr style="height: 50px;">
+<td style="border-style: solid; border-color: #000000; width: 699.006px; height: 50px;"><span style="color: #333333;">第１章 はじめに<br />
+<span style="color: #333333;"></span>　　　 第１節 責任ある技術革新とDXへのFATFのコミットメント<br />
+<span style="color: #333333;"></span>　　　 第２節 本稿の範囲・方法論</span></td>
+</tr>
+<tr style="height: 50px;">
+<td style="border-style: solid; border-color: #000000; width: 699.006px; height: 50px;"><span style="color: #333333;">第２章 AML/CFTに関する新技術の活用： FATF基準のより効果的な実施に向けて<br />
+<span style="color: #333333;"></span>　　　 第１節 リスクベースアプローチの実施<br />
+<span style="color: #333333;"></span>　　　 第２節 金融包摂</span></td>
+</tr>
+<tr style="height: 50px;">
+<td style="border-style: solid; border-color: #000000; width: 699.006px; height: 50px;"><span style="color: #333333;">第３章 利点<br />
+<span style="color: #333333;"></span>　　　 第１節 AI<br />
+<span style="color: #333333;"></span>　　　 第２節 自然言語処理<br />
+<span style="color: #333333;"></span>　　　 第３節 分散台帳技術<br />
+<span style="color: #333333;"></span>　　　 第４節 顧客管理（CDD）についてのデジタルなソリューション<br />
+<span style="color: #333333;"></span>　　　 第５節 APIs</span></td>
+</tr>
+<tr style="height: 50px;">
+<td style="border-style: solid; border-color: #000000; width: 699.006px; height: 50px;"><span style="color: #333333;">第４章 課題<br />
+<span style="color: #333333;"></span>　　　 第１節 規制上の課題<br />
+<span style="color: #333333;"></span>　　　 第２節 運用上の課題<br />
+<span style="color: #333333;"></span>　　　 第３節 意図せざる結果（Unintended consequences）・濫用の危険性</span><span style="color: #333333;">（Potential for Abuse）<br />
+<span style="color: #333333;"></span>　　　 第４節 技術を活用したソリューションのAML/CFT効果の評価・残るリスクへの対応<br />
+</span></td>
+</tr>
+<tr style="height: 10px;">
+<td style="border-style: solid; border-color: #000000; width: 699.006px; height: 50px;"><span style="color: #333333;">第５章 新技術活用のための環境整備<br />
+<span style="color: #333333;"></span>　　　 第１節 規制監督当局の人々が技術に関して前向きであること</span><br />
+<span style="color: #333333;">　　　 第２節 結語</span></td>
+</tr>
+</tbody>
+</table>
+<h4><span style="color: #a100ff;">(2)「データプーリング・共同分析・データ保護」（注4）</span></h4>
+<p style="padding-left: 40px;">（注<span>4</span>）<span>FATF</span>「<a rel="noopener" href="https://www.fatf-gafi.org/publications/digitaltransformation/documents/data-pooling-collaborative-analytics-data-protection.html?hf=10&amp;b=0&amp;s=desc(fatf_releasedate)" target="_blank"  data-analytics-link-name="Stocktake on Data Pooling, Collaborative Analytics and Data Protection" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement=""><span>Stocktake on Data Pooling, Collaborative Analytics and Data Protection</span></a>」、<span>2021</span>年<span>7</span>月<span>1</span>日公表。</p>
+<p>この報告書は、「民間金融機関等の間での情報の共有は<span>AML/CFT </span>の実効性・効率性の向上に寄与し得るが、他方でデータ保護法制との整合性確保が必要」という問題意識に立ち、①データ共有目的、②共有対象データ、③有望技術、④課題等について、各国事例を交えて、骨子次のとおり紹介。</p>
+<p>①データ共有の目的：</p>
+<p style="padding-left: 40px;">取引モニタリング、リスク管理（継続的顧客管理を含む）、犯罪類型の特定、本人確認、実質的支配者の特定等。</p>
+<p>②対象データ（共有済・共有検討中）：</p>
+<p style="padding-left: 40px;">顧客情報（実質的支配者情報を含む）、レッドフラグ（当該金融機関が用いた疑わしい取引の参考事例）、取引履歴、口座情報、リスク指標（<span>STR </span>情報を含む）等。</p>
+<p>③データ共有・分析に有望な新技術：</p>
+<p style="padding-left: 40px;">暗号化技術、機械学習等。</p>
+<p>④課題：</p>
+<p style="padding-left: 40px;">データ・プライバシー保護法制との整合性確保、新技術の説明力・解釈可能性、データ品質・標準化、新技術の活用に関する規制要件の明確化、コスト、<span>STR </span>の機密性、市場構造や競争上の問題、<span>de-risking</span>（相手先を高リスクと見做して取引を回避すること）、セキュリティー、<span>AI </span>バイアス、人権保護等。</p>
+<p>――　なお、金融庁が支援した金融機関の<span> AML/CFT </span>対策システム共同利用を支援する<span>NEDO</span>の実証実験も紹介。</p>
+<p>本報告書の主な構成は、次のとおり。</p>
+<table>
+<tbody>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000;" width="568"><span style="color: #333333;">第１章 はじめに</span></td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000;" width="568"><span style="color: #333333;">第２章 方法論</span></td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000;" width="568"><span style="color: #333333;">第３章 背景</span></td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000;" width="568">第４章 民間部門によるAML/CFT情報についての共有・分析の目的と条件<br />
+<span style="color: #333333;">　　　</span>第１節 何故、情報共有が求められるのか<br />
+<span style="color: #333333;">　　　</span>第２節 「民民」の情報共有の取組みの目標として示されていること<br />
+<span style="color: #333333;">　　　</span>第３節 どのようなタイプのデータが共有可能か<br />
+<span style="color: #333333;">　　　</span>第４節 新技術活用の動機と条件</td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000;" width="568">第５章 AML/CFT情報について共有・分析を行う際の新技術<br />
+<span style="color: #333333;">　　　 </span>第１節 「民民」の情報共有についての新技術</td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000;" width="568">第６章 新技術をデータの共同分析に用いる場合の課題<br />
+<span style="color: #333333;">　　　 </span>第１節 データ保護・プライバシーの確保<br />
+<span style="color: #333333;">　　　 </span>第２節 データ品質<br />
+<span style="color: #333333;">　　　 </span>第３節 規制上の意味の明確性<br />
+<span style="color: #333333;">　　　 </span>第４節 説明・解釈可能性<br />
+<span style="color: #333333;">　　　 </span>第５節 疑わしい取引の届出の秘匿性確保・内報の禁止<br />
+<span style="color: #333333;">　　　 </span>第６節 市場の構造・競争<br />
+<span style="color: #333333;">　　　 </span>第７節 技術の費用・制約<br />
+<span style="color: #333333;">　　　 </span>第８節 防御的な届出提出・デリスキング<br />
+<span style="color: #333333;">　　　 </span>第９節 情報の安全性<br />
+<span style="color: #333333;">　　　 </span>第10節 AIに関する分析バイアスの回避<br />
+<span style="color: #333333;">　　　 第1 1節</span> 人権への配慮</td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000;" width="568">第７章 データの保存やより進んだ分析を可能とするために<br />
+<span style="color: #333333;">　　　</span>第１節 規制上の意味の明確性<br />
+<span style="color: #333333;">　　　</span>第２節 環境整備<br />
+<span style="color: #333333;">　　　</span>第３節 データの標準化・ガバナンスの確保<br />
+<span style="color: #333333;">　　　</span>第４節 AIに関する分析バイアスの防止</td>
+</tr>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000;" width="568">第８章 結語</td>
+</tr>
+</tbody>
+</table>
+<h4><span style="color: #a100ff;">(3)<span style="font-size: 1.125rem; font-weight: bold;">「情報共有とデータ保護」</span></span></h4>
+<p>FATFは<span>2022</span>年<span>6</span>月総会において、「情報共有とデータ保護」をテーマとする報告書の公表について合意済であり、<span>7</span>月に同報告書を公表の予定である（注<span>5</span>）。</p>
+<p style="padding-left: 40px;">（注<span>5</span>）<span>FATF</span>の<span>2022</span>年<span>6</span>月の概要については、<span>FATF</span>の<span>6</span>月<span>17</span>日<a rel="noopener" href="https://www.fatf-gafi.org/publications/fatfgeneral/documents/outcomes-fatf-plenary-june-2022.html" target="_blank"  data-analytics-link-name="公表資料" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="">公表資料</a>を参照。</p>
+<p>データを持ち寄って共同で分析すること等は、複数の金融機関にとって、金融犯罪の全体像の理解を助け、<span>ML</span>や<span>TF</span>のリスクを評価・低減することに役立つ。しかし、個人情報の収集はデータの保護・プライバシーに関する問題を生じる可能性がある。関連するデータやシステムは、データの保護・プライバシーに関連する原則に沿って管理されなければならない。</p>
+<p>FATFが<span>7</span>月に公表予定の報告書は、<span>FATF</span>や<span>FSRBs</span>の加盟国・地域の経験で得られた実践例や教訓を示す。そこには、各国のデータ保護・プライバシーに関する義務等を遵守しつつ、民間部門で情報共有が進展していることを示す。そうした記載は、今後民間部門における情報共有を進めようとする国々にとって参考になると考えられる。</p>
+<h2><span style="color: #a100ff;">3.法執行のための組織（警察等）の新技術の活用</span></h2>
+<p>本稿の１．に記した３つの施策のうち、施策２は、もっぱら法執行のための組織（警察等）の新技術の活用についての取組みである。</p>
+<p>この取組みの第１フェーズとして、<span>FATF</span>および<span>Egmont</span>グループは、「各国の法執行機関等は、違法な資金の流れの検出や阻止のために、さまざまなデジタルツールを活用する時代となっている」としてプロジェクトを進めた。</p>
+<p>そのプロジェクトは、新技術の活用によって法執行機関等の業務を強化する目的で、①適切なツールを見つける方法、②使用すべき時期、③<span>AML/CFT</span>の目的でそれらのツールを最適化する方法、④実践・運用上の課題を克服する方法について報告書を作成した（<span>2021</span>年<span>10</span>月）。</p>
+<p>FATFはさらに第２フェーズとして作業を継続し、法執行組織のための<span>DX</span>戦略の報告書を作成した（<span>2022</span>年<span>6</span>月）。</p>
+<p>FATFは、それぞれのフェーズの２つの報告書の完全版（<span>the full report</span>）は各国の当局によって共有したほか、民間部門もその趣旨を理解できるように、そのエッセンスを公開した（注<span>6</span>）。</p>
+<p style="padding-left: 40px;">（注<span>6</span>）<span>FATF</span>「<a rel="noopener" href="http://www.fatf-gafi.org/publications/digitaltransformation/digital-transformation-aml-cft.html?hf=10&amp;b=0&amp;s=desc(fatf_releasedate)" target="_blank"  data-analytics-link-name="Digital Transformation of AML/CFT for Operational Agencies" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement=""><span>Digital Transformation of AML/CFT for Operational Agencies</span></a>」<span>2021</span>年<span>10</span>月<span>27</span>日公表および<span>FATF</span>「<a rel="noopener" href="http://www.fatf-gafi.org/publications/digitaltransformation/digital-transformation-law-enforcement.html?hf=10&amp;b=0&amp;s=desc(fatf_releasedate)" target="_blank"  data-analytics-link-name="AML/CFT Digital Strategy for Law Enforcement Authorities" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement=""><span>AML/CFT Digital Strategy for Law Enforcement Authorities</span></a>」<span>2022</span>年<span>6</span>月<span>8</span>日公表。</p>
+<h2><span style="color: #a100ff;">4.FATF閣僚宣言</span></h2>
+<p>2022年の<span>4</span>月に開催された<span>FATF</span>の閣僚会合では、「閣僚宣言」が採択・公表された（注<span>7</span>）。</p>
+<p style="padding-left: 40px;">（注<span>7</span>）<span>FATF</span>「<a rel="noopener" href="https://www.fatf-gafi.org/media/fatf/documents/FATF-Ministerial-Declaration-April-2022.pdf" target="_blank"  data-analytics-link-name="Declaration of the Ministers of the FATF" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement=""><span>Declaration of the Ministers of the FATF</span></a>」、<span>2022</span>年<span>4</span>月<span>21</span>日公表。</p>
+<p>この宣言は、全<span>5</span>頁で<span>23</span>のパラグラフを持つが、そのうち「<span>DX</span>の活用」との小見出しをもつ第<span>21</span>・<span>22</span>パラグラフが、以下の枠内に仮訳するとおりのメッセージを示した。</p>
+<p>FATFの閣僚宣言は、新技術が、①金融取引に新たな<span>ML/TF</span>リスクを発現させることへの警戒と、②<span>AML/CFT</span>対応の実効性・効率性を向上させることへの期待の両方に言及している（注<span>8</span>）。</p>
+<table style="height: 39px;">
+<tbody>
+<tr style="border-style: solid; border-color: #000000;">
+<td style="border-style: solid; border-color: #000000; height: 39px; width: 699.006px;">DXの活用</p>
+<p>21.我々は責任あるイノベーションへのコミットメントを再確認する。FATFは、金融取引のデジタル化の進展に伴う新しいリスクの発現を監視し、行動してきた。仮想資産についてのFATFの作業の結果、仮想資産関連業を規制するための最初の包括的な基準を採択した。また、FATFは、民間部門、法執行部門、FIU等が疑わしい取引を検知し、資金の流れに関する情報を処理することについて、新しいツールやデータ分析がもたらす可能性に注目した。この作業は、革新的な技術はFATF基準の履行の実効性の向上に大きく資すると同時に、金融包摂の改善にも役立つことを示した。<br />
+22. DXが我々の経済社会を変えていく中で、FATFはランサムウェアやその他のサイバー犯罪の形を含む新しいリスクが今後も発現し続けること、また金融サービスに新しいデリバリーチャネルが生まれ続けることを予測する。また、FATFは、FATFやFSRBsの加盟国・地域が仮想資産やそのサービス提供業者に関連するFATF基準を効果的に履行できるようにする。同時に、FATFは世界の関係者たちが技術進歩の果実を、リスク管理・監督・捜査等の面で実現できるように支援を続ける。</td>
+</tr>
+</tbody>
+</table>
+<p style="padding-left: 40px;">（注<span>8</span>）なお、<span>2022</span>年<span>6</span>月<span>11</span>日には、「<span>DX</span>カンファランス」が<span>FATF</span>主催・官民の金融犯罪対策関係者<span>100</span>名以上が参加する形で開かれた。<span>2020</span>年<span>7</span>月以来<span>2</span>年間の<span>FATF Pleyer</span>総裁の「<span>AML/CFT</span>の<span>DX</span>」関連の一連の作業のひとまずの締めくくりとして位置づけられていた。詳しくは、<span>FATF</span>「<a rel="noopener" href="http://www.fatf-gafi.org/publications/digitaltransformation/conference-digital-transformation.html?hf=10&amp;b=0&amp;s=desc(fatf_releasedate)" target="_blank"  data-analytics-link-name="FATF Conference on Digital Transformation" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement=""><span>FATF Conference on Digital Transformation</span></a>」（<span>2022</span>年<span>6</span>月<span>13</span>日公表）を参照。</p>
+<h4><span style="color: #0070c0;">参考２ FATFとロシアの関係</span></h4>
+<p><span style="color: #0070c0;">ロシアのウクライナへの侵攻開始（2月24日）後、先進諸国による対ロシア金融・経済制裁が発動・強化された。</span></p>
+<p><span style="color: #0070c0;">そうした中で、「マネロン対策と新技術」の観点からは、例えば仮想資産等を使って、これらの制裁を回避する動きがあるのではないか、またはそうした動きを新技術で検知できるか、といったことが注目される。</span></p>
+<p><span style="color: #0070c0;">また、ロシアのウクライナへの侵攻については、「国連の安全保障理事会常任国であるロシアの拒否権」などによって、国際連合やG20などの機能の低下が注目されている。</span></p>
+<p><span style="color: #0070c0;">これらを背景として、「FATFとロシアの関係」にも注目が高まっている。FATFはテロ資金供与や大量破壊兵器拡散金融の阻止を目的とする国際的な組織だからである。</span></p>
+<p><span style="color: #0070c0;">この「FATFとロシアの関係」につき、FATFは３回にわたって文書を公表している（注9）。</span></p>
+<p style="padding-left: 40px;"><span style="color: #0070c0;">（注9）１回目は、「<a rel="noopener" href="https://www.fatf-gafi.org/publications/fatfgeneral/documents/ukraine-2022.html" target="_blank"  data-analytics-link-name="FATF Public Statement on the Situation in Ukraine" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="">FATF Public Statement on the Situation in Ukraine</a>」（2022年3月22日公表）。2回目は、「<a rel="noopener" href="https://www.fatf-gafi.org/media/fatf/documents/FATF-Ministerial-Declaration-April-2022.pdf" target="_blank"  data-analytics-link-name="FATF Ministers commit to take decisive action against money laundering, terrorist and proliferation financing" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="">FATF Ministers commit to take decisive action against money laundering, terrorist and proliferation financing</a>」(2022年4月21日公表、第4パラグラフ) 。3回目は、「<a rel="noopener" href="https://www.fatf-gafi.org/publications/fatfgeneral/documents/ukraine-june-2022.html" target="_blank"  data-analytics-link-name="FATF Statement on the Russian Federation" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="">FATF Statement on the Russian Federation</a>」（2022年6月17日公表）。</span></p>
+<p><span style="color: #0070c0;">これらのうち、最も新しい3回目の文書をみると、次の諸点が注目される。</span></p>
+<p style="padding-left: 40px;"><span style="color: #0070c0;">①表題を「ロシア連邦についてのステートメント」とし、ロシアを前面に出したこと。</span></p>
+<p style="padding-left: 40px;"><span style="color: #0070c0;">②「ロシアの行動はFATFの根本原理（core principles）に違背し、FATF加盟諸国が合意している国際協力・相互の尊重の約束への重大な違反でもある」と第１段落に明記したこと。</span></p>
+<p style="padding-left: 40px;"><span style="color: #0070c0;">③第2段落では、いったん「ロシアは2003年のFATF加盟以来、ユーラシア地域でのFATFネットワークの発展に貢献してきた」と一定の評価を示したうえで（注10）、「この侵攻を踏まえ、FATFはロシア連邦のFATFにおける役割・影響を厳しく制限することを決定した」としたこと（注11）。</span></p>
+<p style="padding-left: 80px;"><span style="color: #0070c0;">（注10）ユーラシア地域には、EAGというFSRBがあり、①ロシアのほか、②中国、③インド、④ベラルーシ、⑤カザフスタン、⑥キルギスタン、⑦タジスキタン、⑧トルクメニスタン、➈ウズベキスタンが加盟国である。<br />
+なお、FATFの24代総裁（2013-14年）はロシア出身だった（参考１に示した総裁の出身国の表を参照）。</span></p>
+<p style="padding-left: 80px;"><span style="color: #0070c0;">（注11）“as a result of the invasion, the FATF has decided to severely limit the Russian Federation’s role and influence within the FATF”</span></p>
+<p style="text-align: left; padding-left: 40px;"><span style="color: #0070c0;">④第3段落では、今後もFATFは状況を監視し、ロシアへの制限を撤回して良いか、修正すべきか等を検討するとしたこと。</span></p>
+			<div class="marketo-post-content"></div>
+		</div>
+		<footer>
+            			<div class="post-tags">
+				<a href="https://financialservicesblog.accenture.com/tag/%e3%82%bb%e3%82%ad%e3%83%a5%e3%83%aa%e3%83%86%e3%82%a3" rel="tag"  data-analytics-link-name="セキュリティ" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="">セキュリティ</a> <a href="https://financialservicesblog.accenture.com/tag/%e3%83%87%e3%82%b8%e3%82%bf%e3%83%ab%e5%a4%89%e9%9d%a9%e3%83%bb%e3%83%87%e3%82%b8%e3%82%bf%e3%83%ab%e3%83%88%e3%83%a9%e3%83%b3%e3%82%b9%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a1%e3%83%bc%e3%82%b7%e3%83%a7" rel="tag"  data-analytics-link-name="デジタル変革・デジタルトランスフォーメーション" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="">デジタル変革・デジタルトランスフォーメーション</a> <a href="https://financialservicesblog.accenture.com/tag/%e4%ba%8b%e4%be%8b" rel="tag"  data-analytics-link-name="事例" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="">事例</a> <a href="https://financialservicesblog.accenture.com/tag/%e4%bf%9d%e9%99%ba" rel="tag"  data-analytics-link-name="保険" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="">保険</a> <a href="https://financialservicesblog.accenture.com/tag/%e8%a8%bc%e5%88%b8" rel="tag"  data-analytics-link-name="証券" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="">証券</a> <a href="https://financialservicesblog.accenture.com/tag/%e9%8a%80%e8%a1%8c" rel="tag"  data-analytics-link-name="銀行" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="">銀行</a> 			</div>
+				<div class="post-sharing-buttons">
+		<div class="line-it-button" style="display: none;" data-lang="en" data-type="share-d" data-url="https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach"></div>
+		<!-- <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script> -->
+		<!-- <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="touch" data-hatena-bookmark-width="40" data-hatena-bookmark-height="40" title="マネロン対策と新技術：第1回　FATFの取組み">
+			<i class="icon-b-s icon-large" alt="このエントリーをはてなブックマークに追加"></i>
+		</a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script> -->
+		<a
+			target="_blank"
+			href="http://b.hatena.ne.jp/entry/https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach"
+			title="Share to Hatena"
+			 data-analytics-link-name="hatena" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="share intent" data-analytics-link-type="share intent" data-analytics-content-class="shareable content" data-analytics-engagement="">
+			<i class="icon-b-s icon-large"></i>
+		</a>
+		<a
+			target="_blank"
+			href="https://lineit.line.me/share/ui?url=https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach"
+			title="Share to Line"
+			 data-analytics-link-name="line" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="share intent" data-analytics-link-type="share intent" data-analytics-content-class="shareable content" data-analytics-engagement="">
+			<i class="icon-lineit icon-large"></i>
+		</a>
+		<a
+			target="_blank"
+			href="https://www.facebook.com/sharer/sharer.php?u=https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach"
+			title="Share to Facebook"
+			 data-analytics-link-name="facebook" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="share intent" data-analytics-link-type="share intent" data-analytics-content-class="shareable content" data-analytics-engagement="">
+			<i class="icon-facebook icon-large"></i>
+		</a>
+		<a
+			target="_blank"
+			href="https://www.linkedin.com/shareArticle?mini=true&url=https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach&title=%E3%83%9E%E3%83%8D%E3%83%AD%E3%83%B3%E5%AF%BE%E7%AD%96%E3%81%A8%E6%96%B0%E6%8A%80%E8%A1%93%EF%BC%9A%E7%AC%AC1%E5%9B%9E%E3%80%80FATF%E3%81%AE%E5%8F%96%E7%B5%84%E3%81%BF&source=Financial+Services+Blog"
+			title="Share to LinkedIn"
+			 data-analytics-link-name="linkedin" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="share intent" data-analytics-link-type="share intent" data-analytics-content-class="shareable content" data-analytics-engagement="">
+			<i class="icon-linkedin icon-large"></i>
+		</a>
+		<a
+			target="_blank"
+			href="https://twitter.com/intent/tweet?text=%E3%83%9E%E3%83%8D%E3%83%AD%E3%83%B3%E5%AF%BE%E7%AD%96%E3%81%A8%E6%96%B0%E6%8A%80%E8%A1%93%EF%BC%9A%E7%AC%AC1%E5%9B%9E%E3%80%80FATF%E3%81%AE%E5%8F%96%E7%B5%84%E3%81%BF%3A+https://financialservicesblog.accenture.com/?p=19108"
+			title="Share to Twitter"
+			 data-analytics-link-name="twitter" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="share intent" data-analytics-link-type="share intent" data-analytics-content-class="shareable content" data-analytics-engagement="">
+			<i class="icon-twitter icon-large"></i>
+		</a>
+		<a
+			target="_blank"
+			href="mailto:?subject=Financial Services Blog: マネロン対策と新技術：第1回　FATFの取組み&body=Financial Services Blog posted a new artice by: 水口 毅 マネロン対策と新技術：第1回　FATFの取組み https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach"
+			title="Share to Mail"
+			 data-analytics-link-name="mail" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="share intent" data-analytics-link-type="share intent" data-analytics-content-class="shareable content" data-analytics-engagement="">
+			<i class="icon-mail icon-large"></i>
+		</a>
+	</div>
+	<div class="post-sharing-links">
+		<a target="_blank" href="https://www.accenture.com/jp-ja/about/company/contact-us" title="Contact Us">
+			<span>お問い合わせ</span>
+		</a>
+	</div>
+
+			<div class="author-wrap"><div
+			
+			class="so-widget-acc-author-widget so-widget-acc-author-widget-style-d75171398898"
+			
+		>    			<div class="acc-author-widget-base">
+			<div class="acc-author-widget-content">
+				<a href="https://financialservicesblog.accenture.com/author/xfs-takeshi-mizuguchi" class="acc-author-widget-photo" style="background-image: url('https://financialservicesblog.accenture.com/wp-content/uploads/userphoto/432.jpg');"><img src="https://financialservicesblog.accenture.com/wp-content/uploads/userphoto/432.thumbnail.jpg" alt="水口 毅" width="85" height="100" class="photo" /></a>
+			<div class="acc-author-widget-info">
+				<h4>水口 毅</h4>
+				<p>金融サービス本部　顧問</p>
+				<div class="acc-author-widget-social-icons">
+										<a href="https://www.accenture.com/jp-ja/about/company/contact-us" target="_blank" title="View Author social profile for mail"
+             data-analytics-link-name="View Author social profile for" data-analytics-module-name="axfs-author-widget" data-analytics-component-name="axfs-author-widget" data-analytics-template-zone="author-widget" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1"><i class="icon-mail"></i></a>
+							</div>
+			<p><a class="acc-author-widget-link" href="https://financialservicesblog.accenture.com/author/xfs-takeshi-mizuguchi"
+           data-analytics-link-name="View Profile" data-analytics-module-name="axfs-author-widget" data-analytics-component-name="axfs-author-widget" data-analytics-template-zone="author-widget" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">View Profile</a></p>
+		</div>
+	</div>
+</div>
+</div></div><br/>		</footer>
+	</article>
+				</main><!-- /.main -->
+									<aside class="sidebar">
+						<div id="custom_html-7" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div id="subscribe-widget-test-target"></div></div></div><div class="clear"></div><div id="acc-author-widget-4" class="widget widget_acc-author-widget"><div
+			
+			class="so-widget-acc-author-widget so-widget-acc-author-widget-style-d75171398898"
+			
+		>    <h4 class="widget-title">著者</h4>			<div class="acc-author-widget-base">
+			<div class="acc-author-widget-content">
+				<a href="https://financialservicesblog.accenture.com/author/xfs-takeshi-mizuguchi" class="acc-author-widget-photo" style="background-image: url('https://financialservicesblog.accenture.com/wp-content/uploads/userphoto/432.jpg');"><img src="https://financialservicesblog.accenture.com/wp-content/uploads/userphoto/432.thumbnail.jpg" alt="水口 毅" width="85" height="100" class="photo" /></a>
+			<div class="acc-author-widget-info">
+				<h4>水口 毅</h4>
+				<p>金融サービス本部　顧問</p>
+				<div class="acc-author-widget-social-icons">
+										<a href="https://www.accenture.com/jp-ja/about/company/contact-us" target="_blank" title="View Author social profile for mail"
+             data-analytics-link-name="View Author social profile for" data-analytics-module-name="axfs-author-widget" data-analytics-component-name="axfs-author-widget" data-analytics-template-zone="author-widget" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1"><i class="icon-mail"></i></a>
+							</div>
+			<p><a class="acc-author-widget-link" href="https://financialservicesblog.accenture.com/author/xfs-takeshi-mizuguchi"
+           data-analytics-link-name="View Profile" data-analytics-module-name="axfs-author-widget" data-analytics-component-name="axfs-author-widget" data-analytics-template-zone="author-widget" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">View Profile</a></p>
+		</div>
+	</div>
+</div>
+</div></div><div class="clear"></div><div id="acc-popular-posts-4" class="widget widget_acc-popular-posts"><div
+			
+			class="so-widget-acc-popular-posts so-widget-acc-popular-posts-style-d75171398898"
+			
+		><h4 class="widget-title">人気の記事</h4>
+	<div class="acc-popular-posts-base">
+					<nav class="acc-popular-posts-tabs">
+				<a href="#" target="weekly" class="active"  data-analytics-link-name="Week" data-analytics-module-name="axfs-popular-posts" data-analytics-component-name="axfs-popular-posts" data-analytics-template-zone="popular-posts" data-analytics-link-type="navigation" data-analytics-content-class="Content" data-analytics-engagement="1">Week</a>
+				<a href="#" target="monthly"  data-analytics-link-name="Month" data-analytics-module-name="axfs-popular-posts" data-analytics-component-name="axfs-popular-posts" data-analytics-template-zone="popular-posts" data-analytics-link-type="navigation" data-analytics-content-class="Content" data-analytics-engagement="1">Month</a>
+				<a href="#" target="all_time"  data-analytics-link-name="All Time" data-analytics-module-name="axfs-popular-posts" data-analytics-component-name="axfs-popular-posts" data-analytics-template-zone="popular-posts" data-analytics-link-type="navigation" data-analytics-content-class="Content" data-analytics-engagement="1">All Time</a>
+			</nav>
+					<div id="weekly" class="acc-popular-posts-tab active">
+											<a class="acc-popular-posts-post" href="https://financialservicesblog.accenture.com/?post_type=post&p=22943"
+                 data-analytics-link-name="2025年の保険業界を占う～変化に対応する" data-analytics-module-name="axfs-popular-posts" data-analytics-component-name="axfs-popular-posts" data-analytics-template-zone="popular-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">
+								<div class="acc-popular-posts-imgwrap" style="background-image:url(https://financialservicesblog.accenture.com/wp-content/uploads/2025/01/519472146-150x150.jpg)"></div>
+								<div class="acc-popular-posts-txtwrap">
+									<span><b>2025年の保険業界を占う～変化に対応する</b></span>
+																		<span class="views"><small>66 Views</small></span>
+																	</div>
+							</a>
+														<a class="acc-popular-posts-post" href="https://financialservicesblog.accenture.com/?post_type=post&p=22929"
+                 data-analytics-link-name="2025年の銀行業界を占う～構造改革の加速" data-analytics-module-name="axfs-popular-posts" data-analytics-component-name="axfs-popular-posts" data-analytics-template-zone="popular-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">
+								<div class="acc-popular-posts-imgwrap" style="background-image:url(https://financialservicesblog.accenture.com/wp-content/uploads/2025/01/697005500-150x150.jpg)"></div>
+								<div class="acc-popular-posts-txtwrap">
+									<span><b>2025年の銀行業界を占う～構造改革の加速</b></span>
+																		<span class="views"><small>60 Views</small></span>
+																	</div>
+							</a>
+														<a class="acc-popular-posts-post" href="https://financialservicesblog.accenture.com/?post_type=post&p=22574"
+                 data-analytics-link-name="保険契約管理業務をゼロベースで再構築。アフラック生命保険株式会社が全社横断で取組む「アフラック プロジェクトZERO」とは" data-analytics-module-name="axfs-popular-posts" data-analytics-component-name="axfs-popular-posts" data-analytics-template-zone="popular-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">
+								<div class="acc-popular-posts-imgwrap" style="background-image:url(https://financialservicesblog.accenture.com/wp-content/uploads/2024/07/176624891-150x150.jpg)"></div>
+								<div class="acc-popular-posts-txtwrap">
+									<span><b>保険契約管理業務をゼロベースで再構築。アフラック生命保険株式会社が全社横断で取組む「アフラック プロジェクトZERO」とは</b></span>
+																		<span class="views"><small>58 Views</small></span>
+																	</div>
+							</a>
+													</div>
+						<div id="monthly" class="acc-popular-posts-tab  ">
+											<a class="acc-popular-posts-post" href="https://financialservicesblog.accenture.com/?post_type=post&p=22943"
+                 data-analytics-link-name="2025年の保険業界を占う～変化に対応する" data-analytics-module-name="axfs-popular-posts" data-analytics-component-name="axfs-popular-posts" data-analytics-template-zone="popular-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">
+								<div class="acc-popular-posts-imgwrap" style="background-image:url(https://financialservicesblog.accenture.com/wp-content/uploads/2025/01/519472146-150x150.jpg)"></div>
+								<div class="acc-popular-posts-txtwrap">
+									<span><b>2025年の保険業界を占う～変化に対応する</b></span>
+																		<span class="views"><small>386 Views</small></span>
+																	</div>
+							</a>
+														<a class="acc-popular-posts-post" href="https://financialservicesblog.accenture.com/?post_type=post&p=22962"
+                 data-analytics-link-name="ニュースリリース：アクセンチュア、生成AIなどの先端技術を活用し、明治安田の全社横断的なDXに伴走" data-analytics-module-name="axfs-popular-posts" data-analytics-component-name="axfs-popular-posts" data-analytics-template-zone="popular-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">
+								<div class="acc-popular-posts-imgwrap" style="background-image:url(https://financialservicesblog.accenture.com/wp-content/uploads/2025/01/1255859412-1-150x150.jpg)"></div>
+								<div class="acc-popular-posts-txtwrap">
+									<span><b>ニュースリリース：アクセンチュア、生成AIなどの先端技術を活用し、明治安田の全社横断的なDXに伴走</b></span>
+																		<span class="views"><small>383 Views</small></span>
+																	</div>
+							</a>
+														<a class="acc-popular-posts-post" href="https://financialservicesblog.accenture.com/?post_type=post&p=22929"
+                 data-analytics-link-name="2025年の銀行業界を占う～構造改革の加速" data-analytics-module-name="axfs-popular-posts" data-analytics-component-name="axfs-popular-posts" data-analytics-template-zone="popular-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">
+								<div class="acc-popular-posts-imgwrap" style="background-image:url(https://financialservicesblog.accenture.com/wp-content/uploads/2025/01/697005500-150x150.jpg)"></div>
+								<div class="acc-popular-posts-txtwrap">
+									<span><b>2025年の銀行業界を占う～構造改革の加速</b></span>
+																		<span class="views"><small>306 Views</small></span>
+																	</div>
+							</a>
+													</div>
+						<div id="all_time" class="acc-popular-posts-tab  ">
+											<a class="acc-popular-posts-post" href="https://financialservicesblog.accenture.com/?post_type=post&p=3627"
+                 data-analytics-link-name="銀行がとり得るこれからの新しいビジネスモデル ～オープンバンキングの隆盛" data-analytics-module-name="axfs-popular-posts" data-analytics-component-name="axfs-popular-posts" data-analytics-template-zone="popular-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">
+								<div class="acc-popular-posts-imgwrap" style="background-image:url(https://financialservicesblog.accenture.com/wp-content/uploads/2019/08/art-bubble-clean-221189-150x150.jpg)"></div>
+								<div class="acc-popular-posts-txtwrap">
+									<span><b>銀行がとり得るこれからの新しいビジネスモデル ～オープンバンキングの隆盛</b></span>
+																		<span class="views"><small>19334 Views</small></span>
+																	</div>
+							</a>
+														<a class="acc-popular-posts-post" href="https://financialservicesblog.accenture.com/?post_type=post&p=21011"
+                 data-analytics-link-name="2023年の保険業界を占う ～保険会社が見据えるべき今後の10年の計" data-analytics-module-name="axfs-popular-posts" data-analytics-component-name="axfs-popular-posts" data-analytics-template-zone="popular-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">
+								<div class="acc-popular-posts-imgwrap" style="background-image:url(https://financialservicesblog.accenture.com/wp-content/uploads/2023/02/保険-150x150.jpg)"></div>
+								<div class="acc-popular-posts-txtwrap">
+									<span><b>2023年の保険業界を占う ～保険会社が見据えるべき今後の10年の計</b></span>
+																		<span class="views"><small>13569 Views</small></span>
+																	</div>
+							</a>
+														<a class="acc-popular-posts-post" href="https://financialservicesblog.accenture.com/?post_type=post&p=1478"
+                 data-analytics-link-name="経営リスクとしてのAML/CFT対応 ～FATF第4次審査を視野に入れて" data-analytics-module-name="axfs-popular-posts" data-analytics-component-name="axfs-popular-posts" data-analytics-template-zone="popular-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">
+								<div class="acc-popular-posts-imgwrap" style="background-image:url(https://financialservicesblog.accenture.com/wp-content/uploads/2018/05/Canva-Money-Laundering-Crime-Fighting-Crime-Prevention-150x150.jpg)"></div>
+								<div class="acc-popular-posts-txtwrap">
+									<span><b>経営リスクとしてのAML/CFT対応 ～FATF第4次審査を視野に入れて</b></span>
+																		<span class="views"><small>10456 Views</small></span>
+																	</div>
+							</a>
+													</div>
+							</div>
+		</div></div><div class="clear"></div><div id="custom_html-2" class="widget_text widget widget_custom_html"><h4 class="widget-title">関連リンク</h4><div class="textwidget custom-html-widget"><a href="https://www.accenture.com/jp-ja/financial-service-index" target="_blank"  data-analytics-link-name="金融サービス本部ご案内ページ" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="">金融サービス本部ご案内ページ</a><br/>
+<br/>
+<a href="https://www.accenture.com/jp-ja/careers/experienced-campaign-all" target="_blank"  data-analytics-link-name="金融サービス本部採用" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="cta" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="">金融サービス本部採用</a></div></div><div class="clear"></div><div id="xili_tidy_tags_cloud_widget-2" class="widget xili_tdtc_widget"><h4 class="widget-title">タグ</h4><div class="xilitidytagscloud"><a href="https://financialservicesblog.accenture.com/tag/%e3%82%a6%e3%82%a7%e3%83%93%e3%83%8a%e3%83%bc" class="tag-cloud-link tag-link-195 tag-link-position-1" style="font-size: 14.406779661017pt;" aria-label="ウェビナー (52 items)"  data-analytics-link-name="ウェビナー" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">ウェビナー</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e3%82%a8%e3%82%b3%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%83%bb%e3%83%97%e3%83%a9%e3%83%83%e3%83%88%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a0" class="tag-cloud-link tag-link-243 tag-link-position-2" style="font-size: 13.457627118644pt;" aria-label="エコシステム・プラットフォーム (43 items)"  data-analytics-link-name="エコシステム・プラットフォーム" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">エコシステム・プラットフォーム</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e3%82%b0%e3%83%ad%e3%83%bc%e3%83%90%e3%83%aa%e3%82%bc%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%83%bb%e6%b5%b7%e5%a4%96%e5%b1%95%e9%96%8b" class="tag-cloud-link tag-link-240 tag-link-position-3" style="font-size: 8pt;" aria-label="グローバリゼーション・海外展開 (14 items)"  data-analytics-link-name="グローバリゼーション・海外展開" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">グローバリゼーション・海外展開</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e3%82%b3%e3%82%b9%e3%83%88%e5%89%8a%e6%b8%9b" class="tag-cloud-link tag-link-164 tag-link-position-4" style="font-size: 12.983050847458pt;" aria-label="コスト削減 (39 items)"  data-analytics-link-name="コスト削減" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">コスト削減</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e3%82%bb%e3%82%ad%e3%83%a5%e3%83%aa%e3%83%86%e3%82%a3" class="tag-cloud-link tag-link-245 tag-link-position-5" style="font-size: 9.4237288135593pt;" aria-label="セキュリティ (19 items)"  data-analytics-link-name="セキュリティ" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">セキュリティ</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e3%83%87%e3%82%b8%e3%82%bf%e3%83%ab%e5%a4%89%e9%9d%a9%e3%83%bb%e3%83%87%e3%82%b8%e3%82%bf%e3%83%ab%e3%83%88%e3%83%a9%e3%83%b3%e3%82%b9%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a1%e3%83%bc%e3%82%b7%e3%83%a7" class="tag-cloud-link tag-link-237 tag-link-position-6" style="font-size: 21.28813559322pt;" aria-label="デジタル変革・デジタルトランスフォーメーション (198 items)"  data-analytics-link-name="デジタル変革・デジタルトランスフォーメーション" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">デジタル変革・デジタルトランスフォーメーション</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e3%83%95%e3%82%a3%e3%83%b3%e3%83%86%e3%83%83%e3%82%af" class="tag-cloud-link tag-link-186 tag-link-position-7" style="font-size: 11.322033898305pt;" aria-label="フィンテック (28 items)"  data-analytics-link-name="フィンテック" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">フィンテック</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e3%83%96%e3%83%ad%e3%83%83%e3%82%af%e3%83%81%e3%82%a7%e3%83%bc%e3%83%b3" class="tag-cloud-link tag-link-191 tag-link-position-8" style="font-size: 8.5932203389831pt;" aria-label="ブロックチェーン (16 items)"  data-analytics-link-name="ブロックチェーン" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">ブロックチェーン</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e3%83%a2%e3%83%80%e3%83%8a%e3%82%a4%e3%82%bc%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3" class="tag-cloud-link tag-link-246 tag-link-position-9" style="font-size: 8.5932203389831pt;" aria-label="モダナイゼーション (16 items)"  data-analytics-link-name="モダナイゼーション" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">モダナイゼーション</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e4%ba%8b%e4%be%8b" class="tag-cloud-link tag-link-236 tag-link-position-10" style="font-size: 17.372881355932pt;" aria-label="事例 (93 items)"  data-analytics-link-name="事例" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">事例</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e4%bf%9d%e9%99%ba" class="tag-cloud-link tag-link-216 tag-link-position-11" style="font-size: 22pt;" aria-label="保険 (227 items)"  data-analytics-link-name="保険" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">保険</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e8%a6%8f%e5%88%b6%e5%af%be%e5%bf%9c%e3%83%bb%e3%83%aa%e3%82%b9%e3%82%af%e7%ae%a1%e7%90%86" class="tag-cloud-link tag-link-241 tag-link-position-12" style="font-size: 11.322033898305pt;" aria-label="規制対応・リスク管理 (28 items)"  data-analytics-link-name="規制対応・リスク管理" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">規制対応・リスク管理</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e8%a8%bc%e5%88%b8" class="tag-cloud-link tag-link-213 tag-link-position-13" style="font-size: 20.932203389831pt;" aria-label="証券 (184 items)"  data-analytics-link-name="証券" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">証券</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e9%8a%80%e8%a1%8c" class="tag-cloud-link tag-link-207 tag-link-position-14" style="font-size: 21.762711864407pt;" aria-label="銀行 (220 items)"  data-analytics-link-name="銀行" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">銀行</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e9%a1%a7%e5%ae%a2%e4%bd%93%e9%a8%93%e3%83%bb%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%9e%e3%83%bc%e3%82%a8%e3%82%af%e3%82%b9%e3%83%9a%e3%83%aa%e3%82%a8%e3%83%b3%e3%82%b9" class="tag-cloud-link tag-link-242 tag-link-position-15" style="font-size: 17.254237288136pt;" aria-label="顧客体験・カスタマーエクスペリエンス (91 items)"  data-analytics-link-name="顧客体験・カスタマーエクスペリエンス" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">顧客体験・カスタマーエクスペリエンス</a></div></div><div class="clear"></div><div id="search-2" class="widget widget_search"><h4 class="widget-title">捜索</h4><form role="search" method="get" class="search-form" action="https://financialservicesblog.accenture.com/">
+		<label for="s">
+            <span class="screen-reader-text hide">Search for:</span>
+            <!--<i class="icon-search"></i>-->
+            <span class="search-icon"></span>
+		</label>
+		<input type="search" class="search-field"
+				value="" name="s"
+				title="Search for:"				placeholder="このブログを検索"/>
+		<input type="submit" class="search-submit" value="Search &nbsp; >"  data-analytics-link-name="Search" data-analytics-module-name="axfs-search-form" data-analytics-component-name="axfs-search-form" data-analytics-template-zone="search-form" data-analytics-link-type="search" data-analytics-content-class="Content" data-analytics-engagement="1"/>
+					<input type="hidden" name="lang" value="ja_JP" />
+		</form>
+</div><div class="clear"></div><div id="custom_html-8" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div id="subscribe-widget-test-target"></div></div></div><div class="clear"></div>					</aside><!-- /.sidebar -->
+							</div><!-- /.content -->
+		</div><!-- /.wrap -->
+		
+<section id="comments" class="comments container-fluid">
+		<div class="container"></div>
+</section>
+                    <div id="related-posts-section">
+                <div class="widget widget_acc-posts-carousel"><div
+			
+			class="so-widget-acc-posts-carousel so-widget-acc-posts-carousel-style-d75171398898"
+			
+		>	<div class="acc-posts-carousel-base  has-nav">
+			<div class="acc-posts-carousel-heading">
+					<h1>Related Posts</h1>
+			</div>
+			<div class="acc-posts-carousel-wrapper" data-slick='{ "slidesToScroll": 1, "slidesToShow": 3, "autoplay": false, "autoplaySpeed": 4000, "speed": 400, "dots": true, "arrows": false, "responsive": [{ "breakpoint": 1439, "settings": { "slidesToShow": 3, "infinite": true } }, { "breakpoint": 992, "settings": { "slidesToShow": 2 } }, { "breakpoint": 768, "settings": { "slidesToShow": 1 } }, { "breakpoint": 576, "settings": { "slidesToShow": 1, "dots": false } }] }'>
+							<article class="acc-posts-carousel-block masonry-item dark largertext ">
+<img class="bg-image" data-lazy="https://financialservicesblog.accenture.com/wp-content/uploads/2025/01/1255859412-1-570x380.jpg" alt="Background Image"/>
+	<div class="acc-posts-carousel-inner inner">
+		<div class="masonry-date-category">
+							<div class="date">
+					<time class="JA" datetime="2025-01-29T05:03:29+00:00"><span class="year">2025.</span><span class="month">01.</span><span class="day">29</span></time>				</div>
+										<div class="category">
+											<h5>ニュースリリース</h5>
+									</div>
+					</div>
+		<div class="masonry-content">
+							<h6 class="author">By <a title="アクセンチュア" href="https://financialservicesblog.accenture.com/author/xfs-japan"  data-analytics-link-name="アクセンチュア" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">アクセンチュア</a>				</h6>
+			<h3><a class=""  href="https://financialservicesblog.accenture.com/news-release-accenture-uses-generative-ai-and-other-cutting-edge-technologies-to-support-meiji-yasudas-company-wide-digital-transformation" target="_self" title="ニュースリリース：アクセンチュア、生成AIなどの先端技術を活用し、明治安田の全社横断的なDXに伴走"  data-analytics-link-name="ニュースリリース：アクセンチュア、生成AIなどの先端技術を活用し、明治安田の全社横断的なDXに伴走" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">ニュースリリース：アクセンチュア、生成AIなどの先端技術を活用し、明治安田の全社横断的なDXに伴走</a></h3>
+				<a class="read-more "  href="https://financialservicesblog.accenture.com/news-release-accenture-uses-generative-ai-and-other-cutting-edge-technologies-to-support-meiji-yasudas-company-wide-digital-transformation" target="_blank"  data-analytics-link-name="ニュースリリース：アクセンチュア、生成AIなどの先端技術を活用し、明治安田の全社横断的なDXに伴走" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">Read more</a>
+										<span class="views">383 Views</span>
+					</div>
+		<div class="clearfix"></div>
+	</div>
+	</article>
+<article class="acc-posts-carousel-block masonry-item dark largertext ">
+<img class="bg-image" data-lazy="https://financialservicesblog.accenture.com/wp-content/uploads/2025/01/519472146-570x380.jpg" alt="Background Image"/>
+	<div class="acc-posts-carousel-inner inner">
+		<div class="masonry-date-category">
+							<div class="date">
+					<time class="JA" datetime="2025-01-16T00:09:05+00:00"><span class="year">2025.</span><span class="month">01.</span><span class="day">16</span></time>				</div>
+										<div class="category">
+											<h5>FSアーキテクト</h5>
+									</div>
+					</div>
+		<div class="masonry-content">
+							<h6 class="author">By <a title="林 岳郎" href="https://financialservicesblog.accenture.com/author/xfs-takero-hayashi"  data-analytics-link-name="林 岳郎" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">林 岳郎</a>				</h6>
+			<h3><a class=""  href="https://financialservicesblog.accenture.com/predicting-the-insurance-industry-in-2025-adapting-to-change" target="_self" title="2025年の保険業界を占う～変化に対応する"  data-analytics-link-name="2025年の保険業界を占う～変化に対応する" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">2025年の保険業界を占う～変化に対応する</a></h3>
+				<a class="read-more "  href="https://financialservicesblog.accenture.com/predicting-the-insurance-industry-in-2025-adapting-to-change" target="_blank"  data-analytics-link-name="2025年の保険業界を占う～変化に対応する" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">Read more</a>
+										<span class="views">474 Views</span>
+					</div>
+		<div class="clearfix"></div>
+	</div>
+	</article>
+<article class="acc-posts-carousel-block masonry-item dark largertext ">
+<img class="bg-image" data-lazy="https://financialservicesblog.accenture.com/wp-content/uploads/2025/01/1196626729-570x380.jpg" alt="Background Image"/>
+	<div class="acc-posts-carousel-inner inner">
+		<div class="masonry-date-category">
+							<div class="date">
+					<time class="JA" datetime="2025-01-16T00:07:50+00:00"><span class="year">2025.</span><span class="month">01.</span><span class="day">16</span></time>				</div>
+										<div class="category">
+											<h5>FSアーキテクト</h5>
+									</div>
+					</div>
+		<div class="masonry-content">
+							<h6 class="author">By <a title="早川 逸平" href="https://financialservicesblog.accenture.com/author/xfs-ippei-hayakawa"  data-analytics-link-name="早川 逸平" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">早川 逸平</a>				</h6>
+			<h3><a class=""  href="https://financialservicesblog.accenture.com/predicting-the-securities-industry-in-2025-approaches-to-fundamental-reform-of-the-asset-management-industry" target="_self" title="2025年の証券業界を占う～資産管理業界の抜本的な改革に向けたアプローチ"  data-analytics-link-name="2025年の証券業界を占う～資産管理業界の抜本的な改革に向けたアプローチ" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">2025年の証券業界を占う～資産管理業界の抜本的な改革に向けたアプローチ</a></h3>
+				<a class="read-more "  href="https://financialservicesblog.accenture.com/predicting-the-securities-industry-in-2025-approaches-to-fundamental-reform-of-the-asset-management-industry" target="_blank"  data-analytics-link-name="2025年の証券業界を占う～資産管理業界の抜本的な改革に向けたアプローチ" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">Read more</a>
+										<span class="views">188 Views</span>
+					</div>
+		<div class="clearfix"></div>
+	</div>
+	</article>
+<article class="acc-posts-carousel-block masonry-item dark largertext ">
+<img class="bg-image" data-lazy="https://financialservicesblog.accenture.com/wp-content/uploads/2025/01/697005500-569x380.jpg" alt="Background Image"/>
+	<div class="acc-posts-carousel-inner inner">
+		<div class="masonry-date-category">
+							<div class="date">
+					<time class="JA" datetime="2025-01-16T00:06:48+00:00"><span class="year">2025.</span><span class="month">01.</span><span class="day">16</span></time>				</div>
+										<div class="category">
+											<h5>FSアーキテクト</h5>
+									</div>
+					</div>
+		<div class="masonry-content">
+							<h6 class="author">By <a title="宮良 浩二" href="https://financialservicesblog.accenture.com/author/xfx-koji-miyara"  data-analytics-link-name="宮良 浩二" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">宮良 浩二</a>				</h6>
+			<h3><a class=""  href="https://financialservicesblog.accenture.com/predicting-the-banking-industry-in-2025-accelerating-structural-reforms" target="_self" title="2025年の銀行業界を占う～構造改革の加速"  data-analytics-link-name="2025年の銀行業界を占う～構造改革の加速" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">2025年の銀行業界を占う～構造改革の加速</a></h3>
+				<a class="read-more "  href="https://financialservicesblog.accenture.com/predicting-the-banking-industry-in-2025-accelerating-structural-reforms" target="_blank"  data-analytics-link-name="2025年の銀行業界を占う～構造改革の加速" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">Read more</a>
+										<span class="views">391 Views</span>
+					</div>
+		<div class="clearfix"></div>
+	</div>
+	</article>
+<article class="acc-posts-carousel-block masonry-item dark largertext ">
+<img class="bg-image" data-lazy="https://financialservicesblog.accenture.com/wp-content/uploads/2025/01/202101-569x380.jpg" alt="Background Image"/>
+	<div class="acc-posts-carousel-inner inner">
+		<div class="masonry-date-category">
+							<div class="date">
+					<time class="JA" datetime="2025-01-10T08:19:43+00:00"><span class="year">2025.</span><span class="month">01.</span><span class="day">10</span></time>				</div>
+										<div class="category">
+											<h5>ウェビナー</h5>
+									</div>
+					</div>
+		<div class="masonry-content">
+							<h6 class="author">By <a title="中野 将志" href="https://financialservicesblog.accenture.com/author/xfs-masashi-nakano"  data-analytics-link-name="中野 将志" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">中野 将志</a>& <a title="保科 学世" href="https://financialservicesblog.accenture.com/author/xfs-gakuse-hoshina"  data-analytics-link-name="保科 学世" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">保科 学世</a>
+					& <a title="佐伯 隆" href="https://financialservicesblog.accenture.com/author/xfs-takashi-a-saeki"  data-analytics-link-name="佐伯 隆" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">佐伯 隆</a>
+					& <a title="中畑 良介" href="https://financialservicesblog.accenture.com/author/xfs-ryosuke-nakahata"  data-analytics-link-name="中畑 良介" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">中畑 良介</a>
+					& <a title="羽入 奈々" href="https://financialservicesblog.accenture.com/author/xfs-nana-hanyu"  data-analytics-link-name="羽入 奈々" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">羽入 奈々</a>
+													</h6>
+			<h3><a class=""  href="https://financialservicesblog.accenture.com/realize-business-transformation-and-become-a-buddy-in-management-the-current-status-and-future-of-generative-ai-in-the-financial-industry" target="_self" title="業務変革を実現し、経営の“バディ”に。金融業界における生成AI活用の現在地と今後"  data-analytics-link-name="業務変革を実現し、経営の“バディ”に。金融業界における生成AI活用の現在地と今後" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">業務変革を実現し、経営の“バディ”に。金融業界における生成AI活用の現在地と今後</a></h3>
+				<a class="read-more "  href="https://financialservicesblog.accenture.com/realize-business-transformation-and-become-a-buddy-in-management-the-current-status-and-future-of-generative-ai-in-the-financial-industry" target="_blank"  data-analytics-link-name="業務変革を実現し、経営の“バディ”に。金融業界における生成AI活用の現在地と今後" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">Read more</a>
+										<span class="views">250 Views</span>
+					</div>
+		<div class="clearfix"></div>
+	</div>
+	</article>
+<article class="acc-posts-carousel-block masonry-item dark  ">
+<img class="bg-image" data-lazy="https://financialservicesblog.accenture.com/wp-content/uploads/2025/01/3468415-253x380.jpg" alt="Background Image"/>
+	<div class="acc-posts-carousel-inner inner">
+		<div class="masonry-date-category">
+							<div class="date">
+					<time class="JA" datetime="2025-01-09T02:14:32+00:00"><span class="year">2025.</span><span class="month">01.</span><span class="day">09</span></time>				</div>
+										<div class="category">
+											<h5>保険</h5>
+									</div>
+					</div>
+		<div class="masonry-content">
+							<h6 class="author">By <a title="アクセンチュア" href="https://financialservicesblog.accenture.com/author/xfs-japan"  data-analytics-link-name="アクセンチュア" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">アクセンチュア</a>				</h6>
+			<h3><a class=""  href="https://financialservicesblog.accenture.com/news-release-mitsui-sumitomo-aioi-life-insurance-accelerates-dx-with-generative-ai-as-the-starting-point-collaborates-with-accenture-to-transform-daily-operations-and-promote-adoption-through-gamif" target="_self" title="ニュースリリース：三井住友海上あいおい生命保険、生成ＡＩを起点にＤＸを加速～日常業務の変革とゲーミフィケーションによる利用定着に向けてアクセンチュアと協業～"  data-analytics-link-name="ニュースリリース：三井住友海上あいおい生命保険、生成ＡＩを起点にＤＸを加速～日常業務の変革とゲーミフィケーションによる利用定着に向けてアクセンチュアと協業～" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">ニュースリリース：三井住友海上あいおい生命保険、生成ＡＩを起点にＤＸを加速～日常業務の変革とゲーミフィケーションによる利用定着に向けてアクセンチュアと協業～</a></h3>
+				<a class="read-more "  href="https://financialservicesblog.accenture.com/news-release-mitsui-sumitomo-aioi-life-insurance-accelerates-dx-with-generative-ai-as-the-starting-point-collaborates-with-accenture-to-transform-daily-operations-and-promote-adoption-through-gamif" target="_blank"  data-analytics-link-name="ニュースリリース：三井住友海上あいおい生命保険、生成ＡＩを起点にＤＸを加速～日常業務の変革とゲーミフィケーションによる利用定着に向けてアクセンチュアと協業～" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">Read more</a>
+										<span class="views">277 Views</span>
+					</div>
+		<div class="clearfix"></div>
+	</div>
+	</article>
+<article class="acc-posts-carousel-block masonry-item dark largertext ">
+<img class="bg-image" data-lazy="https://financialservicesblog.accenture.com/wp-content/uploads/2024/11/1129767810-570x380.jpg" alt="Background Image"/>
+	<div class="acc-posts-carousel-inner inner">
+		<div class="masonry-date-category">
+							<div class="date">
+					<time class="JA" datetime="2024-11-14T02:49:54+00:00"><span class="year">2024.</span><span class="month">11.</span><span class="day">14</span></time>				</div>
+										<div class="category">
+											<h5>FSアーキテクト</h5>
+									</div>
+					</div>
+		<div class="masonry-content">
+							<h6 class="author">By <a title="川上 裕輔" href="https://financialservicesblog.accenture.com/author/xfs-yusuke-kawakami"  data-analytics-link-name="川上 裕輔" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">川上 裕輔</a>& <a title="金岡 卓" href="https://financialservicesblog.accenture.com/author/xfs-takashi-kanaoka"  data-analytics-link-name="金岡 卓" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">金岡 卓</a>
+													</h6>
+			<h3><a class=""  href="https://financialservicesblog.accenture.com/the-need-for-customer-front-reform-and-the-key-to-reform" target="_self" title="カスタマーフロント改革の必要性と改革に向けた要諦"  data-analytics-link-name="カスタマーフロント改革の必要性と改革に向けた要諦" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">カスタマーフロント改革の必要性と改革に向けた要諦</a></h3>
+				<a class="read-more "  href="https://financialservicesblog.accenture.com/the-need-for-customer-front-reform-and-the-key-to-reform" target="_blank"  data-analytics-link-name="カスタマーフロント改革の必要性と改革に向けた要諦" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">Read more</a>
+										<span class="views">278 Views</span>
+					</div>
+		<div class="clearfix"></div>
+	</div>
+	</article>
+<article class="acc-posts-carousel-block masonry-item dark largertext ">
+<img class="bg-image" data-lazy="https://financialservicesblog.accenture.com/wp-content/uploads/2024/11/185115217-570x380.jpg" alt="Background Image"/>
+	<div class="acc-posts-carousel-inner inner">
+		<div class="masonry-date-category">
+							<div class="date">
+					<time class="JA" datetime="2024-11-14T02:45:48+00:00"><span class="year">2024.</span><span class="month">11.</span><span class="day">14</span></time>				</div>
+										<div class="category">
+											<h5>FSアーキテクト</h5>
+									</div>
+					</div>
+		<div class="masonry-content">
+							<h6 class="author">By <a title="近藤 良太" href="https://financialservicesblog.accenture.com/author/xfs-ryota-kondo"  data-analytics-link-name="近藤 良太" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">近藤 良太</a>				</h6>
+			<h3><a class=""  href="https://financialservicesblog.accenture.com/current-state-of-modernization-trends-and-future-response-policies-of-financial-institutions" target="_self" title="モダナイゼーションの現在地～動向と今後の金融機関の対応方針"  data-analytics-link-name="モダナイゼーションの現在地～動向と今後の金融機関の対応方針" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">モダナイゼーションの現在地～動向と今後の金融機関の対応方針</a></h3>
+				<a class="read-more "  href="https://financialservicesblog.accenture.com/current-state-of-modernization-trends-and-future-response-policies-of-financial-institutions" target="_blank"  data-analytics-link-name="モダナイゼーションの現在地～動向と今後の金融機関の対応方針" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">Read more</a>
+										<span class="views">285 Views</span>
+					</div>
+		<div class="clearfix"></div>
+	</div>
+	</article>
+<article class="acc-posts-carousel-block masonry-item dark largertext ">
+<img class="bg-image" data-lazy="https://financialservicesblog.accenture.com/wp-content/uploads/2024/11/1159551106-1-570x380.jpg" alt="Background Image"/>
+	<div class="acc-posts-carousel-inner inner">
+		<div class="masonry-date-category">
+							<div class="date">
+					<time class="JA" datetime="2024-11-14T02:44:32+00:00"><span class="year">2024.</span><span class="month">11.</span><span class="day">14</span></time>				</div>
+										<div class="category">
+											<h5>FSアーキテクト</h5>
+									</div>
+					</div>
+		<div class="masonry-content">
+							<h6 class="author">By <a title="谷 征洋" href="https://financialservicesblog.accenture.com/author/xfs-masahiro-tani"  data-analytics-link-name="谷 征洋" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">谷 征洋</a>				</h6>
+			<h3><a class=""  href="https://financialservicesblog.accenture.com/towards-an-asset-management-nation-issues-that-asset-management-companies-must-overcome" target="_self" title="資産運用立国に向けて～アセマネ会社として乗り越えるべき課題"  data-analytics-link-name="資産運用立国に向けて～アセマネ会社として乗り越えるべき課題" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">資産運用立国に向けて～アセマネ会社として乗り越えるべき課題</a></h3>
+				<a class="read-more "  href="https://financialservicesblog.accenture.com/towards-an-asset-management-nation-issues-that-asset-management-companies-must-overcome" target="_blank"  data-analytics-link-name="資産運用立国に向けて～アセマネ会社として乗り越えるべき課題" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">Read more</a>
+										<span class="views">341 Views</span>
+					</div>
+		<div class="clearfix"></div>
+	</div>
+	</article>
+<article class="acc-posts-carousel-block masonry-item dark largertext ">
+<img class="bg-image" data-lazy="https://financialservicesblog.accenture.com/wp-content/uploads/2024/11/969437892-570x380.jpg" alt="Background Image"/>
+	<div class="acc-posts-carousel-inner inner">
+		<div class="masonry-date-category">
+							<div class="date">
+					<time class="JA" datetime="2024-11-14T02:42:01+00:00"><span class="year">2024.</span><span class="month">11.</span><span class="day">14</span></time>				</div>
+										<div class="category">
+											<h5>FSアーキテクト</h5>
+									</div>
+					</div>
+		<div class="masonry-content">
+							<h6 class="author">By <a title="木時 直" href="https://financialservicesblog.accenture.com/author/xfs-nao-kitoki"  data-analytics-link-name="木時 直" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">木時 直</a>& <a title="淺井 元太" href="https://financialservicesblog.accenture.com/author/xfs-genta-asai"  data-analytics-link-name="淺井 元太" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">淺井 元太</a>
+													</h6>
+			<h3><a class=""  href="https://financialservicesblog.accenture.com/the-future-of-corporate-lending-the-key-to-change-using-ncino" target="_self" title="法人融資のこれから～nCinoを活用した変革の要諦"  data-analytics-link-name="法人融資のこれから～nCinoを活用した変革の要諦" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">法人融資のこれから～nCinoを活用した変革の要諦</a></h3>
+				<a class="read-more "  href="https://financialservicesblog.accenture.com/the-future-of-corporate-lending-the-key-to-change-using-ncino" target="_blank"  data-analytics-link-name="法人融資のこれから～nCinoを活用した変革の要諦" data-analytics-module-name="axfs-related-posts" data-analytics-component-name="axfs-related-posts" data-analytics-template-zone="related-posts" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">Read more</a>
+										<span class="views">313 Views</span>
+					</div>
+		<div class="clearfix"></div>
+	</div>
+	</article>
+			</div>
+	</div>
+	</div></div>            </div>
+        		
+<footer class="site-footer content-info">
+			<div id="marketo-predictive-content"><div class="RTP_RCMD2" data-rtp-template-id="template1"></div></div>
+				<div class="footer-widgets">
+            <div class="container">
+			<div id="xili_tidy_tags_cloud_widget-3" class="widget xili_tdtc_widget"><h3 class="widget-title"></h3><div class="xilitidytagscloud"><a href="https://financialservicesblog.accenture.com/tag/%e9%a1%a7%e5%ae%a2%e4%bd%93%e9%a8%93%e3%83%bb%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%9e%e3%83%bc%e3%82%a8%e3%82%af%e3%82%b9%e3%83%9a%e3%83%aa%e3%82%a8%e3%83%b3%e3%82%b9" class="tag-cloud-link tag-link-242 tag-link-position-1" style="font-size: 15.28813559322pt;" aria-label="顧客体験・カスタマーエクスペリエンス (91 items)"  data-analytics-link-name="顧客体験・カスタマーエクスペリエンス" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">顧客体験・カスタマーエクスペリエンス</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e9%8a%80%e8%a1%8c" class="tag-cloud-link tag-link-207 tag-link-position-2" style="font-size: 17.864406779661pt;" aria-label="銀行 (220 items)"  data-analytics-link-name="銀行" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">銀行</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e8%a8%bc%e5%88%b8" class="tag-cloud-link tag-link-213 tag-link-position-3" style="font-size: 17.389830508475pt;" aria-label="証券 (184 items)"  data-analytics-link-name="証券" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">証券</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e8%a6%8f%e5%88%b6%e5%af%be%e5%bf%9c%e3%83%bb%e3%83%aa%e3%82%b9%e3%82%af%e7%ae%a1%e7%90%86" class="tag-cloud-link tag-link-241 tag-link-position-4" style="font-size: 11.898305084746pt;" aria-label="規制対応・リスク管理 (28 items)"  data-analytics-link-name="規制対応・リスク管理" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">規制対応・リスク管理</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e4%bf%9d%e9%99%ba" class="tag-cloud-link tag-link-216 tag-link-position-5" style="font-size: 18pt;" aria-label="保険 (227 items)"  data-analytics-link-name="保険" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">保険</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e4%ba%8b%e4%be%8b" class="tag-cloud-link tag-link-236 tag-link-position-6" style="font-size: 15.35593220339pt;" aria-label="事例 (93 items)"  data-analytics-link-name="事例" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">事例</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e3%83%a2%e3%83%80%e3%83%8a%e3%82%a4%e3%82%bc%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3" class="tag-cloud-link tag-link-246 tag-link-position-7" style="font-size: 10.338983050847pt;" aria-label="モダナイゼーション (16 items)"  data-analytics-link-name="モダナイゼーション" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">モダナイゼーション</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e3%83%96%e3%83%ad%e3%83%83%e3%82%af%e3%83%81%e3%82%a7%e3%83%bc%e3%83%b3" class="tag-cloud-link tag-link-191 tag-link-position-8" style="font-size: 10.338983050847pt;" aria-label="ブロックチェーン (16 items)"  data-analytics-link-name="ブロックチェーン" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">ブロックチェーン</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e3%83%95%e3%82%a3%e3%83%b3%e3%83%86%e3%83%83%e3%82%af" class="tag-cloud-link tag-link-186 tag-link-position-9" style="font-size: 11.898305084746pt;" aria-label="フィンテック (28 items)"  data-analytics-link-name="フィンテック" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">フィンテック</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e3%83%87%e3%82%b8%e3%82%bf%e3%83%ab%e5%a4%89%e9%9d%a9%e3%83%bb%e3%83%87%e3%82%b8%e3%82%bf%e3%83%ab%e3%83%88%e3%83%a9%e3%83%b3%e3%82%b9%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a1%e3%83%bc%e3%82%b7%e3%83%a7" class="tag-cloud-link tag-link-237 tag-link-position-10" style="font-size: 17.593220338983pt;" aria-label="デジタル変革・デジタルトランスフォーメーション (198 items)"  data-analytics-link-name="デジタル変革・デジタルトランスフォーメーション" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">デジタル変革・デジタルトランスフォーメーション</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e3%82%bb%e3%82%ad%e3%83%a5%e3%83%aa%e3%83%86%e3%82%a3" class="tag-cloud-link tag-link-245 tag-link-position-11" style="font-size: 10.813559322034pt;" aria-label="セキュリティ (19 items)"  data-analytics-link-name="セキュリティ" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">セキュリティ</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e3%82%b3%e3%82%b9%e3%83%88%e5%89%8a%e6%b8%9b" class="tag-cloud-link tag-link-164 tag-link-position-12" style="font-size: 12.847457627119pt;" aria-label="コスト削減 (39 items)"  data-analytics-link-name="コスト削減" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">コスト削減</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e3%82%b0%e3%83%ad%e3%83%bc%e3%83%90%e3%83%aa%e3%82%bc%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%83%bb%e6%b5%b7%e5%a4%96%e5%b1%95%e9%96%8b" class="tag-cloud-link tag-link-240 tag-link-position-13" style="font-size: 10pt;" aria-label="グローバリゼーション・海外展開 (14 items)"  data-analytics-link-name="グローバリゼーション・海外展開" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">グローバリゼーション・海外展開</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e3%82%a8%e3%82%b3%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%83%bb%e3%83%97%e3%83%a9%e3%83%83%e3%83%88%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a0" class="tag-cloud-link tag-link-243 tag-link-position-14" style="font-size: 13.118644067797pt;" aria-label="エコシステム・プラットフォーム (43 items)"  data-analytics-link-name="エコシステム・プラットフォーム" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">エコシステム・プラットフォーム</a>
+<a href="https://financialservicesblog.accenture.com/tag/%e3%82%a6%e3%82%a7%e3%83%93%e3%83%8a%e3%83%bc" class="tag-cloud-link tag-link-195 tag-link-position-15" style="font-size: 13.661016949153pt;" aria-label="ウェビナー (52 items)"  data-analytics-link-name="ウェビナー" data-analytics-module-name="axfs-tag-cloud" data-analytics-component-name="axfs-tag-cloud" data-analytics-template-zone="tag-cloud" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">ウェビナー</a></div></div><div class="clear"></div>            </div>
+		</div>
+		<div class="footer-menu">
+		<div class="menu-japanese-footer-container"><ul id="menu-japanese-footer" class="nav"><li id="menu-item-1340" class="data-footer menu-item menu-item-type-custom menu-item-object-custom menu-item-1340"><a href="https://www.accenture.com/jp-ja/company" data-ps2id-api="true" data-analytics-link-name="アクセンチュアについて" data-analytics-module-name="axfs-footer" data-analytics-component-name="axfs-footer" data-analytics-template-zone="footer" data-analytics-content-type="footer" data-analytics-link-type="footer" data-analytics-content-class="Content">アクセンチュアについて</a></li>
+<li id="menu-item-1341" class="data-footer menu-item menu-item-type-custom menu-item-object-custom menu-item-1341"><a href="https://www.accenture.com/jp-ja/site-map" data-ps2id-api="true" data-analytics-link-name="サイトマップ" data-analytics-module-name="axfs-footer" data-analytics-component-name="axfs-footer" data-analytics-template-zone="footer" data-analytics-content-type="footer" data-analytics-link-type="footer" data-analytics-content-class="Content">サイトマップ</a></li>
+<li id="menu-item-1342" class="data-footer menu-item menu-item-type-custom menu-item-object-custom menu-item-1342"><a href="https://www.accenture.com/jp-ja/contact" data-ps2id-api="true" data-analytics-link-name="お問い合わせ" data-analytics-module-name="axfs-footer" data-analytics-component-name="axfs-footer" data-analytics-template-zone="footer" data-analytics-content-type="footer" data-analytics-link-type="footer" data-analytics-content-class="Content">お問い合わせ</a></li>
+<li id="menu-item-1343" class="data-footer menu-item menu-item-type-custom menu-item-object-custom menu-item-1343"><a href="https://www.accenture.com/jp-ja/company-japan-over-facts" data-ps2id-api="true" data-analytics-link-name="アクセンチュアのオフィス所在地" data-analytics-module-name="axfs-footer" data-analytics-component-name="axfs-footer" data-analytics-template-zone="footer" data-analytics-content-type="footer" data-analytics-link-type="footer" data-analytics-content-class="Content">アクセンチュアのオフィス所在地</a></li>
+<li id="menu-item-1344" class="data-footer menu-item menu-item-type-custom menu-item-object-custom menu-item-1344"><a href="https://www.accenture.com/jp-ja/security-policy" data-ps2id-api="true" data-analytics-link-name="情報セキュリティ基本方針" data-analytics-module-name="axfs-footer" data-analytics-component-name="axfs-footer" data-analytics-template-zone="footer" data-analytics-content-type="footer" data-analytics-link-type="footer" data-analytics-content-class="Content">情報セキュリティ基本方針</a></li>
+<li id="menu-item-1345" class="data-footer menu-item menu-item-type-custom menu-item-object-custom menu-item-1345"><a href="https://www.accenture.com/jp-ja/terms-of-use" data-ps2id-api="true" data-analytics-link-name="使用条項" data-analytics-module-name="axfs-footer" data-analytics-component-name="axfs-footer" data-analytics-template-zone="footer" data-analytics-content-type="footer" data-analytics-link-type="footer" data-analytics-content-class="Content">使用条項</a></li>
+<li id="menu-item-1346" class="data-footer menu-item menu-item-type-custom menu-item-object-custom menu-item-1346"><a href="https://www.accenture.com/jp-ja/privacy-policy" data-ps2id-api="true" data-analytics-link-name="プライバシーポリシー" data-analytics-module-name="axfs-footer" data-analytics-component-name="axfs-footer" data-analytics-template-zone="footer" data-analytics-content-type="footer" data-analytics-link-type="footer" data-analytics-content-class="Content">プライバシーポリシー</a></li>
+<li id="menu-item-1347" class="data-footer menu-item menu-item-type-custom menu-item-object-custom menu-item-1347"><a href="https://www.accenture.com/jp-ja/company-cookies-similar-technology" data-ps2id-api="true" data-analytics-link-name="Cookieポリシー" data-analytics-module-name="axfs-footer" data-analytics-component-name="axfs-footer" data-analytics-template-zone="footer" data-analytics-content-type="footer" data-analytics-link-type="footer" data-analytics-content-class="Content">Cookieポリシー</a></li>
+<li id="menu-item-1348" class="data-footer menu-item menu-item-type-custom menu-item-object-custom menu-item-1348"><a href="https://www.accenture.com/jp-ja/accessibility-statement" data-ps2id-api="true" data-analytics-link-name="アクセシビリティステートメント" data-analytics-module-name="axfs-footer" data-analytics-component-name="axfs-footer" data-analytics-template-zone="footer" data-analytics-content-type="footer" data-analytics-link-type="footer" data-analytics-content-class="Content">アクセシビリティステートメント</a></li>
+<li id="menu-item-1349" class="data-footer menu-item menu-item-type-custom menu-item-object-custom menu-item-1349"><a href="https://www.accenture.com/jp-ja/careers" data-ps2id-api="true" data-analytics-link-name="採用案内" data-analytics-module-name="axfs-footer" data-analytics-component-name="axfs-footer" data-analytics-template-zone="footer" data-analytics-content-type="footer" data-analytics-link-type="footer" data-analytics-content-class="Content">採用案内</a></li>
+</ul></div>		<!-- Cookie Button -->
+		<div id="optanon-minimize-wrapper" class="optanon-toggle-display cookie-settings" data-analytics-template-zone="consent manager" data-analytics-module-name="consent manager">
+			<a id="optanon-minimize-button" class="text-white show-inline-mobile" title="Cookie Settings" data-analytics-link-name="cookie settings" data-analytics-content-type="cta" aria-label="Cookie Settings">
+				<h5>Cookie Settings <i class="icon-settings text-white show-inline-mobile"></i></h5>
+			</a>
+		</div>
+		<p>&copy; 2025 Accenture. All Rights Reserved.</p>
+	</div>
+</footer>
+    <div id="subscribe-footer">
+        <div id="subscribe-footer-content">
+            <h1>Get the latest blogs delivered straight to your inbox.</h1>
+            <a id="btnSubscribePopup" class="button" href="" target="_blank">SUBSCRIBE NOW</a>
+            <a id="btnSubscribeClose" class="button">Close</a>
+        </div>
+    </div>
+    <div id="sticky-footer"
+         class="">
+        <p class="syndicated-origin">&nbsp;
+                    </p>
+        <div class="up-next">                <p><span class="next-prefix">Next Post - </span> <a
+                        href="https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-2-fsa-and-mof" title="マネロン対策と新技術：第２回　金融庁・財務省の取組み"
+                         data-analytics-link-name="マネロン対策と新技術：第２回　金融庁・財務省の取組み" data-analytics-module-name="axfs-sticky-footer" data-analytics-component-name="axfs-sticky-footer" data-analytics-template-zone="sticky-footer" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">マネロン対策と新技術：第２回　金融庁・財務省の取組み </a>
+                </p>
+                                <p class="rtp-suggested-content" style="display:none"><span
+                        class="next-prefix">Suggested Post - </span><a
+                        href="https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-2-fsa-and-mof" title="マネロン対策と新技術：第２回　金融庁・財務省の取組み"
+                         data-analytics-link-name="マネロン対策と新技術：第２回　金融庁・財務省の取組み" data-analytics-module-name="axfs-sticky-footer" data-analytics-component-name="axfs-sticky-footer" data-analytics-template-zone="sticky-footer" data-analytics-link-type="cta" data-analytics-content-class="Content" data-analytics-engagement="1">マネロン対策と新技術：第２回　金融庁・財務省の取組み</a>
+                </p>
+                                </div>
+                <p class="acc-share">
+            	<div class="post-sharing-buttons">
+		<div class="line-it-button" style="display: none;" data-lang="en" data-type="share-d" data-url="https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach"></div>
+		<!-- <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script> -->
+		<!-- <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="touch" data-hatena-bookmark-width="40" data-hatena-bookmark-height="40" title="マネロン対策と新技術：第1回　FATFの取組み">
+			<i class="icon-b-s icon-large" alt="このエントリーをはてなブックマークに追加"></i>
+		</a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script> -->
+		<a
+			target="_blank"
+			href="http://b.hatena.ne.jp/entry/https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach"
+			title="Share to Hatena"
+			 data-analytics-link-name="hatena" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="share intent" data-analytics-link-type="share intent" data-analytics-content-class="shareable content" data-analytics-engagement="">
+			<i class="icon-b-s icon-large"></i>
+		</a>
+		<a
+			target="_blank"
+			href="https://lineit.line.me/share/ui?url=https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach"
+			title="Share to Line"
+			 data-analytics-link-name="line" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="share intent" data-analytics-link-type="share intent" data-analytics-content-class="shareable content" data-analytics-engagement="">
+			<i class="icon-lineit icon-large"></i>
+		</a>
+		<a
+			target="_blank"
+			href="https://www.facebook.com/sharer/sharer.php?u=https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach"
+			title="Share to Facebook"
+			 data-analytics-link-name="facebook" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="share intent" data-analytics-link-type="share intent" data-analytics-content-class="shareable content" data-analytics-engagement="">
+			<i class="icon-facebook icon-large"></i>
+		</a>
+		<a
+			target="_blank"
+			href="https://www.linkedin.com/shareArticle?mini=true&url=https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach&title=%E3%83%9E%E3%83%8D%E3%83%AD%E3%83%B3%E5%AF%BE%E7%AD%96%E3%81%A8%E6%96%B0%E6%8A%80%E8%A1%93%EF%BC%9A%E7%AC%AC1%E5%9B%9E%E3%80%80FATF%E3%81%AE%E5%8F%96%E7%B5%84%E3%81%BF&source=Financial+Services+Blog"
+			title="Share to LinkedIn"
+			 data-analytics-link-name="linkedin" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="share intent" data-analytics-link-type="share intent" data-analytics-content-class="shareable content" data-analytics-engagement="">
+			<i class="icon-linkedin icon-large"></i>
+		</a>
+		<a
+			target="_blank"
+			href="https://twitter.com/intent/tweet?text=%E3%83%9E%E3%83%8D%E3%83%AD%E3%83%B3%E5%AF%BE%E7%AD%96%E3%81%A8%E6%96%B0%E6%8A%80%E8%A1%93%EF%BC%9A%E7%AC%AC1%E5%9B%9E%E3%80%80FATF%E3%81%AE%E5%8F%96%E7%B5%84%E3%81%BF%3A+https://financialservicesblog.accenture.com/?p=19108"
+			title="Share to Twitter"
+			 data-analytics-link-name="twitter" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="share intent" data-analytics-link-type="share intent" data-analytics-content-class="shareable content" data-analytics-engagement="">
+			<i class="icon-twitter icon-large"></i>
+		</a>
+		<a
+			target="_blank"
+			href="mailto:?subject=Financial Services Blog: マネロン対策と新技術：第1回　FATFの取組み&body=Financial Services Blog posted a new artice by: 水口 毅 マネロン対策と新技術：第1回　FATFの取組み https://financialservicesblog.accenture.com/anti-money-laundering-and-new-technologies-part-1-fatfs-approach"
+			title="Share to Mail"
+			 data-analytics-link-name="mail" data-analytics-module-name="axfs-module" data-analytics-component-name="axfs-module" data-analytics-template-zone="body" data-analytics-content-type="share intent" data-analytics-link-type="share intent" data-analytics-content-class="shareable content" data-analytics-engagement="">
+			<i class="icon-mail icon-large"></i>
+		</a>
+	</div>
+	<div class="post-sharing-links">
+		<a target="_blank" href="https://www.accenture.com/jp-ja/about/company/contact-us" title="Contact Us">
+			<span>お問い合わせ</span>
+		</a>
+	</div>
+        </p>
+    </div>
+	<div style="display:none">
+			<div class="grofile-hash-map-d8e45ed13bac2792ad372921ade2055a">
+		</div>
+		<div class="grofile-hash-map-14fc70a7c72faf9c3d4f3371983a6874">
+		</div>
+		<div class="grofile-hash-map-cd45ceb83130d9723150b7ff3226c3ad">
+		</div>
+		<div class="grofile-hash-map-a74018e2c5881655c74edf0b20c53971">
+		</div>
+		<div class="grofile-hash-map-011987e02dd8661ced77c5d2cbdf6a06">
+		</div>
+		<div class="grofile-hash-map-8da4687b6c6b5d8f573efa3e65d27f5e">
+		</div>
+		<div class="grofile-hash-map-d1c33db8a6f36d5887675e38fcd80fda">
+		</div>
+		</div>
+		<link rel='stylesheet' id='acc-posts-carousel-style-d75171398898-css' href='https://financialservicesblog.accenture.com/wp-content/uploads/siteorigin-widgets/acc-posts-carousel-style-d75171398898.css?ver=68266d' type='text/css' media='all' />
+<link rel='stylesheet' id='slick-slider-styles-css' href='https://financialservicesblog.accenture.com/wp-content/themes/accenturepress/widgets/posts-carousel/styles/slick.css?ver=8ead7a' type='text/css' media='all' />
+<link rel='stylesheet' id='jquery-modal-styles-css' href='https://financialservicesblog.accenture.com/wp-content/themes/accenturepress/widgets/posts-carousel/styles/jquery.modal.min.css?ver=3cd09d' type='text/css' media='all' />
+<link rel='stylesheet' id='slick-slider-theme-css' href='https://financialservicesblog.accenture.com/wp-content/themes/accenturepress/widgets/posts-carousel/styles/slick-theme.css?ver=c5f7e8' type='text/css' media='all' />
+<script type="text/javascript" id="page-scroll-to-id-plugin-script-js-extra">
+/* <![CDATA[ */
+var mPS2id_params = {"instances":{"mPS2id_instance_0":{"selector":"a[href*='#']:not([href='#'])","autoSelectorMenuLinks":"true","excludeSelector":"a[href^='#tab-'], a[href^='#tabs-'], a[data-toggle]:not([data-toggle='tooltip']), a[data-slide], a[data-vc-tabs], a[data-vc-accordion]","scrollSpeed":200,"autoScrollSpeed":"true","scrollEasing":"easeInOutQuint","scrollingEasing":"easeOutQuint","forceScrollEasing":"false","pageEndSmoothScroll":"true","stopScrollOnUserAction":"false","autoCorrectScroll":"false","autoCorrectScrollExtend":"false","layout":"vertical","offset":".acc-nav-container","dummyOffset":"false","highlightSelector":"","clickedClass":"mPS2id-clicked","targetClass":"mPS2id-target","highlightClass":"mPS2id-highlight","forceSingleHighlight":"false","keepHighlightUntilNext":"false","highlightByNextTarget":"false","appendHash":"false","scrollToHash":"true","scrollToHashForAll":"true","scrollToHashDelay":0,"scrollToHashUseElementData":"true","scrollToHashRemoveUrlHash":"false","disablePluginBelow":0,"adminDisplayWidgetsId":"true","adminTinyMCEbuttons":"true","unbindUnrelatedClickEvents":"false","unbindUnrelatedClickEventsSelector":"","normalizeAnchorPointTargets":"false","encodeLinks":"false"}},"total_instances":"1","shortcode_class":"_ps2id"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://financialservicesblog.accenture.com/wp-content/plugins/page-scroll-to-id/js/page-scroll-to-id.min.js?ver=3c65b2" id="page-scroll-to-id-plugin-script-js"></script>
+<script type="text/javascript" src="https://secure.gravatar.com/js/gprofiles.js?ver=fe44e9" id="grofiles-cards-js" crossorigin="anonymous" integrity="sha256-fYv2wClwomxrDCaw/PyJeWqjD4QwfP/Y/SjSvMpT3Xo="></script>
+<script type="text/javascript" id="wpgroho-js-extra">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://financialservicesblog.accenture.com/wp-content/plugins/jetpack/modules/wpgroho.js?ver=7ab645" id="wpgroho-js"></script>
+<script type="text/javascript" src="https://stats.wp.com/e-202508.js" id="jetpack-stats-js" data-wp-strategy="defer" crossorigin="anonymous" integrity="sha256-W63WCaUe3lurW4lTT8MBGk3Rq0h8xwgdfPOEeby6uFU="></script>
+<script type="text/javascript" id="jetpack-stats-js-after">
+/* <![CDATA[ */
+_stq = window._stq || [];
+_stq.push([ "view", JSON.parse("{\"v\":\"ext\",\"blog\":\"151346315\",\"post\":\"19108\",\"tz\":\"0\",\"srv\":\"financialservicesblog.accenture.com\",\"j\":\"1:14.3\"}") ]);
+_stq.push([ "clickTrackerInit", "151346315", "19108" ]);
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://financialservicesblog.accenture.com/wp-content/themes/accenturepress/widgets/posts-carousel/js/slick.min.js?ver=3ba9e8" id="slick-js"></script>
+<script type="text/javascript" src="https://financialservicesblog.accenture.com/wp-content/themes/accenturepress/widgets/posts-carousel/js/jquery.modal.min.js?ver=771083" id="jquery.modal-js"></script>
+<script type="text/javascript" src="https://financialservicesblog.accenture.com/wp-content/themes/accenturepress/widgets/posts-carousel/js/posts-carousel.js?ver=0da215" id="acc-posts-carousel-js"></script>
+<script type="text/JavaScript">
+	if (typeof(_satellite) !== "undefined") {
+		_satellite.pageBottom();
+	}
+</script>	</body>
+</html>
+
+<!-- Cached by WP-Optimize (gzip) - https://getwpo.com - Last modified: February 18, 2025 4:12 am (UTC:0) -->
