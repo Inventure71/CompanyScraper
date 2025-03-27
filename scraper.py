@@ -252,7 +252,9 @@ class CustomFolderSpider(CrawlSpider):
         'TELNETCONSOLE_ENABLED': False,
         'HTTPCACHE_ENABLED': False,
         'ROBOTSTXT_OBEY': False,
-        'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        'CLOSESPIDER_TIMEOUT': 60,  # Stop after 60 seconds
+        'CLOSESPIDER_ERRORCOUNT': 5  # Stop after 5 errors
     }
 
     def __init__(self, *args, start_urls=None, allowed_domains=None, max_pages=50, **kwargs):
@@ -262,12 +264,18 @@ class CustomFolderSpider(CrawlSpider):
         if allowed_domains:
             self.allowed_domains = allowed_domains
         self.custom_settings['CLOSESPIDER_PAGECOUNT'] = max_pages
+        self.pages_scraped = 0
         print(f"Spider initialized with {max_pages} pages limit")
         print(f"Start URLs: {self.start_urls}")
         print(f"Allowed domains: {self.allowed_domains}")
 
     def parse_item(self, response):
         try:
+            self.pages_scraped += 1
+            if self.pages_scraped > self.custom_settings['CLOSESPIDER_PAGECOUNT']:
+                self.crawler.engine.close_spider(self, 'Page limit reached')
+                return
+
             # Save the scraped page to the temporary_files folder.
             folder = 'temporary_files'
             if not os.path.exists(folder):
@@ -277,7 +285,7 @@ class CustomFolderSpider(CrawlSpider):
             filepath = os.path.join(folder, filename)
             with open(filepath, 'wb') as f:
                 f.write(response.body)
-            self.logger.info("Saved file %s", filepath)
+            print(f"Saved page {self.pages_scraped}/{self.custom_settings['CLOSESPIDER_PAGECOUNT']}: {response.url}")
         except Exception as e:
             self.logger.error(f"Error saving file: {e}")
 
@@ -306,6 +314,9 @@ class Scraper:
             Scraper._process = CrawlerProcess(self.settings)
         
         try:
+            print(f"\nStarting spider process for {self.website_name}")
+            print(f"Max pages: {self.max_pages}")
+            
             # Pass the spider class and its parameters to crawl
             Scraper._process.crawl(
                 CustomFolderSpider,
@@ -319,6 +330,8 @@ class Scraper:
             
             # Stop the process after it's done
             Scraper._process.stop()
+            
+            print(f"Spider process completed for {self.website_name}")
             
         except Exception as e:
             print(f"Error running spider: {e}")
@@ -344,9 +357,10 @@ class Scraper:
         os.makedirs('temporary_files', exist_ok=True)
 
         try:
-            print(f"Starting spider for {self.website_name} with {self.max_pages} pages limit...")
+            print(f"\nStarting scraping process for {self.website_name}")
             print(f"Start URLs: {self.custom_start_urls}")
             print(f"Allowed domains: {self.custom_allowed_domains}")
+            print(f"Max pages: {self.max_pages}")
             
             self.run_spider()
             
@@ -354,8 +368,10 @@ class Scraper:
                 print("Warning: No files were scraped")
                 return ""
                 
+            print(f"\nMoving scraped files for {self.website_name}")
             source_folders = self.move_folders()
 
+            print(f"\nCombining text for {self.website_name}")
             # Combine text from all folders (both non-blog and blog pages)
             self.Combiner.combine_text_from_multiple_folders(source_folders, output_file,
                                                            filter_patterns_enabled=None,
@@ -376,6 +392,7 @@ class Scraper:
                 print("Warning: Output file is empty")
                 return ""
 
+            print(f"\nScraping completed for {self.website_name}")
             return content
         except Exception as e:
             print(f"Error during scraping: {e}")
