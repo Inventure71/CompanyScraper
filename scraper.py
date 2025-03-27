@@ -265,30 +265,29 @@ class CustomFolderSpider(CrawlSpider):
         self.logger.info("Saved file %s", filepath)
 
 class Scraper:
+    _process = None  # Class variable to store the crawler process
+
     def __init__(self, start_urls=None, allowed_domains=None, force_update=False, max_pages=50):
-        self.custom_start_urls = None
-        self.custom_allowed_domains = None
-        self.website_name = None
-        self.website_name_nonblog = None
-        self.website_name_blog = None
-        self.max_pages = max_pages
-
-        self.change_website(start_urls, allowed_domains)
-
-        self.force_update = force_update
-        self.settings = get_project_settings()
-        self.Combiner = Combiner()
-
-    def change_website(self, start_urls, allowed_domains):
         self.custom_start_urls = start_urls
         self.custom_allowed_domains = allowed_domains
-        self.website_name = allowed_domains[0].replace('.com', '')
-        if "blog" not in self.website_name.lower():
-            self.website_name_nonblog = self.website_name
-            self.website_name_blog = self.website_name + "_blog"
-        else:
-            self.website_name_nonblog = self.website_name
-            self.website_name_blog = self.website_name
+        self.force_update = force_update
+        self.max_pages = max_pages
+        self.website_name = allowed_domains[0] if allowed_domains else "website"
+        self.Combiner = Combiner()
+        self.settings = get_project_settings()
+
+    def run_spider(self):
+        if Scraper._process is None:
+            Scraper._process = CrawlerProcess(self.settings)
+        
+        Scraper._process.crawl(CustomFolderSpider,
+                             start_urls=self.custom_start_urls,
+                             allowed_domains=self.custom_allowed_domains,
+                             max_pages=self.max_pages)
+        
+        if not Scraper._process.running:
+            Scraper._process.start()
+            Scraper._process.stop()
 
     def scrape_website(self):
         """
@@ -307,31 +306,26 @@ class Scraper:
             shutil.rmtree('temporary_files')
         os.makedirs('temporary_files', exist_ok=True)
 
-        self.run_spider()
-        source_folders = self.move_folders()
+        try:
+            self.run_spider()
+            source_folders = self.move_folders()
 
-        # Combine text from all folders (both non-blog and blog pages)
-        self.Combiner.combine_text_from_multiple_folders(source_folders, output_file,
+            # Combine text from all folders (both non-blog and blog pages)
+            self.Combiner.combine_text_from_multiple_folders(source_folders, output_file,
                                                            filter_patterns_enabled=None,
                                                            remove_duplicates_enabled=None,
                                                            merge_lines_enabled=None,
                                                            add_php=None)
 
-        time.sleep(1)
+            time.sleep(1)
 
-        with open(output_file, 'r', encoding='utf-8') as f:
-            content = f.read()
+            with open(output_file, 'r', encoding='utf-8') as f:
+                content = f.read()
 
-        return content
-
-    def run_spider(self):
-        process = CrawlerProcess(self.settings)
-        process.crawl(CustomFolderSpider,
-                      start_urls=self.custom_start_urls,
-                      allowed_domains=self.custom_allowed_domains,
-                      max_pages=self.max_pages)
-        process.start()
-        process.stop()
+            return content
+        except Exception as e:
+            print(f"Error during scraping: {e}")
+            return ""
 
     def move_folders(self):
         """
@@ -345,13 +339,13 @@ class Scraper:
             print(f"Source directory '{source_dir}' does not exist")
             return [source_dir]
 
-        dest_nonblog = os.path.join("scraped", self.website_name_nonblog)
+        dest_nonblog = os.path.join("scraped", self.website_name)
         if not os.path.exists(dest_nonblog):
             os.makedirs(dest_nonblog, exist_ok=True)
 
         # Prepare a folder for blog pages if needed.
-        if self.website_name_nonblog != self.website_name_blog:
-            dest_blog = os.path.join("scraped", self.website_name_blog)
+        if self.website_name != self.website_name + "_blog":
+            dest_blog = os.path.join("scraped", self.website_name + "_blog")
             if not os.path.exists(dest_blog):
                 os.makedirs(dest_blog, exist_ok=True)
         else:
