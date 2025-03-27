@@ -257,35 +257,66 @@ class CustomFolderSpider(CrawlSpider):
         'CLOSESPIDER_ERRORCOUNT': 5,  # Stop after 5 errors
         'DOWNLOAD_TIMEOUT': 30,  # 30 seconds timeout for downloads
         'RETRY_TIMES': 3,  # Number of retries for failed requests
-        'RETRY_HTTP_CODES': [500, 502, 503, 504, 522, 524, 408, 429]  # HTTP codes to retry on
+        'RETRY_HTTP_CODES': [500, 502, 503, 504, 522, 524, 408, 429],  # HTTP codes to retry on
+        'DOWNLOAD_FAIL_ON_DATALOSS': False,  # Don't fail on data loss
+        'COOKIES_DEBUG': False,  # Disable cookie debugging
+        'REDIRECT_ENABLED': True,  # Enable redirects
+        'HTTPERROR_ALLOWED_CODES': [404, 403, 503],  # Allow these HTTP error codes
+        'LOG_ENABLED': True,  # Enable logging
+        'LOG_STDOUT': True,  # Log to stdout
+        'LOG_LEVEL': 'DEBUG'  # Set to DEBUG for maximum information
     }
 
     def __init__(self, *args, start_urls=None, allowed_domains=None, max_pages=50, **kwargs):
-        super().__init__(*args, **kwargs)
-        if start_urls:
-            self.start_urls = start_urls
-        if allowed_domains:
-            self.allowed_domains = allowed_domains
-        self.custom_settings['CLOSESPIDER_PAGECOUNT'] = max_pages
-        self.pages_scraped = 0
-        print(f"Spider initialized with {max_pages} pages limit")
-        print(f"Start URLs: {self.start_urls}")
-        print(f"Allowed domains: {self.allowed_domains}")
+        try:
+            super().__init__(*args, **kwargs)
+            if start_urls:
+                self.start_urls = start_urls
+            if allowed_domains:
+                self.allowed_domains = allowed_domains
+            self.custom_settings['CLOSESPIDER_PAGECOUNT'] = max_pages
+            self.pages_scraped = 0
+            print(f"Spider initialized with {max_pages} pages limit")
+            print(f"Start URLs: {self.start_urls}")
+            print(f"Allowed domains: {self.allowed_domains}")
+        except Exception as e:
+            print(f"Error initializing spider: {str(e)}")
+            raise
 
     def start_requests(self):
         """Override start_requests to add error handling."""
         try:
+            if not self.start_urls:
+                raise ValueError("No start URLs provided")
+            if not self.allowed_domains:
+                raise ValueError("No allowed domains provided")
+                
             for url in self.start_urls:
                 print(f"Starting request for URL: {url}")
-                yield scrapy.Request(url, callback=self.parse, errback=self.handle_error)
+                yield scrapy.Request(
+                    url,
+                    callback=self.parse,
+                    errback=self.handle_error,
+                    dont_filter=True,  # Allow duplicate requests
+                    meta={
+                        'dont_redirect': False,
+                        'handle_httpstatus_list': [404, 403, 503],
+                        'download_timeout': 30,
+                        'max_retry_times': 3
+                    }
+                )
         except Exception as e:
-            print(f"Error in start_requests: {e}")
-            self.crawler.engine.close_spider(self, f'Error in start_requests: {e}')
+            error_msg = f"Error in start_requests: {str(e)}"
+            print(error_msg)
+            self.crawler.engine.close_spider(self, error_msg)
+            raise
 
     def handle_error(self, failure):
         """Handle request errors."""
-        print(f"Request failed: {failure.value}")
-        self.crawler.engine.close_spider(self, f'Request failed: {failure.value}')
+        error_msg = f"Request failed: {str(failure.value)}"
+        print(error_msg)
+        self.crawler.engine.close_spider(self, error_msg)
+        raise
 
     def parse_item(self, response):
         try:
@@ -306,36 +337,58 @@ class CustomFolderSpider(CrawlSpider):
                 f.write(response.body)
             print(f"Saved page {self.pages_scraped}/{self.custom_settings['CLOSESPIDER_PAGECOUNT']}: {response.url}")
         except Exception as e:
-            print(f"Error saving file: {e}")
-            self.logger.error(f"Error saving file: {e}")
+            error_msg = f"Error saving file: {str(e)}"
+            print(error_msg)
+            self.logger.error(error_msg)
+            raise
 
 class Scraper:
     _process = None  # Class variable to store the crawler process
 
     def __init__(self, start_urls=None, allowed_domains=None, force_update=False, max_pages=50):
-        self.custom_start_urls = start_urls
-        self.custom_allowed_domains = allowed_domains
-        self.force_update = force_update
-        self.max_pages = max_pages
-        self.website_name = allowed_domains[0] if allowed_domains else "website"
-        self.Combiner = Combiner()
-        self.settings = get_project_settings()
-        
-        # Disable telnet console and set custom port range
-        self.settings.set('TELNETCONSOLE_ENABLED', False)
-        self.settings.set('HTTPCACHE_ENABLED', False)
-        self.settings.set('LOG_LEVEL', 'ERROR')
-        self.settings.set('COOKIES_ENABLED', False)
-        self.settings.set('DOWNLOAD_DELAY', 1)
-        self.settings.set('CONCURRENT_REQUESTS', 1)
+        try:
+            if not start_urls:
+                raise ValueError("start_urls cannot be None")
+            if not allowed_domains:
+                raise ValueError("allowed_domains cannot be None")
+                
+            self.custom_start_urls = start_urls
+            self.custom_allowed_domains = allowed_domains
+            self.force_update = force_update
+            self.max_pages = max_pages
+            self.website_name = allowed_domains[0] if allowed_domains else "website"
+            self.Combiner = Combiner()
+            self.settings = get_project_settings()
+            
+            # Configure settings for better reliability
+            self.settings.set('TELNETCONSOLE_ENABLED', False)
+            self.settings.set('HTTPCACHE_ENABLED', False)
+            self.settings.set('LOG_LEVEL', 'DEBUG')  # Set to DEBUG for maximum information
+            self.settings.set('COOKIES_ENABLED', False)
+            self.settings.set('DOWNLOAD_DELAY', 1)
+            self.settings.set('CONCURRENT_REQUESTS', 1)
+            self.settings.set('DOWNLOAD_FAIL_ON_DATALOSS', False)
+            self.settings.set('COOKIES_DEBUG', False)
+            self.settings.set('REDIRECT_ENABLED', True)
+            self.settings.set('HTTPERROR_ALLOWED_CODES', [404, 403, 503])
+            self.settings.set('RETRY_TIMES', 3)
+            self.settings.set('RETRY_HTTP_CODES', [500, 502, 503, 504, 522, 524, 408, 429])
+            self.settings.set('LOG_ENABLED', True)
+            self.settings.set('LOG_STDOUT', True)
+        except Exception as e:
+            print(f"Error initializing Scraper: {str(e)}")
+            raise
 
     def run_spider(self):
-        if Scraper._process is None:
-            Scraper._process = CrawlerProcess(self.settings)
-        
         try:
+            if Scraper._process is None:
+                print("Creating new crawler process")
+                Scraper._process = CrawlerProcess(self.settings)
+            
             print(f"\nStarting spider process for {self.website_name}")
             print(f"Max pages: {self.max_pages}")
+            print(f"Start URLs: {self.custom_start_urls}")
+            print(f"Allowed domains: {self.custom_allowed_domains}")
             
             # Pass the spider class and its parameters to crawl
             Scraper._process.crawl(
@@ -346,15 +399,18 @@ class Scraper:
             )
             
             # Start the process
+            print("Starting crawler process...")
             Scraper._process.start()
             
             # Stop the process after it's done
+            print("Stopping crawler process...")
             Scraper._process.stop()
             
             print(f"Spider process completed for {self.website_name}")
             
         except Exception as e:
-            print(f"Error running spider: {e}")
+            error_msg = f"Error running spider: {str(e)}"
+            print(error_msg)
             # Reset the process if there's an error
             Scraper._process = None
             raise
