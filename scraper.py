@@ -275,19 +275,33 @@ class Scraper:
         self.website_name = allowed_domains[0] if allowed_domains else "website"
         self.Combiner = Combiner()
         self.settings = get_project_settings()
+        
+        # Disable telnet console and set custom port range
+        self.settings.set('TELNETCONSOLE_ENABLED', False)
+        self.settings.set('HTTPCACHE_ENABLED', False)
+        self.settings.set('LOG_LEVEL', 'ERROR')
+        self.settings.set('COOKIES_ENABLED', False)
+        self.settings.set('DOWNLOAD_DELAY', 1)
+        self.settings.set('CONCURRENT_REQUESTS', 1)
 
     def run_spider(self):
         if Scraper._process is None:
             Scraper._process = CrawlerProcess(self.settings)
         
-        Scraper._process.crawl(CustomFolderSpider,
-                             start_urls=self.custom_start_urls,
-                             allowed_domains=self.custom_allowed_domains,
-                             max_pages=self.max_pages)
-        
-        if not Scraper._process.running:
-            Scraper._process.start()
-            Scraper._process.stop()
+        try:
+            Scraper._process.crawl(CustomFolderSpider,
+                                 start_urls=self.custom_start_urls,
+                                 allowed_domains=self.custom_allowed_domains,
+                                 max_pages=self.max_pages)
+            
+            if not Scraper._process.running:
+                Scraper._process.start()
+                Scraper._process.stop()
+        except Exception as e:
+            print(f"Error running spider: {e}")
+            # Reset the process if there's an error
+            Scraper._process = None
+            raise
 
     def scrape_website(self):
         """
