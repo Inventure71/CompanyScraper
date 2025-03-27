@@ -146,7 +146,10 @@ class GeminiHandler:
                 "- Their role (prefer lab leaders, research directors, technical leads)\n"
                 "- Their involvement in robotics/AI projects\n"
                 "- Their seniority level\n"
-                "- Their contact information availability\n"
+                "- Their contact information availability (MUST have at least one of: email, phone, or LinkedIn)\n"
+                "- Their location (prefer contacts in the same country as the company)\n"
+                "IMPORTANT: The MostRelevantContact MUST have at least one valid contact method (email, phone, or LinkedIn).\n"
+                "If no contact with valid contact information is found, set MostRelevantContact to null.\n"
                 "ExtraInfo: Any important information that can affect/influence the ability to contact the company."
             ),
         )

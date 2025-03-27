@@ -245,7 +245,7 @@ class CustomFolderSpider(CrawlSpider):
     )
     custom_settings = {
         'CLOSESPIDER_PAGECOUNT': 50,  # Default value
-        'LOG_LEVEL': 'ERROR',
+        'LOG_LEVEL': 'INFO',  # Changed to INFO for better debugging
         'COOKIES_ENABLED': False,
         'DOWNLOAD_DELAY': 1,
         'CONCURRENT_REQUESTS': 1,
@@ -254,7 +254,10 @@ class CustomFolderSpider(CrawlSpider):
         'ROBOTSTXT_OBEY': False,
         'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
         'CLOSESPIDER_TIMEOUT': 60,  # Stop after 60 seconds
-        'CLOSESPIDER_ERRORCOUNT': 5  # Stop after 5 errors
+        'CLOSESPIDER_ERRORCOUNT': 5,  # Stop after 5 errors
+        'DOWNLOAD_TIMEOUT': 30,  # 30 seconds timeout for downloads
+        'RETRY_TIMES': 3,  # Number of retries for failed requests
+        'RETRY_HTTP_CODES': [500, 502, 503, 504, 522, 524, 408, 429]  # HTTP codes to retry on
     }
 
     def __init__(self, *args, start_urls=None, allowed_domains=None, max_pages=50, **kwargs):
@@ -269,10 +272,26 @@ class CustomFolderSpider(CrawlSpider):
         print(f"Start URLs: {self.start_urls}")
         print(f"Allowed domains: {self.allowed_domains}")
 
+    def start_requests(self):
+        """Override start_requests to add error handling."""
+        try:
+            for url in self.start_urls:
+                print(f"Starting request for URL: {url}")
+                yield scrapy.Request(url, callback=self.parse, errback=self.handle_error)
+        except Exception as e:
+            print(f"Error in start_requests: {e}")
+            self.crawler.engine.close_spider(self, f'Error in start_requests: {e}')
+
+    def handle_error(self, failure):
+        """Handle request errors."""
+        print(f"Request failed: {failure.value}")
+        self.crawler.engine.close_spider(self, f'Request failed: {failure.value}')
+
     def parse_item(self, response):
         try:
             self.pages_scraped += 1
             if self.pages_scraped > self.custom_settings['CLOSESPIDER_PAGECOUNT']:
+                print(f"Page limit ({self.custom_settings['CLOSESPIDER_PAGECOUNT']}) reached")
                 self.crawler.engine.close_spider(self, 'Page limit reached')
                 return
 
@@ -287,6 +306,7 @@ class CustomFolderSpider(CrawlSpider):
                 f.write(response.body)
             print(f"Saved page {self.pages_scraped}/{self.custom_settings['CLOSESPIDER_PAGECOUNT']}: {response.url}")
         except Exception as e:
+            print(f"Error saving file: {e}")
             self.logger.error(f"Error saving file: {e}")
 
 class Scraper:

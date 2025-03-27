@@ -196,9 +196,9 @@ class Classifier:
             keywords = ', '.join(str(k) for k in keywords)
 
         # Format the most relevant contact
-        most_relevant = parsed.get("MostRelevantContact", {})
+        most_relevant = parsed.get("MostRelevantContact")
         most_relevant_str = ""
-        if most_relevant:
+        if most_relevant:  # Only process if not null
             parts = []
             if most_relevant.get("FullName"):
                 parts.append(f"Name: {most_relevant['FullName']}")
@@ -208,7 +208,11 @@ class Classifier:
                 parts.append(f"Email: {most_relevant['Email']}")
             if most_relevant.get("Reason"):
                 parts.append(f"Reason: {most_relevant['Reason']}")
-            most_relevant_str = " | ".join(parts)
+            if parts:  # Only add if we have at least some information
+                most_relevant_str = " | ".join(parts)
+            else:
+                print("Warning: Most relevant contact has no valid information")
+                most_relevant_str = "No valid contact found"
 
         company_data = {
             "name": name,
