@@ -3,12 +3,26 @@ import scrapy
 from pathlib import Path
 from urllib.parse import urlparse
 import mimetypes
+import logging
+from scrapy.linkextractors import LinkExtractor
+from scrapy.spiders import CrawlSpider, Rule
+import time
 
-class CustomFolderSpider(scrapy.Spider):
+# Configure logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+
+class CustomFolderSpider(CrawlSpider):
     name = "website"
     custom_settings = {
         'CLOSESPIDER_PAGECOUNT': 50,  # Default value, will be updated in __init__
+        'HTTPERROR_ALLOW_ALL': True,  # Allow processing of all HTTP responses
+        'DOWNLOAD_TIMEOUT': 30,       # Timeout in seconds
     }
+    
+    rules = (
+        Rule(LinkExtractor(), callback='parse_item', follow=True),
+    )
 
     def __init__(self, start_urls=None, allowed_domains=None, max_pages=50, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -23,8 +37,37 @@ class CustomFolderSpider(scrapy.Spider):
             self.allowed_domains = [domain.strip() for domain in allowed_domains.split(',') if domain.strip()]
         else:
             self.allowed_domains = allowed_domains or []
+        
+        logger.info(f"Spider initialized with: start_urls={self.start_urls}, allowed_domains={self.allowed_domains}, max_pages={max_pages}")
 
-    def parse(self, response):
+    def start_requests(self):
+        logger.info(f"Starting requests for URLs: {self.start_urls}")
+        for url in self.start_urls:
+            # Add some randomness to avoid being detected as a bot
+            yield scrapy.Request(
+                url=url, 
+                callback=self.parse_item,
+                errback=self.handle_error,
+                meta={'dont_retry': False, 'download_timeout': 30}
+            )
+            time.sleep(1)  # Small delay between requests
+
+    def write_file_with_retries(self, filepath, content, retries=3, delay=5):
+        """Attempt to write to a file with retries."""
+        for attempt in range(retries):
+            try:
+                with open(filepath, 'wb') as f:
+                    f.write(content)
+                return
+            except Exception as e:
+                logger.error(f"Failed to save {filepath} (attempt {attempt + 1}/{retries}): {e}")
+                if attempt < retries - 1:
+                    time.sleep(delay)
+
+    def parse_item(self, response):
+        # Log response info
+        logger.info(f"Successfully scraped: {response.url} (status: {response.status})")
+
         # Determine and sanitize the folder name based on the domain
         domain = self.get_domain(response.url)
         folder_name = "temporary_files/" + self.sanitize_filename(domain)
@@ -60,25 +103,45 @@ class CustomFolderSpider(scrapy.Spider):
                     filename += ext
 
         file_path = folder_path / filename
-        self.logger.info("Saving %s to %s", response.url, file_path)
+        logger.info(f"Saving {response.url} to {file_path}")
 
         try:
-            file_path.write_bytes(response.body)
+            self.write_file_with_retries(file_path, response.body)
         except Exception as e:
-            self.logger.error("Failed to save %s: %s", response.url, e)
+            logger.error(f"Failed to save {response.url}: {e}")
 
-        # Only follow links if the content is HTML
-        if 'text/html' in mime_type:
-            for href in response.css('a::attr(href)').getall():
-                next_page = response.urljoin(href)
-                if self.is_allowed_url(next_page):
-                    yield response.follow(next_page, callback=self.parse)
-
+        # Check if content is HTML before attempting to extract links
+        is_html = mime_type == 'text/html' or (not mime_type and response.url.endswith(('.html', '.htm')))
+        
+        if is_html:
+            try:
+                # Extract links for crawling - only for HTML content
+                for href in response.css('a::attr(href)').getall():
+                    next_url = response.urljoin(href)
+                    if self.is_allowed_url(next_url):
+                        yield scrapy.Request(
+                            url=next_url, 
+                            callback=self.parse_item,
+                            errback=self.handle_error,
+                            meta={'dont_retry': False}
+                        )
+            except Exception as e:
+                logger.error(f"Error extracting links from {response.url}: {e}")
+        else:
+            # Log that we're skipping link extraction for non-HTML content
+            logger.debug(f"Skipping link extraction for non-HTML content: {response.url} (mime-type: {mime_type})")
+    
+    def handle_error(self, failure):
+        """Handle failures in requests"""
+        request = failure.request
+        logger.error(f"Error on {request.url}: {failure.value}")
+        
     def is_allowed_url(self, url):
         """
         Allow URLs only if they belong to one of the allowed domains.
         Subdomains of an allowed domain are also accepted.
         """
+        logger.debug("Checking if URL is allowed: %s", url)
         parsed = urlparse(url)
         domain = parsed.netloc.lower()
         if not self.allowed_domains:
@@ -94,6 +157,7 @@ class CustomFolderSpider(scrapy.Spider):
         """
         Extract the domain from the URL.
         """
+        logger.debug("Extracting domain from URL: %s", url)
         return urlparse(url).netloc
 
     def sanitize_filename(self, value):
@@ -101,7 +165,9 @@ class CustomFolderSpider(scrapy.Spider):
         Sanitize a string to be safely used as a filename.
         Removes or replaces characters that may be invalid on some filesystems.
         """
+        logger.debug("Sanitizing filename: %s", value)
         # Remove query parameters if present
         value = value.split('?')[0]
         # Replace any character that is not alphanumeric, dot, underscore, or dash with an underscore
         return re.sub(r'[^\w\.-]', '_', value)
+

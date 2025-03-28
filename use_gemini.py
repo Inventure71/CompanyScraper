@@ -46,6 +46,22 @@ class GeminiHandler:
         print("Rate limit check failed")
         return False
 
+    def make_api_request_with_retries(self, prompt, retries=3, delay=5):
+        """Attempt to make an API request with retries."""
+        for attempt in range(retries):
+            try:
+                response = self.client.models.generate_content(
+                    model=self.model_name,
+                    contents=prompt,
+                    config=self.config,
+                )
+                return response
+            except Exception as e:
+                print(f"API request failed (attempt {attempt + 1}/{retries}): {e}")
+                if attempt < retries - 1:
+                    time.sleep(delay)
+        return None
+
     def generic_ask_gemini(self, prompt):
         if not self.check_rate_limit():
             print("Rate limit exceeded. Please wait before making more requests.")
@@ -55,19 +71,13 @@ class GeminiHandler:
         blocks = self.divide_into_blocks(prompt)
         responses = []
         for block in blocks:
-            if self.config is None:
-                response = self.client.models.generate_content(
-                    model=self.model_name,
-                    contents=prompt,
-                )
+            response = self.make_api_request_with_retries(block)
+            if response:
+                print(response.text)
+                responses.append(response.text)
             else:
-                response = self.client.models.generate_content(
-                    model=self.model_name,
-                    contents=prompt,
-                    config=self.config,
-                )
-            print(response.text)
-            responses.append(response.text)
+                print("Failed to get a response after multiple attempts.")
+                return None
 
         return responses
 
@@ -97,7 +107,7 @@ class GeminiHandler:
                     items=types.Schema(
                         type="OBJECT",
                         enum=[],  # No enum values.
-                        required=["FullName", "Role"],
+                        required=["FullName", "Role", "Link", "PhoneNumber", "Email"],
                         properties={
                             "FullName": types.Schema(type="STRING"),
                             "Link": types.Schema(type="STRING"),
@@ -119,7 +129,7 @@ class GeminiHandler:
                     properties={
                         "FullName": types.Schema(type="STRING"),
                         "Role": types.Schema(type="STRING"),
-                        "Email": types.Schema(type="STRING"),
+                        "Contact": types.Schema(type="STRING"),
                         "Reason": types.Schema(type="STRING"),
                     },
                 ),
@@ -146,7 +156,8 @@ class GeminiHandler:
                 "- Their role (prefer lab leaders, research directors, technical leads)\n"
                 "- Their involvement in robotics/AI projects\n"
                 "- Their seniority level\n"
-                "- Their contact information availability (MUST have at least one of: email, phone, or LinkedIn)\n"
+                "- Their contact information availability (MUST have at least one of: email, phone, or link)\n"
+                "- If a contact has no way to contact them, do not include them in the AllContacts list\n"
                 "- Their location (prefer contacts in the same country as the company)\n"
                 "IMPORTANT: The MostRelevantContact MUST have at least one valid contact method (email, phone, or LinkedIn).\n"
                 "If no contact with valid contact information is found, set MostRelevantContact to null.\n"
@@ -320,3 +331,4 @@ if __name__ == "__main__":
     with open("texts/accelerationrobotics_total.txt") as t:
         text = t.read()
     handler.retrieve_info_gemini(text)
+
