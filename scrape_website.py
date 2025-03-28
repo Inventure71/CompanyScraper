@@ -98,73 +98,98 @@ class Classifier:
 
     def parse_company(self, name, company="accelerationrobotics.com", max_pages=20):
         link = f'https://www.{company}/'
-        company = company.lower()
+        company_lower = company.lower()
         
         print(f"\nProcessing company: {name}")
+        print(f"Website URL: {link}")
         print(f"Starting quick scrape with 15 pages limit...")
         
         max_retries = 3
         retry_delay = 5  # seconds
         
-        for attempt in range(max_retries):
-            try:
-                # Try quick scraping first with 15 pages limit
-                quick_scraper = Scraper([link], [company], force_update=False, max_pages=15)
-                complete_text = quick_scraper.scrape_website()
-                
-                # Check if we got enough content (at least 1000 characters)
-                content_length = len(complete_text)
-                print(f"Quick scrape content length: {content_length} characters")
-                
-                if content_length < 1000:
-                    print("Quick scrape didn't yield enough content, falling back to full scraping...")
-                    # If not enough content, try full scraping
-                    scraper = Scraper([link], [company], force_update=False, max_pages=max_pages)
-                    complete_text = scraper.scrape_website()
-                    quick_scrape_used = 0
-                    print(f"Full scrape content length: {len(complete_text)} characters")
-                else:
-                    quick_scrape_used = 1
-                    print("Quick scrape successful, using limited content")
+        try:
+            for attempt in range(max_retries):
+                try:
+                    # Try quick scraping first with 15 pages limit
+                    print(f"Attempt {attempt+1}/{max_retries} - Quick scrape starting...")
+                    quick_scraper = Scraper([link], [company_lower], force_update=True, max_pages=15)
+                    complete_text = quick_scraper.scrape_website()
+                    
+                    # Check if we got enough content (at least 1000 characters)
+                    content_length = len(complete_text)
+                    print(f"Quick scrape content length: {content_length} characters")
+                    
+                    if content_length < 1000:
+                        print("Quick scrape didn't yield enough content, falling back to full scraping...")
+                        # If not enough content, try full scraping
+                        print(f"Starting full scrape with {max_pages} pages limit...")
+                        scraper = Scraper([link], [company_lower], force_update=True, max_pages=max_pages)
+                        complete_text = scraper.scrape_website()
+                        quick_scrape_used = 0
+                        print(f"Full scrape content length: {len(complete_text)} characters")
+                    else:
+                        quick_scrape_used = 1
+                        print("Quick scrape successful, using limited content")
 
-                if not complete_text:
-                    print("Warning: No content was scraped from the website")
+                    if not complete_text or len(complete_text) < 100:  # Adjust minimum threshold as needed
+                        print(f"Warning: Insufficient content was scraped from the website ({len(complete_text)} characters)")
+                        if attempt < max_retries - 1:
+                            print(f"Retrying in {retry_delay} seconds...")
+                            time.sleep(retry_delay)
+                            continue
+                        # Save failed attempt after all retries
+                        company_data = {
+                            "name": name,
+                            "link": link,
+                            "country": "",
+                            "keywords": "",
+                            "description": "",
+                            "all_contacts": "",
+                            "extra_info": "",
+                            "company_website_text_united": "",
+                            "success": 0,
+                            "parsing_success": 0,
+                            "quick_scrape_used": 0,
+                            "most_relevant_contact": ""
+                        }
+                        self.save_companies_to_db([company_data])
+                        return
+
+                    print(f"Scraped content first 500 chars: {complete_text[:500]}...")
+
+                    response = self.gemini_handler.retrieve_info_gemini(complete_text)
+                    success = True if response else False
+
+                    self.save_company(response, name, link, complete_text, success, quick_scrape_used)
+                    return  # Success, exit the retry loop
+                    
+                except Exception as e:
+                    print(f"Error processing company {name} (attempt {attempt + 1}/{max_retries}): {e}")
+                    import traceback
+                    traceback.print_exc()
                     if attempt < max_retries - 1:
                         print(f"Retrying in {retry_delay} seconds...")
                         time.sleep(retry_delay)
-                        continue
-                    return
-
-                print("Combined Text:", complete_text)
-
-                response = self.gemini_handler.retrieve_info_gemini(complete_text)
-                success = True if response else False
-
-                self.save_company(response, name, link, complete_text, success, quick_scrape_used)
-                return  # Success, exit the retry loop
-                
-            except Exception as e:
-                print(f"Error processing company {name} (attempt {attempt + 1}/{max_retries}): {e}")
-                if attempt < max_retries - 1:
-                    print(f"Retrying in {retry_delay} seconds...")
-                    time.sleep(retry_delay)
-                else:
-                    # Save failed attempt after all retries
-                    company_data = {
-                        "name": name,
-                        "link": link,
-                        "country": "",
-                        "keywords": "",
-                        "description": "",
-                        "all_contacts": "",
-                        "extra_info": "",
-                        "company_website_text_united": "",
-                        "success": 0,
-                        "parsing_success": 0,
-                        "quick_scrape_used": 0,
-                        "most_relevant_contact": ""
-                    }
-                    self.save_companies_to_db([company_data])
+                    else:
+                        # Save failed attempt after all retries
+                        company_data = {
+                            "name": name,
+                            "link": link,
+                            "country": "",
+                            "keywords": "",
+                            "description": "",
+                            "all_contacts": "",
+                            "extra_info": "",
+                            "company_website_text_united": "",
+                            "success": 0,
+                            "parsing_success": 0,
+                            "quick_scrape_used": 0,
+                            "most_relevant_contact": ""
+                        }
+                        self.save_companies_to_db([company_data])
+        except KeyboardInterrupt:
+            print("Process interrupted by user. Exiting gracefully...")
+            # Perform any necessary cleanup here if needed
 
     def save_company(self, json_str, name, link, website_full_text, success, quick_scrape_used=0):
         parsed = self.parse_json(json_str)
@@ -273,7 +298,8 @@ if __name__ == '__main__':
 
             if not classifier.check_company_exists(name):
                 # Set max_pages to limit the number of pages to scrape (default is 50)
-                classifier.parse_company(name, link, max_pages=20)
+                classifier.parse_company(name, link, max_pages=40)
                 time.sleep(1)
             else:
                 print(f"Company '{name}' already exists in database, skipping...")
+

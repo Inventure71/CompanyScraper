@@ -5,6 +5,8 @@ import re
 from bs4 import BeautifulSoup
 from PyPDF2 import PdfReader
 from lxml.html.clean import Cleaner
+import subprocess
+import sys
 
 import scrapy
 from scrapy.linkextractors import LinkExtractor
@@ -133,7 +135,7 @@ class Combiner:
         for a in main_content.find_all('a', href=True):
             href = a.get('href')
             anchor_text = a.get_text(strip=True)
-            if anchor_text and anchor_text != href:
+            if (anchor_text and anchor_text != href):
                 links.append(f"{anchor_text} -> {href}")
             else:
                 links.append(href)
@@ -241,291 +243,183 @@ class CustomFolderSpider(CrawlSpider):
     allowed_domains = None  # Will be set in __init__
     start_urls = None      # Will be set in __init__
     rules = (
-        Rule(LinkExtractor(deny=(r'(?i)forum',)), callback='parse_item', follow=True),
+        Rule(LinkExtractor(), callback='parse_item', follow=True),
     )
-    custom_settings = {
-        'CLOSESPIDER_PAGECOUNT': 50,  # Default value
-        'LOG_LEVEL': 'INFO',  # Changed to INFO for better debugging
-        'COOKIES_ENABLED': False,
-        'DOWNLOAD_DELAY': 1,
-        'CONCURRENT_REQUESTS': 1,
-        'TELNETCONSOLE_ENABLED': False,
-        'HTTPCACHE_ENABLED': False,
-        'ROBOTSTXT_OBEY': False,
-        'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-        'CLOSESPIDER_TIMEOUT': 60,  # Stop after 60 seconds
-        'CLOSESPIDER_ERRORCOUNT': 5,  # Stop after 5 errors
-        'DOWNLOAD_TIMEOUT': 30,  # 30 seconds timeout for downloads
-        'RETRY_TIMES': 3,  # Number of retries for failed requests
-        'RETRY_HTTP_CODES': [500, 502, 503, 504, 522, 524, 408, 429],  # HTTP codes to retry on
-        'DOWNLOAD_FAIL_ON_DATALOSS': False,  # Don't fail on data loss
-        'COOKIES_DEBUG': False,  # Disable cookie debugging
-        'REDIRECT_ENABLED': True,  # Enable redirects
-        'HTTPERROR_ALLOWED_CODES': [404, 403, 503],  # Allow these HTTP error codes
-        'LOG_ENABLED': True,  # Enable logging
-        'LOG_STDOUT': True,  # Log to stdout
-        'LOG_LEVEL': 'DEBUG'  # Set to DEBUG for maximum information
-    }
-
+    
     def __init__(self, *args, start_urls=None, allowed_domains=None, max_pages=50, **kwargs):
-        try:
-            super().__init__(*args, **kwargs)
-            if start_urls:
-                self.start_urls = start_urls
-            if allowed_domains:
-                self.allowed_domains = allowed_domains
-            self.custom_settings['CLOSESPIDER_PAGECOUNT'] = max_pages
-            self.pages_scraped = 0
-            print(f"Spider initialized with {max_pages} pages limit")
-            print(f"Start URLs: {self.start_urls}")
-            print(f"Allowed domains: {self.allowed_domains}")
-        except Exception as e:
-            print(f"Error initializing spider: {str(e)}")
-            raise
-
-    def start_requests(self):
-        """Override start_requests to add error handling."""
-        try:
-            if not self.start_urls:
-                raise ValueError("No start URLs provided")
-            if not self.allowed_domains:
-                raise ValueError("No allowed domains provided")
-                
-            for url in self.start_urls:
-                print(f"Starting request for URL: {url}")
-                yield scrapy.Request(
-                    url,
-                    callback=self.parse,
-                    errback=self.handle_error,
-                    dont_filter=True,  # Allow duplicate requests
-                    meta={
-                        'dont_redirect': False,
-                        'handle_httpstatus_list': [404, 403, 503],
-                        'download_timeout': 30,
-                        'max_retry_times': 3
-                    }
-                )
-        except Exception as e:
-            error_msg = f"Error in start_requests: {str(e)}"
-            print(error_msg)
-            self.crawler.engine.close_spider(self, error_msg)
-            raise
-
-    def handle_error(self, failure):
-        """Handle request errors."""
-        error_msg = f"Request failed: {str(failure.value)}"
-        print(error_msg)
-        self.crawler.engine.close_spider(self, error_msg)
-        raise
+        super().__init__(*args, **kwargs)
+        self.start_urls = start_urls or []
+        self.allowed_domains = allowed_domains or []
+        self.max_pages = max_pages
+        self.pages_scraped = 0
+        print(f"Spider initialized with: max_pages={max_pages}, start_urls={start_urls}, allowed_domains={allowed_domains}")
 
     def parse_item(self, response):
         try:
             self.pages_scraped += 1
-            if self.pages_scraped > self.custom_settings['CLOSESPIDER_PAGECOUNT']:
-                print(f"Page limit ({self.custom_settings['CLOSESPIDER_PAGECOUNT']}) reached")
-                self.crawler.engine.close_spider(self, 'Page limit reached')
+            if self.pages_scraped > self.max_pages:
+                print(f"Page limit ({self.max_pages}) reached")
                 return
 
             # Save the scraped page to the temporary_files folder.
             folder = 'temporary_files'
             if not os.path.exists(folder):
                 os.makedirs(folder)
+                
             # Create a safe filename from the URL.
             filename = re.sub(r'\W+', '_', response.url) + ".html"
             filepath = os.path.join(folder, filename)
             with open(filepath, 'wb') as f:
                 f.write(response.body)
-            print(f"Saved page {self.pages_scraped}/{self.custom_settings['CLOSESPIDER_PAGECOUNT']}: {response.url}")
+            print(f"Saved page {self.pages_scraped}/{self.max_pages}: {response.url}")
+            
         except Exception as e:
-            error_msg = f"Error saving file: {str(e)}"
-            print(error_msg)
-            self.logger.error(error_msg)
-            raise
+            print(f"Error saving file: {str(e)}")
+
 
 class Scraper:
-    _process = None  # Class variable to store the crawler process
-
     def __init__(self, start_urls=None, allowed_domains=None, force_update=False, max_pages=50):
-        try:
-            if not start_urls:
-                raise ValueError("start_urls cannot be None")
-            if not allowed_domains:
-                raise ValueError("allowed_domains cannot be None")
-                
-            self.custom_start_urls = start_urls
-            self.custom_allowed_domains = allowed_domains
-            self.force_update = force_update
-            self.max_pages = max_pages
-            self.website_name = allowed_domains[0] if allowed_domains else "website"
-            self.Combiner = Combiner()
-            self.settings = get_project_settings()
-            
-            # Configure settings for better reliability
-            self.settings.set('TELNETCONSOLE_ENABLED', False)
-            self.settings.set('HTTPCACHE_ENABLED', False)
-            self.settings.set('LOG_LEVEL', 'DEBUG')  # Set to DEBUG for maximum information
-            self.settings.set('COOKIES_ENABLED', False)
-            self.settings.set('DOWNLOAD_DELAY', 1)
-            self.settings.set('CONCURRENT_REQUESTS', 1)
-            self.settings.set('DOWNLOAD_FAIL_ON_DATALOSS', False)
-            self.settings.set('COOKIES_DEBUG', False)
-            self.settings.set('REDIRECT_ENABLED', True)
-            self.settings.set('HTTPERROR_ALLOWED_CODES', [404, 403, 503])
-            self.settings.set('RETRY_TIMES', 3)
-            self.settings.set('RETRY_HTTP_CODES', [500, 502, 503, 504, 522, 524, 408, 429])
-            self.settings.set('LOG_ENABLED', True)
-            self.settings.set('LOG_STDOUT', True)
-        except Exception as e:
-            print(f"Error initializing Scraper: {str(e)}")
-            raise
+        if not start_urls:
+            raise ValueError("start_urls cannot be None")
+        if not allowed_domains:
+            raise ValueError("allowed_domains cannot be None")
 
-    def run_spider(self):
-        try:
-            if Scraper._process is None:
-                print("Creating new crawler process")
-                Scraper._process = CrawlerProcess(self.settings)
-            
-            print(f"\nStarting spider process for {self.website_name}")
-            print(f"Max pages: {self.max_pages}")
-            print(f"Start URLs: {self.custom_start_urls}")
-            print(f"Allowed domains: {self.custom_allowed_domains}")
-            
-            # Pass the spider class and its parameters to crawl
-            Scraper._process.crawl(
-                CustomFolderSpider,
-                start_urls=self.custom_start_urls,
-                allowed_domains=self.custom_allowed_domains,
-                max_pages=self.max_pages
-            )
-            
-            # Start the process
-            print("Starting crawler process...")
-            Scraper._process.start()
-            
-            # Stop the process after it's done
-            print("Stopping crawler process...")
-            Scraper._process.stop()
-            
-            print(f"Spider process completed for {self.website_name}")
-            
-        except Exception as e:
-            error_msg = f"Error running spider: {str(e)}"
-            print(error_msg)
-            # Reset the process if there's an error
-            Scraper._process = None
-            raise
+        self.custom_start_urls = start_urls
+        self.custom_allowed_domains = allowed_domains
+        self.force_update = force_update
+        self.max_pages = max_pages
+        self.website_name = allowed_domains[0] if allowed_domains else "website"
+        self.Combiner = Combiner()
+        
+        # Ensure the output directory exists
+        os.makedirs('texts', exist_ok=True)
 
     def scrape_website(self):
         """
-        Scrape the website, combine the text from saved files (including separating out blog pages if needed),
-        and return the output.
+        Main method to scrape a website:
+        1. Run the spider to crawl and save content
+        2. Combine all scraped content into a single text
+        3. Clean up temporary files
+        4. Return the combined text
         """
-        output_file = f"texts/{self.website_name}_total.txt"
-        if os.path.exists(output_file) and not self.force_update:
-            print(f"Output file '{output_file}' already exists. Skipping scraping, loading old file.")
-            with open(output_file, 'r', encoding='utf-8') as f:
-                content = f.read()
-            return content
-
-        # Remove and recreate the temporary_files directory.
-        if os.path.exists('temporary_files'):
-            shutil.rmtree('temporary_files')
-        os.makedirs('temporary_files', exist_ok=True)
-
+        # Create temporary folder if it doesn't exist
+        temp_folder = 'temporary_files'
+        if not os.path.exists(temp_folder):
+            os.makedirs(temp_folder)
+        
+        # Clear any previous files
+        if self.force_update and os.path.exists(temp_folder):
+            for item in os.listdir(temp_folder):
+                item_path = os.path.join(temp_folder, item)
+                if os.path.isfile(item_path):
+                    os.unlink(item_path)
+                elif os.path.isdir(item_path):
+                    shutil.rmtree(item_path)
+        
+        # Run spider to download website content
+        self.run_spider_subprocess()
+        
+        # Combine text from all downloaded files
+        output_file = os.path.join('texts', f"{self.website_name}.txt")
+        domain_folder = os.path.join(temp_folder, self.website_name)
+        
+        # If the domain-specific folder exists, use it
+        if os.path.exists(domain_folder):
+            source_folders = [domain_folder]
+        else:
+            # Otherwise use the whole temporary_files directory
+            source_folders = [temp_folder]
+        
+        # Extract and combine text from all files
+        self.Combiner.combine_text_from_multiple_folders(
+            source_folders=source_folders,
+            output_file=output_file,
+            filter_patterns_enabled=True,
+            remove_duplicates_enabled=True,
+            merge_lines_enabled=True
+        )
+        
+        # Read the combined text file
         try:
-            print(f"\nStarting scraping process for {self.website_name}")
-            print(f"Start URLs: {self.custom_start_urls}")
-            print(f"Allowed domains: {self.custom_allowed_domains}")
-            print(f"Max pages: {self.max_pages}")
-            
-            self.run_spider()
-            
-            if not os.path.exists('temporary_files') or not os.listdir('temporary_files'):
-                print("Warning: No files were scraped")
-                return ""
-                
-            print(f"\nMoving scraped files for {self.website_name}")
-            source_folders = self.move_folders()
-
-            print(f"\nCombining text for {self.website_name}")
-            # Combine text from all folders (both non-blog and blog pages)
-            self.Combiner.combine_text_from_multiple_folders(source_folders, output_file,
-                                                           filter_patterns_enabled=None,
-                                                           remove_duplicates_enabled=None,
-                                                           merge_lines_enabled=None,
-                                                           add_php=None)
-
-            time.sleep(1)
-
-            if not os.path.exists(output_file):
-                print("Warning: No output file was created")
-                return ""
-
-            with open(output_file, 'r', encoding='utf-8') as f:
-                content = f.read()
-
-            if not content:
-                print("Warning: Output file is empty")
-                return ""
-
-            print(f"\nScraping completed for {self.website_name}")
+            with open(output_file, 'r', encoding='utf-8') as file:
+                content = file.read()
             return content
         except Exception as e:
-            print(f"Error during scraping: {e}")
+            print(f"Error reading combined output file: {e}")
             return ""
 
-    def move_folders(self):
+    def run_spider_subprocess(self):
         """
-        Move all files from the 'temporary_files' directory into destination folders.
-        Blog pages (detected by 'blog' in the filename) are moved to a separate folder,
-        unless the original website name already contains 'blog'.
-        Returns a list of destination folders.
+        Runs the spider in a separate process using subprocess to avoid ReactorNotRestartable error
         """
-        source_dir = 'temporary_files'
-        if not os.path.exists(source_dir):
-            print(f"Source directory '{source_dir}' does not exist")
-            return [source_dir]
+        # Create spider settings file if it doesn't exist
+        settings_dir = os.path.join(os.path.dirname(__file__), 'spider_settings')
+        os.makedirs(settings_dir, exist_ok=True)
+        
+        # Create a settings file for this specific spider run
+        settings_file = os.path.join(settings_dir, f"{self.website_name}_settings.py")
+        with open(settings_file, 'w') as f:
+            f.write(f"""
+# Settings for {self.website_name} spider
+START_URLS = {repr(self.custom_start_urls)}
+ALLOWED_DOMAINS = {repr(self.custom_allowed_domains)}
+MAX_PAGES = {self.max_pages}
+""")
+        
+        # Create a temporary spider runner script
+        runner_script = os.path.join(settings_dir, f"{self.website_name}_runner.py")
+        with open(runner_script, 'w') as f:
+            f.write("""
+import os
+import sys
+import importlib.util
 
-        dest_nonblog = os.path.join("scraped", self.website_name)
-        if not os.path.exists(dest_nonblog):
-            os.makedirs(dest_nonblog, exist_ok=True)
+# Add parent directory to path
+parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, parent_dir)
 
-        # Prepare a folder for blog pages if needed.
-        if self.website_name != self.website_name + "_blog":
-            dest_blog = os.path.join("scraped", self.website_name + "_blog")
-            if not os.path.exists(dest_blog):
-                os.makedirs(dest_blog, exist_ok=True)
-        else:
-            dest_blog = dest_nonblog
+# Import settings
+settings_file = sys.argv[1]
+spec = importlib.util.spec_from_file_location("spider_settings", settings_file)
+settings = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(settings)
 
-        for item in os.listdir(source_dir):
-            source_path = os.path.join(source_dir, item)
-            # If the file name (converted from URL) contains "blog", move it to the blog folder.
-            if "blog" in item.lower():
-                destination_path = os.path.join(dest_blog, item)
-                dest_used = dest_blog
-            else:
-                destination_path = os.path.join(dest_nonblog, item)
-                dest_used = dest_nonblog
-            if os.path.exists(source_path):
-                shutil.move(source_path, destination_path)
-                print(f"Moved {item} to {dest_used}")
+# Import the CustomFolderSpider class directly from the script
+from spiders.testing import CustomFolderSpider
+from scrapy.crawler import CrawlerProcess
+from scrapy.utils.project import get_project_settings
 
-        # Remove the now-empty temporary_files directory.
-        if os.path.exists(source_dir) and not os.listdir(source_dir):
-            os.rmdir(source_dir)
-            print(f"Removed empty directory: {source_dir}")
+# Configure settings
+crawler_settings = get_project_settings()
+crawler_settings.update({
+    'ROBOTSTXT_OBEY': False,
+    'LOG_LEVEL': 'INFO',
+    'COOKIES_ENABLED': False,
+    'DOWNLOAD_DELAY': 1,
+    'CONCURRENT_REQUESTS': 1,
+    'CLOSESPIDER_PAGECOUNT': settings.MAX_PAGES,
+    'CLOSESPIDER_TIMEOUT': 180,
+    'RETRY_TIMES': 3,
+    'DOWNLOAD_TIMEOUT': 30,
+    'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+})
 
-        # Return a list of folders from which to combine text.
-        if dest_blog != dest_nonblog:
-            return [dest_nonblog, dest_blog]
-        else:
-            return [dest_nonblog]
-
-
-if __name__ == "__main__":
-    # Initialize the scraper with the desired start URL and allowed domain.
-    # Set max_pages to limit the number of pages to scrape (default is 50)
-    scraper = Scraper(['https://accelerationrobotics.com/'], ['accelerationrobotics.com'], max_pages=100)
-    output = scraper.scrape_website()
-    print(output)
+# Run the spider
+process = CrawlerProcess(crawler_settings)
+process.crawl(
+    CustomFolderSpider,
+    start_urls=settings.START_URLS,
+    allowed_domains=settings.ALLOWED_DOMAINS,
+    max_pages=settings.MAX_PAGES
+)
+process.start()
+""")
+        
+        # Run the spider in a separate process
+        print(f"Starting subprocess for {self.website_name}...")
+        try:
+            subprocess.run([sys.executable, runner_script, settings_file], check=True)
+            print(f"Subprocess finished for {self.website_name}")
+        except subprocess.CalledProcessError as e:
+            print(f"Subprocess error for {self.website_name}: {e}")
+            print("Falling back to direct")
